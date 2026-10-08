@@ -1,0 +1,889 @@
+state,as_of,instructors_required,itis,itis_admitting,itis_govt,itis_pvt,itis_women_only,nstis,nstis_women_only,seats,seats_govt,seats_pvt,sources
+All India,2014-08-01,,,,,,,,,1694228,,,seats=36d04fdc
+All India,2015-06-23,,12106,,2285,9821,,,,1711108,499586,1211522,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+All India,2016-04-30,,13105,,2293,10812,,,,1865620,505618,1360002,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+All India,2016-07-28,,13105,,2293,10812,,,,1865620,505618,1360002,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+All India,2016-08-01,,,,,,,,,2194391,,,seats=36d04fdc
+All India,2016-12-01,,13328,,,,,,,,,,itis=7a16313d
+All India,2017-02-09,,13351,,,,,,,2850734,,,itis=c72013bf; seats=c72013bf
+All India,2017-03-09,,,13353,,,,,,2852556,,,itis_admitting=0a348746; seats=0a348746
+All India,2017-03-23,142628,13353,,,,,,,2852577,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+All India,2017-08-03,,13353,,2152,11201,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+All India,2018-12-28,,15044,,,,,,,,,,itis=63d81eb9
+All India,2021-01-01,,14779,,,,,,,,,,itis=f6e88ccd
+All India,2021-02-12,,14779,,,,,,,,,,itis=117f6967
+All India,2021-07-13,,14604,,3175,11429,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+All India,2021-12-15,,14711,,3178,11533,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+All India,2021-12-31,,,,3178,11533,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+All India,2022-02-09,,14711,,,,,,,,,,itis=b81f053c
+All India,2022-04-06,,14730,,3179,11551,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+All India,2022-06-30,,14748,,3180,11568,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+All India,2022-09-30,,,,3246,11707,,31,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+All India,2023-03-31,,,,3253,11685,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+All India,2023-12-31,,,,3291,11729,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+All India,2024-06-30,,15034,,,,319,,19,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+All India,2024-10-31,,15012,,,,,,,,,,itis=605183f9
+Andaman and Nicobar Islands,2014-08-01,,,,,,,,,273,,,seats=36d04fdc
+Andaman and Nicobar Islands,2015-06-23,,1,,1,0,,,,273,273,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Andaman and Nicobar Islands,2016-04-30,,1,,1,0,,,,273,273,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Andaman and Nicobar Islands,2016-07-28,,1,,1,0,,,,273,273,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Andaman and Nicobar Islands,2016-08-01,,,,,,,,,538,,,seats=36d04fdc
+Andaman and Nicobar Islands,2016-12-01,,3,,,,,,,,,,itis=7a16313d
+Andaman and Nicobar Islands,2017-02-09,,3,,,,,,,699,,,itis=c72013bf; seats=c72013bf
+Andaman and Nicobar Islands,2017-03-09,,,3,,,,,,699,,,itis_admitting=0a348746; seats=0a348746
+Andaman and Nicobar Islands,2017-03-23,34,3,,,,,,,699,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Andaman and Nicobar Islands,2017-08-03,,3,,2,1,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Andaman and Nicobar Islands,2018-12-28,,3,,,,,,,,,,itis=63d81eb9
+Andaman and Nicobar Islands,2021-01-01,,4,,,,,,,,,,itis=f6e88ccd
+Andaman and Nicobar Islands,2021-02-12,,4,,,,,,,,,,itis=117f6967
+Andaman and Nicobar Islands,2021-07-13,,4,,3,1,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Andaman and Nicobar Islands,2021-12-15,,4,,3,1,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Andaman and Nicobar Islands,2021-12-31,,,,3,1,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Andaman and Nicobar Islands,2022-02-09,,4,,,,,,,,,,itis=b81f053c
+Andaman and Nicobar Islands,2022-04-06,,4,,3,1,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Andaman and Nicobar Islands,2022-06-30,,4,,3,1,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Andaman and Nicobar Islands,2022-09-30,,,,3,1,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Andaman and Nicobar Islands,2023-03-31,,,,3,1,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Andaman and Nicobar Islands,2023-12-31,,,,3,1,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Andaman and Nicobar Islands,2024-06-30,,4,,,,0,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Andaman and Nicobar Islands,2024-10-31,,4,,,,,,,,,,itis=605183f9
+Andhra Pradesh,2014-08-01,,,,,,,,,150450,,,seats=36d04fdc
+Andhra Pradesh,2015-06-23,,756,,148,608,,,,151874,28702,123172,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Andhra Pradesh,2016-04-30,,490,,79,411,,,,130374,23429,106945,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Andhra Pradesh,2016-07-28,,490,,79,411,,,,130374,23429,106945,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Andhra Pradesh,2016-08-01,,,,,,,,,98569,,,seats=36d04fdc
+Andhra Pradesh,2016-12-01,,479,,,,,,,,,,itis=7a16313d
+Andhra Pradesh,2017-02-09,,479,,,,,,,128140,,,itis=c72013bf; seats=c72013bf
+Andhra Pradesh,2017-03-09,,,479,,,,,,128140,,,itis_admitting=0a348746; seats=0a348746
+Andhra Pradesh,2017-03-23,6407,479,,,,,,,128140,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Andhra Pradesh,2017-08-03,,479,,72,407,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Andhra Pradesh,2018-12-28,,506,,,,,,,,,,itis=63d81eb9
+Andhra Pradesh,2021-01-01,,509,,,,,,,,,,itis=f6e88ccd
+Andhra Pradesh,2021-02-12,,509,,,,,,,,,,itis=117f6967
+Andhra Pradesh,2021-07-13,,510,,83,427,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Andhra Pradesh,2021-12-15,,510,,83,427,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Andhra Pradesh,2021-12-31,,,,83,427,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Andhra Pradesh,2022-02-09,,510,,,,,,,,,,itis=b81f053c
+Andhra Pradesh,2022-04-06,,510,,83,427,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Andhra Pradesh,2022-06-30,,510,,83,427,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Andhra Pradesh,2022-09-30,,,,83,432,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Andhra Pradesh,2023-03-31,,,,85,433,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Andhra Pradesh,2023-12-31,,,,85,436,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Andhra Pradesh,2024-06-30,,521,,,,6,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Andhra Pradesh,2024-10-31,,522,,,,,,,,,,itis=605183f9
+Arunachal Pradesh,2014-08-01,,,,,,,,,608,,,seats=36d04fdc
+Arunachal Pradesh,2015-06-23,,6,,5,1,,,,608,512,96,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Arunachal Pradesh,2016-04-30,,6,,5,1,,,,608,512,96,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Arunachal Pradesh,2016-07-28,,6,,5,1,,,,608,512,96,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Arunachal Pradesh,2016-08-01,,,,,,,,,1136,,,seats=36d04fdc
+Arunachal Pradesh,2016-12-01,,6,,,,,,,,,,itis=7a16313d
+Arunachal Pradesh,2017-02-09,,6,,,,,,,1477,,,itis=c72013bf; seats=c72013bf
+Arunachal Pradesh,2017-03-09,,,6,,,,,,1477,,,itis_admitting=0a348746; seats=0a348746
+Arunachal Pradesh,2017-03-23,73,6,,,,,,,1477,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Arunachal Pradesh,2017-08-03,,6,,5,1,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Arunachal Pradesh,2018-12-28,,6,,,,,,,,,,itis=63d81eb9
+Arunachal Pradesh,2021-01-01,,5,,,,,,,,,,itis=f6e88ccd
+Arunachal Pradesh,2021-02-12,,5,,,,,,,,,,itis=117f6967
+Arunachal Pradesh,2021-07-13,,5,,5,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Arunachal Pradesh,2021-12-15,,6,,6,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Arunachal Pradesh,2021-12-31,,,,6,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Arunachal Pradesh,2022-02-09,,6,,,,,,,,,,itis=b81f053c
+Arunachal Pradesh,2022-04-06,,6,,6,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Arunachal Pradesh,2022-06-30,,6,,6,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Arunachal Pradesh,2022-09-30,,,,7,0,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Arunachal Pradesh,2023-03-31,,,,7,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Arunachal Pradesh,2023-12-31,,,,7,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Arunachal Pradesh,2024-06-30,,7,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Arunachal Pradesh,2024-10-31,,7,,,,,,,,,,itis=605183f9
+Assam,2014-08-01,,,,,,,,,6064,,,seats=36d04fdc
+Assam,2015-06-23,,34,,30,4,,,,6064,5776,288,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Assam,2016-04-30,,36,,31,5,,,,6352,5968,384,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Assam,2016-07-28,,36,,31,5,,,,6352,5968,384,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Assam,2016-08-01,,,,,,,,,5345,,,seats=36d04fdc
+Assam,2016-12-01,,30,,,,,,,,,,itis=7a16313d
+Assam,2017-02-09,,30,,,,,,,6948,,,itis=c72013bf; seats=c72013bf
+Assam,2017-03-09,,,30,,,,,,6948,,,itis_admitting=0a348746; seats=0a348746
+Assam,2017-03-23,348,30,,,,,,,6948,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Assam,2017-08-03,,30,,24,6,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Assam,2018-12-28,,30,,,,,,,,,,itis=63d81eb9
+Assam,2021-01-01,,36,,,,,,,,,,itis=f6e88ccd
+Assam,2021-02-12,,36,,,,,,,,,,itis=117f6967
+Assam,2021-07-13,,36,,30,6,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Assam,2021-12-15,,36,,30,6,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Assam,2021-12-31,,,,30,6,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Assam,2022-02-09,,36,,,,,,,,,,itis=b81f053c
+Assam,2022-04-06,,36,,30,6,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Assam,2022-06-30,,36,,30,6,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Assam,2022-09-30,,,,30,12,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Assam,2023-03-31,,,,31,13,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Assam,2023-12-31,,,,31,15,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Assam,2024-06-30,,46,,,,4,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Assam,2024-10-31,,47,,,,,,,,,,itis=605183f9
+Bihar,2014-08-01,,,,,,,,,114674,,,seats=36d04fdc
+Bihar,2015-06-23,,784,,34,750,,,,116722,11433,105289,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Bihar,2016-04-30,,873,,34,839,,,,129870,11433,118437,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Bihar,2016-07-28,,873,,34,839,,,,129870,11433,118437,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Bihar,2016-08-01,,,,,,,,,166582,,,seats=36d04fdc
+Bihar,2016-12-01,,1026,,,,,,,,,,itis=7a16313d
+Bihar,2017-02-09,,1030,,,,,,,216515,,,itis=c72013bf; seats=c72013bf
+Bihar,2017-03-09,,,1030,,,,,,216557,,,itis_admitting=0a348746; seats=0a348746
+Bihar,2017-03-23,10827,1030,,,,,,,216557,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Bihar,2017-08-03,,1030,,24,1006,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Bihar,2018-12-28,,1219,,,,,,,,,,itis=63d81eb9
+Bihar,2021-01-01,,1231,,,,,,,,,,itis=f6e88ccd
+Bihar,2021-02-12,,1231,,,,,,,,,,itis=117f6967
+Bihar,2021-07-13,,1332,,150,1182,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Bihar,2021-12-15,,1329,,150,1179,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Bihar,2021-12-31,,,,150,1179,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Bihar,2022-02-09,,1329,,,,,,,,,,itis=b81f053c
+Bihar,2022-04-06,,1332,,150,1182,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Bihar,2022-06-30,,1332,,150,1182,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Bihar,2022-09-30,,,,150,1219,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Bihar,2023-03-31,,,,150,1223,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Bihar,2023-12-31,,,,150,1226,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Bihar,2024-06-30,,1377,,,,45,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Bihar,2024-10-31,,1381,,,,,,,,,,itis=605183f9
+Chandigarh,2014-08-01,,,,,,,,,1064,,,seats=36d04fdc
+Chandigarh,2015-06-23,,2,,2,0,,,,1064,1064,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Chandigarh,2016-04-30,,2,,2,0,,,,1192,1192,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Chandigarh,2016-07-28,,2,,2,0,,,,1192,1192,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Chandigarh,2016-08-01,,,,,,,,,1017,,,seats=36d04fdc
+Chandigarh,2016-12-01,,2,,,,,,,,,,itis=7a16313d
+Chandigarh,2017-02-09,,2,,,,,,,1322,,,itis=c72013bf; seats=c72013bf
+Chandigarh,2017-03-09,,,2,,,,,,1322,,,itis_admitting=0a348746; seats=0a348746
+Chandigarh,2017-03-23,66,2,,,,,,,1322,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Chandigarh,2017-08-03,,2,,2,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Chandigarh,2018-12-28,,2,,,,,,,,,,itis=63d81eb9
+Chandigarh,2021-01-01,,2,,,,,,,,,,itis=f6e88ccd
+Chandigarh,2021-02-12,,2,,,,,,,,,,itis=117f6967
+Chandigarh,2021-07-13,,2,,2,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Chandigarh,2021-12-15,,2,,2,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Chandigarh,2021-12-31,,,,2,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Chandigarh,2022-02-09,,2,,,,,,,,,,itis=b81f053c
+Chandigarh,2022-04-06,,2,,2,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Chandigarh,2022-06-30,,2,,2,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Chandigarh,2022-09-30,,,,2,0,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Chandigarh,2023-03-31,,,,2,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Chandigarh,2023-12-31,,,,2,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Chandigarh,2024-06-30,,2,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Chandigarh,2024-10-31,,2,,,,,,,,,,itis=605183f9
+Chhattisgarh,2014-08-01,,,,,,,,,20576,,,seats=36d04fdc
+Chhattisgarh,2015-06-23,,173,,92,81,,,,20672,11376,9296,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Chhattisgarh,2016-04-30,,185,,92,93,,,,22304,11504,10800,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Chhattisgarh,2016-07-28,,185,,92,93,,,,22304,11504,10800,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Chhattisgarh,2016-08-01,,,,,,,,,23383,,,seats=36d04fdc
+Chhattisgarh,2016-12-01,,186,,,,,,,,,,itis=7a16313d
+Chhattisgarh,2017-02-09,,186,,,,,,,30398,,,itis=c72013bf; seats=c72013bf
+Chhattisgarh,2017-03-09,,,186,,,,,,30398,,,itis_admitting=0a348746; seats=0a348746
+Chhattisgarh,2017-03-23,1520,186,,,,,,,30398,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Chhattisgarh,2017-08-03,,186,,83,103,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Chhattisgarh,2018-12-28,,227,,,,,,,,,,itis=63d81eb9
+Chhattisgarh,2021-01-01,,228,,,,,,,,,,itis=f6e88ccd
+Chhattisgarh,2021-02-12,,228,,,,,,,,,,itis=117f6967
+Chhattisgarh,2021-07-13,,228,,119,109,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Chhattisgarh,2021-12-15,,228,,119,109,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Chhattisgarh,2021-12-31,,,,119,109,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Chhattisgarh,2022-02-09,,228,,,,,,,,,,itis=b81f053c
+Chhattisgarh,2022-04-06,,228,,119,109,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Chhattisgarh,2022-06-30,,228,,119,109,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Chhattisgarh,2022-09-30,,,,119,113,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Chhattisgarh,2023-03-31,,,,120,113,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Chhattisgarh,2023-12-31,,,,120,112,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Chhattisgarh,2024-06-30,,232,,,,2,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Chhattisgarh,2024-10-31,,232,,,,,,,,,,itis=605183f9
+Dadra and Nagar Haveli,2014-08-01,,,,,,,,,228,,,seats=36d04fdc
+Dadra and Nagar Haveli,2015-06-23,,1,,1,0,,,,228,228,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Dadra and Nagar Haveli,2016-04-30,,1,,1,0,,,,228,228,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Dadra and Nagar Haveli,2016-07-28,,1,,1,0,,,,228,228,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Dadra and Nagar Haveli,2016-08-01,,,,,,,,,170,,,seats=36d04fdc
+Dadra and Nagar Haveli,2016-12-01,,1,,,,,,,,,,itis=7a16313d
+Dadra and Nagar Haveli,2017-02-09,,1,,,,,,,221,,,itis=c72013bf; seats=c72013bf
+Dadra and Nagar Haveli,2017-03-09,,,1,,,,,,221,,,itis_admitting=0a348746; seats=0a348746
+Dadra and Nagar Haveli,2017-03-23,12,1,,,,,,,221,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Dadra and Nagar Haveli,2017-08-03,,1,,1,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Dadra and Nagar Haveli,2018-12-28,,1,,,,,,,,,,itis=63d81eb9
+Dadra and Nagar Haveli,2021-01-01,,1,,,,,,,,,,itis=f6e88ccd
+Dadra and Nagar Haveli,2021-07-13,,1,,1,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Dadra and Nagar Haveli and Daman and Diu,2021-02-12,,3,,,,,,,,,,itis=117f6967
+Dadra and Nagar Haveli and Daman and Diu,2021-07-13,,0,,0,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Dadra and Nagar Haveli and Daman and Diu,2021-12-15,,3,,3,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Dadra and Nagar Haveli and Daman and Diu,2021-12-31,,,,3,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Dadra and Nagar Haveli and Daman and Diu,2022-02-09,,3,,,,,,,,,,itis=b81f053c
+Dadra and Nagar Haveli and Daman and Diu,2022-04-06,,3,,3,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Dadra and Nagar Haveli and Daman and Diu,2022-06-30,,3,,66,227,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Dadra and Nagar Haveli and Daman and Diu,2022-09-30,,,,66,229,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Dadra and Nagar Haveli and Daman and Diu,2023-03-31,,,,3,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Dadra and Nagar Haveli and Daman and Diu,2023-12-31,,,,4,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Dadra and Nagar Haveli and Daman and Diu,2024-06-30,,4,,,,0,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Dadra and Nagar Haveli and Daman and Diu,2024-10-31,,4,,,,,,,,,,itis=605183f9
+Daman and Diu,2014-08-01,,,,,,,,,388,,,seats=36d04fdc
+Daman and Diu,2015-06-23,,2,,2,0,,,,388,388,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Daman and Diu,2016-04-30,,2,,2,0,,,,388,388,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Daman and Diu,2016-07-28,,2,,2,0,,,,388,388,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Daman and Diu,2016-08-01,,,,,,,,,315,,,seats=36d04fdc
+Daman and Diu,2016-12-01,,2,,,,,,,,,,itis=7a16313d
+Daman and Diu,2017-02-09,,2,,,,,,,410,,,itis=c72013bf; seats=c72013bf
+Daman and Diu,2017-03-09,,,2,,,,,,410,,,itis_admitting=0a348746; seats=0a348746
+Daman and Diu,2017-03-23,20,2,,,,,,,410,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Daman and Diu,2017-08-03,,2,,2,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Daman and Diu,2018-12-28,,2,,,,,,,,,,itis=63d81eb9
+Daman and Diu,2021-01-01,,2,,,,,,,,,,itis=f6e88ccd
+Daman and Diu,2021-07-13,,2,,2,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Delhi,2014-08-01,,,,,,,,,16520,,,seats=36d04fdc
+Delhi,2015-06-23,,78,,16,62,,,,16520,11420,5100,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Delhi,2016-04-30,,82,,16,66,,,,17272,11420,5852,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Delhi,2016-07-28,,82,,16,66,,,,17272,11420,5852,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Delhi,2016-08-01,,,,,,,,,14845,,,seats=36d04fdc
+Delhi,2016-12-01,,57,,,,,,,,,,itis=7a16313d
+Delhi,2017-02-09,,57,,,,,,,19299,,,itis=c72013bf; seats=c72013bf
+Delhi,2017-03-09,,,57,,,,,,19299,,,itis_admitting=0a348746; seats=0a348746
+Delhi,2017-03-23,965,57,,,,,,,19299,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Delhi,2017-08-03,,57,,15,42,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Delhi,2018-12-28,,59,,,,,,,,,,itis=63d81eb9
+Delhi,2021-01-01,,52,,,,,,,,,,itis=f6e88ccd
+Delhi,2021-02-12,,52,,,,,,,,,,itis=117f6967
+Delhi,2021-07-13,,53,,17,36,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Delhi,2021-12-15,,53,,17,36,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Delhi,2021-12-31,,,,17,36,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Delhi,2022-02-09,,53,,,,,,,,,,itis=b81f053c
+Delhi,2022-04-06,,53,,17,36,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Delhi,2022-06-30,,53,,3,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Delhi,2022-09-30,,,,3,0,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Delhi,2023-03-31,,,,17,36,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Delhi,2023-12-31,,,,17,36,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Delhi,2024-06-30,,53,,,,5,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Delhi,2024-10-31,,54,,,,,,,,,,itis=605183f9
+Goa,2014-08-01,,,,,,,,,3676,,,seats=36d04fdc
+Goa,2015-06-23,,15,,10,5,,,,3676,3264,412,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Goa,2016-04-30,,15,,10,5,,,,3676,3264,412,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Goa,2016-07-28,,15,,10,5,,,,3676,3264,412,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Goa,2016-08-01,,,,,,,,,3878,,,seats=36d04fdc
+Goa,2016-12-01,,14,,,,,,,,,,itis=7a16313d
+Goa,2017-02-09,,14,,,,,,,5042,,,itis=c72013bf; seats=c72013bf
+Goa,2017-03-09,,,14,,,,,,5042,,,itis_admitting=0a348746; seats=0a348746
+Goa,2017-03-23,252,14,,,,,,,5042,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Goa,2017-08-03,,14,,10,4,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Goa,2018-12-28,,15,,,,,,,,,,itis=63d81eb9
+Goa,2021-01-01,,13,,,,,,,,,,itis=f6e88ccd
+Goa,2021-02-12,,13,,,,,,,,,,itis=117f6967
+Goa,2021-07-13,,13,,11,2,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Goa,2021-12-15,,13,,11,2,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Goa,2021-12-31,,,,11,2,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Goa,2022-02-09,,13,,,,,,,,,,itis=b81f053c
+Goa,2022-04-06,,13,,11,2,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Goa,2022-06-30,,13,,17,36,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Goa,2022-09-30,,,,17,36,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Goa,2023-03-31,,,,11,2,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Goa,2023-12-31,,,,11,2,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Goa,2024-06-30,,13,,,,1,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Goa,2024-10-31,,13,,,,,,,,,,itis=605183f9
+Gujarat,2014-08-01,,,,,,,,,83268,,,seats=36d04fdc
+Gujarat,2015-06-23,,559,,157,402,,,,83684,58156,25528,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Gujarat,2016-04-30,,565,,158,407,,,,84718,58348,26370,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Gujarat,2016-07-28,,565,,158,407,,,,84718,58348,26370,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Gujarat,2016-08-01,,,,,,,,,78922,,,seats=36d04fdc
+Gujarat,2016-12-01,,395,,,,,,,,,,itis=7a16313d
+Gujarat,2017-02-09,,397,,,,,,,102582,,,itis=c72013bf; seats=c72013bf
+Gujarat,2017-03-09,,,397,,,,,,102577,,,itis_admitting=0a348746; seats=0a348746
+Gujarat,2017-03-23,5130,397,,,,,,,102598,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Gujarat,2017-08-03,,397,,163,234,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Gujarat,2018-12-28,,418,,,,,,,,,,itis=63d81eb9
+Gujarat,2021-01-01,,500,,,,,,,,,,itis=f6e88ccd
+Gujarat,2021-02-12,,500,,,,,,,,,,itis=117f6967
+Gujarat,2021-07-13,,506,,274,232,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Gujarat,2021-12-15,,507,,274,233,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Gujarat,2021-12-31,,,,274,233,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Gujarat,2022-02-09,,507,,,,,,,,,,itis=b81f053c
+Gujarat,2022-04-06,,507,,274,233,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Gujarat,2022-06-30,,507,,11,2,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Gujarat,2022-09-30,,,,11,2,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Gujarat,2023-03-31,,,,274,234,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Gujarat,2023-12-31,,,,274,229,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Gujarat,2024-06-30,,503,,,,19,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Gujarat,2024-10-31,,511,,,,,,,,,,itis=605183f9
+Haryana,2014-08-01,,,,,,,,,38336,,,seats=36d04fdc
+Haryana,2015-06-23,,238,,93,145,,,,40176,24136,16040,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Haryana,2016-04-30,,308,,97,211,,,,51946,25784,26162,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Haryana,2016-07-28,,308,,97,211,,,,51946,25784,26162,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Haryana,2016-08-01,,,,,,,,,64140,,,seats=36d04fdc
+Haryana,2016-12-01,,315,,,,,,,,,,itis=7a16313d
+Haryana,2017-02-09,,317,,,,,,,83288,,,itis=c72013bf; seats=c72013bf
+Haryana,2017-03-09,,,317,,,,,,83382,,,itis_admitting=0a348746; seats=0a348746
+Haryana,2017-03-23,4170,317,,,,,,,83382,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Haryana,2017-08-03,,317,,98,219,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Haryana,2018-12-28,,399,,,,,,,,,,itis=63d81eb9
+Haryana,2021-01-01,,397,,,,,,,,,,itis=f6e88ccd
+Haryana,2021-02-12,,397,,,,,,,,,,itis=117f6967
+Haryana,2021-07-13,,397,,159,238,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Haryana,2021-12-15,,396,,159,237,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Haryana,2021-12-31,,,,159,237,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Haryana,2022-02-09,,396,,,,,,,,,,itis=b81f053c
+Haryana,2022-04-06,,396,,159,237,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Haryana,2022-06-30,,396,,274,233,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Haryana,2022-09-30,,,,274,234,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Haryana,2023-03-31,,,,160,228,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Haryana,2023-12-31,,,,160,229,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Haryana,2024-06-30,,389,,,,22,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Haryana,2024-10-31,,387,,,,,,,,,,itis=605183f9
+Himachal Pradesh,2014-08-01,,,,,,,,,27664,,,seats=36d04fdc
+Himachal Pradesh,2015-06-23,,215,,77,138,,,,27712,12500,15212,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Himachal Pradesh,2016-04-30,,228,,77,151,,,,30480,13556,16924,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Himachal Pradesh,2016-07-28,,228,,77,151,,,,30480,13556,16924,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Himachal Pradesh,2016-08-01,,,,,,,,,34222,,,seats=36d04fdc
+Himachal Pradesh,2016-12-01,,231,,,,,,,,,,itis=7a16313d
+Himachal Pradesh,2017-02-09,,231,,,,,,,44488,,,itis=c72013bf; seats=c72013bf
+Himachal Pradesh,2017-03-09,,,231,,,,,,44488,,,itis_admitting=0a348746; seats=0a348746
+Himachal Pradesh,2017-03-23,2225,231,,,,,,,44488,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Himachal Pradesh,2017-08-03,,231,,86,145,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Himachal Pradesh,2018-12-28,,251,,,,,,,,,,itis=63d81eb9
+Himachal Pradesh,2021-01-01,,268,,,,,,,,,,itis=f6e88ccd
+Himachal Pradesh,2021-02-12,,268,,,,,,,,,,itis=117f6967
+Himachal Pradesh,2021-07-13,,268,,128,140,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Himachal Pradesh,2021-12-15,,268,,128,140,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Himachal Pradesh,2021-12-31,,,,128,140,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Himachal Pradesh,2022-02-09,,268,,,,,,,,,,itis=b81f053c
+Himachal Pradesh,2022-04-06,,268,,128,140,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Himachal Pradesh,2022-06-30,,268,,159,237,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Himachal Pradesh,2022-09-30,,,,160,228,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Himachal Pradesh,2023-03-31,,,,128,140,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Himachal Pradesh,2023-12-31,,,,128,142,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Himachal Pradesh,2024-06-30,,270,,,,12,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Himachal Pradesh,2024-10-31,,273,,,,,,,,,,itis=605183f9
+Jammu and Kashmir,2014-08-01,,,,,,,,,4197,,,seats=36d04fdc
+Jammu and Kashmir,2015-06-23,,38,,37,1,,,,4197,4087,110,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Jammu and Kashmir,2016-04-30,,38,,37,1,,,,4197,4087,110,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Jammu and Kashmir,2016-07-28,,38,,37,1,,,,4197,4087,110,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Jammu and Kashmir,2016-08-01,,,,,,,,,3653,,,seats=36d04fdc
+Jammu and Kashmir,2016-12-01,,38,,,,,,,,,,itis=7a16313d
+Jammu and Kashmir,2017-02-09,,38,,,,,,,4749,,,itis=c72013bf; seats=c72013bf
+Jammu and Kashmir,2017-03-09,,,38,,,,,,4749,,,itis_admitting=0a348746; seats=0a348746
+Jammu and Kashmir,2017-03-23,237,38,,,,,,,4749,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Jammu and Kashmir,2017-08-03,,38,,37,1,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Jammu and Kashmir,2018-12-28,,38,,,,,,,,,,itis=63d81eb9
+Jammu and Kashmir,2021-01-01,,50,,,,,,,,,,itis=f6e88ccd
+Jammu and Kashmir,2021-02-12,,50,,,,,,,,,,itis=117f6967
+Jammu and Kashmir,2021-07-13,,50,,49,1,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Jammu and Kashmir,2021-12-15,,49,,48,1,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Jammu and Kashmir,2021-12-31,,,,48,1,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Jammu and Kashmir,2022-02-09,,49,,,,,,,,,,itis=b81f053c
+Jammu and Kashmir,2022-04-06,,49,,48,1,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Jammu and Kashmir,2022-06-30,,50,,128,140,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Jammu and Kashmir,2022-09-30,,,,128,140,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Jammu and Kashmir,2023-03-31,,,,49,1,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Jammu and Kashmir,2023-12-31,,,,49,1,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Jammu and Kashmir,2024-06-30,,50,,,,6,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Jammu and Kashmir,2024-10-31,,50,,,,,,,,,,itis=605183f9
+Jharkhand,2014-08-01,,,,,,,,,43336,,,seats=36d04fdc
+Jharkhand,2015-06-23,,201,,21,180,,,,43784,4704,39080,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Jharkhand,2016-04-30,,215,,21,194,,,,46792,4752,42040,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Jharkhand,2016-07-28,,215,,21,194,,,,46792,4752,42040,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Jharkhand,2016-08-01,,,,,,,,,62184,,,seats=36d04fdc
+Jharkhand,2016-12-01,,247,,,,,,,,,,itis=7a16313d
+Jharkhand,2017-02-09,,246,,,,,,,80839,,,itis=c72013bf; seats=c72013bf
+Jharkhand,2017-03-09,,,246,,,,,,80839,,,itis_admitting=0a348746; seats=0a348746
+Jharkhand,2017-03-23,4042,246,,,,,,,80839,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Jharkhand,2017-08-03,,246,,14,232,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Jharkhand,2018-12-28,,273,,,,,,,,,,itis=63d81eb9
+Jharkhand,2021-01-01,,323,,,,,,,,,,itis=f6e88ccd
+Jharkhand,2021-02-12,,323,,,,,,,,,,itis=117f6967
+Jharkhand,2021-07-13,,323,,61,262,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Jharkhand,2021-12-15,,325,,61,264,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Jharkhand,2021-12-31,,,,61,264,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Jharkhand,2022-02-09,,325,,,,,,,,,,itis=b81f053c
+Jharkhand,2022-04-06,,325,,61,264,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Jharkhand,2022-06-30,,325,,49,1,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Jharkhand,2022-09-30,,,,49,1,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Jharkhand,2023-03-31,,,,77,269,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Jharkhand,2023-12-31,,,,77,270,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Jharkhand,2024-06-30,,348,,,,13,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Jharkhand,2024-10-31,,351,,,,,,,,,,itis=605183f9
+Karnataka,2014-08-01,,,,,,,,,134256,,,seats=36d04fdc
+Karnataka,2015-06-23,,1479,,179,1300,,,,134624,30914,103710,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Karnataka,2016-04-30,,1481,,179,1302,,,,134944,30914,104030,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Karnataka,2016-07-28,,1481,,179,1302,,,,134944,30914,104030,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Karnataka,2016-08-01,,,,,,,,,138079,,,seats=36d04fdc
+Karnataka,2016-12-01,,1421,,,,,,,,,,itis=7a16313d
+Karnataka,2017-02-09,,1421,,,,,,,179451,,,itis=c72013bf; seats=c72013bf
+Karnataka,2017-03-09,,,1421,,,,,,179477,,,itis_admitting=0a348746; seats=0a348746
+Karnataka,2017-03-23,8974,1421,,,,,,,179477,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Karnataka,2017-08-03,,1421,,145,1276,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Karnataka,2018-12-28,,1543,,,,,,,,,,itis=63d81eb9
+Karnataka,2021-01-01,,1498,,,,,,,,,,itis=f6e88ccd
+Karnataka,2021-02-12,,1498,,,,,,,,,,itis=117f6967
+Karnataka,2021-07-13,,1498,,275,1223,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Karnataka,2021-12-15,,1495,,275,1220,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Karnataka,2021-12-31,,,,275,1220,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Karnataka,2022-02-09,,1495,,,,,,,,,,itis=b81f053c
+Karnataka,2022-04-06,,1497,,275,1222,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Karnataka,2022-06-30,,1501,,61,264,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Karnataka,2022-09-30,,,,76,269,,3,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Karnataka,2023-03-31,,,,275,1227,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Karnataka,2023-12-31,,,,275,1229,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Karnataka,2024-06-30,,1504,,,,17,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Karnataka,2024-10-31,,1505,,,,,,,,,,itis=605183f9
+Kerala,2014-08-01,,,,,,,,,70582,,,seats=36d04fdc
+Kerala,2015-06-23,,530,,40,490,,,,70582,16476,54106,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Kerala,2016-04-30,,531,,40,491,,,,70966,16476,54490,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Kerala,2016-07-28,,531,,40,491,,,,70966,16476,54490,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Kerala,2016-08-01,,,,,,,,,76613,,,seats=36d04fdc
+Kerala,2016-12-01,,594,,,,,,,,,,itis=7a16313d
+Kerala,2017-02-09,,594,,,,,,,99597,,,itis=c72013bf; seats=c72013bf
+Kerala,2017-03-09,,,594,,,,,,99597,,,itis_admitting=0a348746; seats=0a348746
+Kerala,2017-03-23,4980,594,,,,,,,99597,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Kerala,2017-08-03,,594,,80,514,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Kerala,2018-12-28,,631,,,,,,,,,,itis=63d81eb9
+Kerala,2021-01-01,,462,,,,,,,,,,itis=f6e88ccd
+Kerala,2021-02-12,,462,,,,,,,,,,itis=117f6967
+Kerala,2021-07-13,,460,,148,312,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Kerala,2021-12-15,,460,,148,312,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Kerala,2021-12-31,,,,148,312,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Kerala,2022-02-09,,460,,,,,,,,,,itis=b81f053c
+Kerala,2022-04-06,,460,,148,312,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Kerala,2022-06-30,,462,,275,1226,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Kerala,2022-09-30,,,,275,1227,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Kerala,2023-03-31,,,,149,314,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Kerala,2023-12-31,,,,149,315,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Kerala,2024-06-30,,464,,,,16,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Kerala,2024-10-31,,464,,,,,,,,,,itis=605183f9
+Ladakh,2021-07-13,,0,,0,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Ladakh,2021-12-15,,3,,3,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Ladakh,2021-12-31,,,,3,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Ladakh,2022-02-09,,3,,,,,,,,,,itis=b81f053c
+Ladakh,2022-04-06,,3,,3,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Ladakh,2022-06-30,,3,,148,314,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Ladakh,2022-09-30,,,,149,314,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Ladakh,2023-03-31,,,,3,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Ladakh,2023-12-31,,,,3,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Ladakh,2024-06-30,,3,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Ladakh,2024-10-31,,3,,,,,,,,,,itis=605183f9
+Lakshadweep,2014-08-01,,,,,,,,,96,,,seats=36d04fdc
+Lakshadweep,2015-06-23,,1,,1,0,,,,96,96,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Lakshadweep,2016-04-30,,1,,1,0,,,,96,96,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Lakshadweep,2016-07-28,,1,,1,0,,,,96,96,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Lakshadweep,2016-08-01,,,,,,,,,72,,,seats=36d04fdc
+Lakshadweep,2016-12-01,,1,,,,,,,,,,itis=7a16313d
+Lakshadweep,2017-02-09,,1,,,,,,,94,,,itis=c72013bf; seats=c72013bf
+Lakshadweep,2017-03-09,,,1,,,,,,94,,,itis_admitting=0a348746; seats=0a348746
+Lakshadweep,2017-03-23,4,1,,,,,,,94,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Lakshadweep,2017-08-03,,1,,1,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Lakshadweep,2018-12-28,,1,,,,,,,,,,itis=63d81eb9
+Lakshadweep,2021-01-01,,1,,,,,,,,,,itis=f6e88ccd
+Lakshadweep,2021-02-12,,1,,,,,,,,,,itis=117f6967
+Lakshadweep,2021-07-13,,1,,1,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Lakshadweep,2021-12-15,,1,,1,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Lakshadweep,2021-12-31,,,,1,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Lakshadweep,2022-02-09,,1,,,,,,,,,,itis=b81f053c
+Lakshadweep,2022-04-06,,1,,1,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Lakshadweep,2022-06-30,,1,,3,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Lakshadweep,2022-09-30,,,,3,0,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Lakshadweep,2023-03-31,,,,1,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Lakshadweep,2023-12-31,,,,1,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Lakshadweep,2024-06-30,,1,,,,0,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Lakshadweep,2024-10-31,,1,,,,,,,,,,itis=605183f9
+Madhya Pradesh,2014-08-01,,,,,,,,,76496,,,seats=36d04fdc
+Madhya Pradesh,2015-06-23,,577,,173,404,,,,80096,26238,53858,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Madhya Pradesh,2016-04-30,,886,,173,713,,,,115920,26366,89554,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Madhya Pradesh,2016-07-28,,886,,173,713,,,,115920,26366,89554,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Madhya Pradesh,2016-08-01,,,,,,,,,125662,,,seats=36d04fdc
+Madhya Pradesh,2016-12-01,,920,,,,,,,,,,itis=7a16313d
+Madhya Pradesh,2017-02-09,,919,,,,,,,163360,,,itis=c72013bf; seats=c72013bf
+Madhya Pradesh,2017-03-09,,,919,,,,,,163360,,,itis_admitting=0a348746; seats=0a348746
+Madhya Pradesh,2017-03-23,8168,919,,,,,,,163360,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Madhya Pradesh,2017-08-03,,919,,122,797,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Madhya Pradesh,2018-12-28,,1051,,,,,,,,,,itis=63d81eb9
+Madhya Pradesh,2021-01-01,,1067,,,,,,,,,,itis=f6e88ccd
+Madhya Pradesh,2021-02-12,,1067,,,,,,,,,,itis=117f6967
+Madhya Pradesh,2021-07-13,,1065,,194,871,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Madhya Pradesh,2021-12-15,,1059,,194,865,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Madhya Pradesh,2021-12-31,,,,194,865,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Madhya Pradesh,2022-02-09,,1059,,,,,,,,,,itis=b81f053c
+Madhya Pradesh,2022-04-06,,1065,,194,871,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Madhya Pradesh,2022-06-30,,1073,,1,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Madhya Pradesh,2022-09-30,,,,1,0,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Madhya Pradesh,2023-03-31,,,,195,883,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Madhya Pradesh,2023-12-31,,,,195,882,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Madhya Pradesh,2024-06-30,,1077,,,,14,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Madhya Pradesh,2024-10-31,,1021,,,,,,,,,,itis=605183f9
+Maharashtra,2014-08-01,,,,,,,,,161660,,,seats=36d04fdc
+Maharashtra,2015-06-23,,833,,390,443,,,,162092,108824,53268,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Maharashtra,2016-04-30,,863,,390,473,,,,166252,108824,57428,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Maharashtra,2016-07-28,,863,,390,473,,,,166252,108824,57428,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Maharashtra,2016-08-01,,,,,,,,,224073,,,seats=36d04fdc
+Maharashtra,2016-12-01,,883,,,,,,,,,,itis=7a16313d
+Maharashtra,2017-02-09,,883,,,,,,,291253,,,itis=c72013bf; seats=c72013bf
+Maharashtra,2017-03-09,,,883,,,,,,291253,,,itis_admitting=0a348746; seats=0a348746
+Maharashtra,2017-03-23,14563,883,,,,,,,291253,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Maharashtra,2017-08-03,,883,,417,466,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Maharashtra,2018-12-28,,952,,,,,,,,,,itis=63d81eb9
+Maharashtra,2021-01-01,,990,,,,,,,,,,itis=f6e88ccd
+Maharashtra,2021-02-12,,990,,,,,,,,,,itis=117f6967
+Maharashtra,2021-07-13,,1000,,420,580,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Maharashtra,2021-12-15,,1003,,420,583,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Maharashtra,2021-12-31,,,,420,583,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Maharashtra,2022-02-09,,1003,,,,,,,,,,itis=b81f053c
+Maharashtra,2022-04-06,,1003,,420,583,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Maharashtra,2022-06-30,,1003,,194,879,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Maharashtra,2022-09-30,,,,194,883,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Maharashtra,2023-03-31,,,,422,607,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Maharashtra,2023-12-31,,,,422,619,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Maharashtra,2024-06-30,,1042,,,,16,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Maharashtra,2024-10-31,,1047,,,,,,,,,,itis=605183f9
+Manipur,2014-08-01,,,,,,,,,540,,,seats=36d04fdc
+Manipur,2015-06-23,,7,,7,0,,,,540,540,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Manipur,2016-04-30,,7,,7,0,,,,540,540,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Manipur,2016-07-28,,7,,7,0,,,,540,540,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Manipur,2016-08-01,,,,,,,,,222,,,seats=36d04fdc
+Manipur,2016-12-01,,1,,,,,,,,,,itis=7a16313d
+Manipur,2017-02-09,,1,,,,,,,288,,,itis=c72013bf; seats=c72013bf
+Manipur,2017-03-09,,,1,,,,,,288,,,itis_admitting=0a348746; seats=0a348746
+Manipur,2017-03-23,14,1,,,,,,,288,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Manipur,2017-08-03,,1,,1,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Manipur,2018-12-28,,1,,,,,,,,,,itis=63d81eb9
+Manipur,2021-01-01,,1,,,,,,,,,,itis=f6e88ccd
+Manipur,2021-02-12,,1,,,,,,,,,,itis=117f6967
+Manipur,2021-07-13,,1,,1,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Manipur,2021-12-15,,1,,1,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Manipur,2021-12-31,,,,1,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Manipur,2022-02-09,,1,,,,,,,,,,itis=b81f053c
+Manipur,2022-04-06,,1,,1,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Manipur,2022-06-30,,1,,420,583,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Manipur,2022-09-30,,,,422,606,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Manipur,2023-03-31,,,,10,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Manipur,2023-12-31,,,,10,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Manipur,2024-06-30,,10,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Manipur,2024-10-31,,10,,,,,,,,,,itis=605183f9
+Meghalaya,2014-08-01,,,,,,,,,942,,,seats=36d04fdc
+Meghalaya,2015-06-23,,7,,5,2,,,,942,622,320,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Meghalaya,2016-04-30,,7,,5,2,,,,942,622,320,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Meghalaya,2016-07-28,,7,,5,2,,,,942,622,320,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Meghalaya,2016-08-01,,,,,,,,,917,,,seats=36d04fdc
+Meghalaya,2016-12-01,,7,,,,,,,,,,itis=7a16313d
+Meghalaya,2017-02-09,,7,,,,,,,1192,,,itis=c72013bf; seats=c72013bf
+Meghalaya,2017-03-09,,,7,,,,,,1192,,,itis_admitting=0a348746; seats=0a348746
+Meghalaya,2017-03-23,60,7,,,,,,,1192,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Meghalaya,2017-08-03,,7,,5,2,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Meghalaya,2018-12-28,,7,,,,,,,,,,itis=63d81eb9
+Meghalaya,2021-01-01,,6,,,,,,,,,,itis=f6e88ccd
+Meghalaya,2021-02-12,,6,,,,,,,,,,itis=117f6967
+Meghalaya,2021-07-13,,6,,5,1,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Meghalaya,2021-12-15,,6,,5,1,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Meghalaya,2021-12-31,,,,5,1,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Meghalaya,2022-02-09,,6,,,,,,,,,,itis=b81f053c
+Meghalaya,2022-04-06,,6,,5,1,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Meghalaya,2022-06-30,,6,,1,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Meghalaya,2022-09-30,,,,10,0,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Meghalaya,2023-03-31,,,,7,1,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Meghalaya,2023-12-31,,,,7,1,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Meghalaya,2024-06-30,,8,,,,2,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Meghalaya,2024-10-31,,8,,,,,,,,,,itis=605183f9
+Mizoram,2014-08-01,,,,,,,,,294,,,seats=36d04fdc
+Mizoram,2015-06-23,,1,,1,0,,,,294,294,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Mizoram,2016-04-30,,1,,1,0,,,,294,294,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Mizoram,2016-07-28,,1,,1,0,,,,294,294,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Mizoram,2016-08-01,,,,,,,,,783,,,seats=36d04fdc
+Mizoram,2016-12-01,,3,,,,,,,,,,itis=7a16313d
+Mizoram,2017-02-09,,3,,,,,,,1018,,,itis=c72013bf; seats=c72013bf
+Mizoram,2017-03-09,,,3,,,,,,1018,,,itis_admitting=0a348746; seats=0a348746
+Mizoram,2017-03-23,50,3,,,,,,,1018,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Mizoram,2017-08-03,,3,,3,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Mizoram,2018-12-28,,3,,,,,,,,,,itis=63d81eb9
+Mizoram,2021-01-01,,3,,,,,,,,,,itis=f6e88ccd
+Mizoram,2021-02-12,,3,,,,,,,,,,itis=117f6967
+Mizoram,2021-07-13,,3,,3,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Mizoram,2021-12-15,,3,,3,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Mizoram,2021-12-31,,,,3,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Mizoram,2022-02-09,,3,,,,,,,,,,itis=b81f053c
+Mizoram,2022-04-06,,3,,3,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Mizoram,2022-06-30,,3,,5,1,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Mizoram,2022-09-30,,,,7,1,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Mizoram,2023-03-31,,,,3,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Mizoram,2023-12-31,,,,3,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Mizoram,2024-06-30,,3,,,,0,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Mizoram,2024-10-31,,3,,,,,,,,,,itis=605183f9
+Nagaland,2014-08-01,,,,,,,,,944,,,seats=36d04fdc
+Nagaland,2015-06-23,,8,,8,0,,,,944,944,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Nagaland,2016-04-30,,8,,8,0,,,,944,944,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Nagaland,2016-07-28,,8,,8,0,,,,944,944,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Nagaland,2016-08-01,,,,,,,,,205,,,seats=36d04fdc
+Nagaland,2016-12-01,,2,,,,,,,,,,itis=7a16313d
+Nagaland,2017-02-09,,2,,,,,,,267,,,itis=c72013bf; seats=c72013bf
+Nagaland,2017-03-09,,,2,,,,,,267,,,itis_admitting=0a348746; seats=0a348746
+Nagaland,2017-03-23,13,2,,,,,,,267,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Nagaland,2017-08-03,,2,,2,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Nagaland,2018-12-28,,2,,,,,,,,,,itis=63d81eb9
+Nagaland,2021-01-01,,8,,,,,,,,,,itis=f6e88ccd
+Nagaland,2021-02-12,,8,,,,,,,,,,itis=117f6967
+Nagaland,2021-07-13,,8,,8,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Nagaland,2021-12-15,,8,,8,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Nagaland,2021-12-31,,,,8,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Nagaland,2022-02-09,,8,,,,,,,,,,itis=b81f053c
+Nagaland,2022-04-06,,8,,8,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Nagaland,2022-06-30,,8,,3,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Nagaland,2022-09-30,,,,3,0,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Nagaland,2023-03-31,,,,8,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Nagaland,2023-12-31,,,,9,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Nagaland,2024-06-30,,9,,,,0,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Nagaland,2024-10-31,,9,,,,,,,,,,itis=605183f9
+Odisha,2014-08-01,,,,,,,,,117364,,,seats=36d04fdc
+Odisha,2015-06-23,,619,,29,590,,,,117700,17504,100196,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Odisha,2016-04-30,,624,,30,594,,,,120836,19152,101684,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Odisha,2016-07-28,,624,,30,594,,,,120836,19152,101684,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Odisha,2016-08-01,,,,,,,,,127333,,,seats=36d04fdc
+Odisha,2016-12-01,,631,,,,,,,,,,itis=7a16313d
+Odisha,2017-02-09,,631,,,,,,,165533,,,itis=c72013bf; seats=c72013bf
+Odisha,2017-03-09,,,631,,,,,,165533,,,itis_admitting=0a348746; seats=0a348746
+Odisha,2017-03-23,8277,631,,,,,,,165533,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Odisha,2017-08-03,,631,,49,582,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Odisha,2018-12-28,,635,,,,,,,,,,itis=63d81eb9
+Odisha,2021-01-01,,502,,,,,,,,,,itis=f6e88ccd
+Odisha,2021-02-12,,502,,,,,,,,,,itis=117f6967
+Odisha,2021-07-13,,502,,52,450,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Odisha,2021-12-15,,500,,52,448,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Odisha,2021-12-31,,,,52,448,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Odisha,2022-02-09,,500,,,,,,,,,,itis=b81f053c
+Odisha,2022-04-06,,502,,52,450,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Odisha,2022-06-30,,502,,8,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Odisha,2022-09-30,,,,8,0,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Odisha,2023-03-31,,,,63,450,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Odisha,2023-12-31,,,,75,450,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Odisha,2024-06-30,,525,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Odisha,2024-10-31,,526,,,,,,,,,,itis=605183f9
+Puducherry,2014-08-01,,,,,,,,,1940,,,seats=36d04fdc
+Puducherry,2015-06-23,,17,,8,9,,,,1940,1432,508,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Puducherry,2016-04-30,,17,,8,9,,,,1940,1432,508,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Puducherry,2016-07-28,,17,,8,9,,,,1940,1432,508,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Puducherry,2016-08-01,,,,,,,,,1832,,,seats=36d04fdc
+Puducherry,2016-12-01,,15,,,,,,,,,,itis=7a16313d
+Puducherry,2017-02-09,,15,,,,,,,2382,,,itis=c72013bf; seats=c72013bf
+Puducherry,2017-03-09,,,15,,,,,,2382,,,itis_admitting=0a348746; seats=0a348746
+Puducherry,2017-03-23,119,15,,,,,,,2382,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Puducherry,2017-08-03,,15,,8,7,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Puducherry,2018-12-28,,15,,,,,,,,,,itis=63d81eb9
+Puducherry,2021-01-01,,14,,,,,,,,,,itis=f6e88ccd
+Puducherry,2021-02-12,,14,,,,,,,,,,itis=117f6967
+Puducherry,2021-07-13,,14,,8,6,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Puducherry,2021-12-15,,14,,8,6,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Puducherry,2021-12-31,,,,8,6,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Puducherry,2022-02-09,,14,,,,,,,,,,itis=b81f053c
+Puducherry,2022-04-06,,14,,8,6,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Puducherry,2022-06-30,,14,,52,450,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Puducherry,2022-09-30,,,,63,450,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Puducherry,2023-03-31,,,,8,7,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Puducherry,2023-12-31,,,,8,7,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Puducherry,2024-06-30,,15,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Puducherry,2024-10-31,,15,,,,,,,,,,itis=605183f9
+Punjab,2014-08-01,,,,,,,,,57092,,,seats=36d04fdc
+Punjab,2015-06-23,,366,,99,267,,,,57620,21428,36192,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Punjab,2016-04-30,,386,,99,287,,,,60660,21492,39168,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Punjab,2016-07-28,,386,,99,287,,,,60660,21492,39168,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Punjab,2016-08-01,,,,,,,,,66413,,,seats=36d04fdc
+Punjab,2016-12-01,,379,,,,,,,,,,itis=7a16313d
+Punjab,2017-02-09,,379,,,,,,,86337,,,itis=c72013bf; seats=c72013bf
+Punjab,2017-03-09,,,379,,,,,,86337,,,itis_admitting=0a348746; seats=0a348746
+Punjab,2017-03-23,4317,379,,,,,,,86337,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Punjab,2017-08-03,,379,,111,268,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Punjab,2018-12-28,,372,,,,,,,,,,itis=63d81eb9
+Punjab,2021-01-01,,352,,,,,,,,,,itis=f6e88ccd
+Punjab,2021-02-12,,352,,,,,,,,,,itis=117f6967
+Punjab,2021-07-13,,351,,113,238,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Punjab,2021-12-15,,350,,113,237,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Punjab,2021-12-31,,,,113,237,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Punjab,2022-02-09,,350,,,,,,,,,,itis=b81f053c
+Punjab,2022-04-06,,350,,113,237,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Punjab,2022-06-30,,350,,8,6,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Punjab,2022-09-30,,,,8,7,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Punjab,2023-03-31,,,,114,236,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Punjab,2023-12-31,,,,116,235,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Punjab,2024-06-30,,351,,,,38,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Punjab,2024-10-31,,350,,,,,,,,,,itis=605183f9
+Rajasthan,2014-08-01,,,,,,,,,212735,,,seats=36d04fdc
+Rajasthan,2015-06-23,,1668,,115,1553,,,,213295,16784,196511,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Rajasthan,2016-04-30,,1769,,115,1654,,,,227199,17104,210095,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Rajasthan,2016-07-28,,1769,,115,1654,,,,227199,17104,210095,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Rajasthan,2016-08-01,,,,,,,,,260829,,,seats=36d04fdc
+Rajasthan,2016-12-01,,1827,,,,,,,,,,itis=7a16313d
+Rajasthan,2017-02-09,,1820,,,,,,,338727,,,itis=c72013bf; seats=c72013bf
+Rajasthan,2017-03-09,,,1820,,,,,,339015,,,itis_admitting=0a348746; seats=0a348746
+Rajasthan,2017-03-23,16950,1820,,,,,,,339015,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Rajasthan,2017-08-03,,1820,,127,1693,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Rajasthan,2018-12-28,,1907,,,,,,,,,,itis=63d81eb9
+Rajasthan,2021-01-01,,1792,,,,,,,,,,itis=f6e88ccd
+Rajasthan,2021-02-12,,1792,,,,,,,,,,itis=117f6967
+Rajasthan,2021-07-13,,1642,,159,1483,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Rajasthan,2021-12-15,,1643,,159,1484,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Rajasthan,2021-12-31,,,,159,1484,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Rajasthan,2022-02-09,,1643,,,,,,,,,,itis=b81f053c
+Rajasthan,2022-04-06,,1648,,160,1488,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Rajasthan,2022-06-30,,1649,,113,237,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Rajasthan,2022-09-30,,,,113,237,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Rajasthan,2023-03-31,,,,160,1453,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Rajasthan,2023-12-31,,,,165,1454,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Rajasthan,2024-06-30,,1620,,,,9,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Rajasthan,2024-10-31,,1604,,,,,,,,,,itis=605183f9
+Sikkim,2014-08-01,,,,,,,,,580,,,seats=36d04fdc
+Sikkim,2015-06-23,,4,,4,0,,,,580,580,0,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Sikkim,2016-04-30,,4,,4,0,,,,580,580,0,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Sikkim,2016-07-28,,4,,4,0,,,,580,580,0,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Sikkim,2016-08-01,,,,,,,,,622,,,seats=36d04fdc
+Sikkim,2016-12-01,,3,,,,,,,,,,itis=7a16313d
+Sikkim,2017-02-09,,3,,,,,,,809,,,itis=c72013bf; seats=c72013bf
+Sikkim,2017-03-09,,,3,,,,,,809,,,itis_admitting=0a348746; seats=0a348746
+Sikkim,2017-03-23,40,3,,,,,,,809,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Sikkim,2017-08-03,,3,,3,0,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Sikkim,2018-12-28,,3,,,,,,,,,,itis=63d81eb9
+Sikkim,2021-01-01,,3,,,,,,,,,,itis=f6e88ccd
+Sikkim,2021-02-12,,3,,,,,,,,,,itis=117f6967
+Sikkim,2021-07-13,,3,,3,0,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Sikkim,2021-12-15,,3,,3,0,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Sikkim,2021-12-31,,,,3,0,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Sikkim,2022-02-09,,3,,,,,,,,,,itis=b81f053c
+Sikkim,2022-04-06,,3,,3,0,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Sikkim,2022-06-30,,3,,160,1489,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Sikkim,2022-09-30,,,,160,1491,,0,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Sikkim,2023-03-31,,,,4,0,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Sikkim,2023-12-31,,,,4,0,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Sikkim,2024-06-30,,4,,,,0,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Sikkim,2024-10-31,,4,,,,,,,,,,itis=605183f9
+Tamil Nadu,2014-08-01,,,,,,,,,91622,,,seats=36d04fdc
+Tamil Nadu,2015-06-23,,719,,61,658,,,,91718,23352,68366,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Tamil Nadu,2016-04-30,,722,,62,660,,,,92390,23416,68974,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Tamil Nadu,2016-07-28,,722,,62,660,,,,92390,23416,68974,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Tamil Nadu,2016-08-01,,,,,,,,,91305,,,seats=36d04fdc
+Tamil Nadu,2016-12-01,,625,,,,,,,,,,itis=7a16313d
+Tamil Nadu,2017-02-09,,625,,,,,,,118697,,,itis=c72013bf; seats=c72013bf
+Tamil Nadu,2017-03-09,,,625,,,,,,118697,,,itis_admitting=0a348746; seats=0a348746
+Tamil Nadu,2017-03-23,5935,625,,,,,,,118697,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Tamil Nadu,2017-08-03,,625,,63,562,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Tamil Nadu,2018-12-28,,571,,,,,,,,,,itis=63d81eb9
+Tamil Nadu,2021-01-01,,493,,,,,,,,,,itis=f6e88ccd
+Tamil Nadu,2021-02-12,,493,,,,,,,,,,itis=117f6967
+Tamil Nadu,2021-07-13,,494,,84,410,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Tamil Nadu,2021-12-15,,494,,84,410,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Tamil Nadu,2021-12-31,,,,84,410,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Tamil Nadu,2022-02-09,,494,,,,,,,,,,itis=b81f053c
+Tamil Nadu,2022-04-06,,494,,84,410,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Tamil Nadu,2022-06-30,,494,,3,0,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Tamil Nadu,2022-09-30,,,,4,0,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Tamil Nadu,2023-03-31,,,,87,414,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Tamil Nadu,2023-12-31,,,,87,411,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Tamil Nadu,2024-06-30,,503,,,,10,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Tamil Nadu,2024-10-31,,504,,,,,,,,,,itis=605183f9
+Telangana,2014-08-01,,,,,,,,,0,,,seats=36d04fdc
+Telangana,2016-04-30,,280,,69,211,,,,24876,5337,19539,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Telangana,2016-07-28,,280,,69,211,,,,24876,5337,19539,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Telangana,2016-08-01,,,,,,,,,58219,,,seats=36d04fdc
+Telangana,2016-12-01,,283,,,,,,,,,,itis=7a16313d
+Telangana,2017-02-09,,286,,,,,,,75685,,,itis=c72013bf; seats=c72013bf
+Telangana,2017-03-09,,,286,,,,,,75685,,,itis_admitting=0a348746; seats=0a348746
+Telangana,2017-03-23,3785,286,,,,,,,75685,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Telangana,2017-08-03,,286,,55,231,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Telangana,2018-12-28,,293,,,,,,,,,,itis=63d81eb9
+Telangana,2021-01-01,,292,,,,,,,,,,itis=f6e88ccd
+Telangana,2021-02-12,,292,,,,,,,,,,itis=117f6967
+Telangana,2021-07-13,,292,,66,226,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Telangana,2021-12-15,,293,,66,227,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Telangana,2021-12-31,,,,66,227,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Telangana,2022-02-09,,293,,,,,,,,,,itis=b81f053c
+Telangana,2022-04-06,,293,,66,227,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Telangana,2022-06-30,,293,,84,410,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Telangana,2022-09-30,,,,87,414,,3,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Telangana,2023-03-31,,,,66,233,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Telangana,2023-12-31,,,,66,236,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Telangana,2024-06-30,,302,,,,4,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Telangana,2024-10-31,,303,,,,,,,,,,itis=605183f9
+Tripura,2014-08-01,,,,,,,,,1888,,,seats=36d04fdc
+Tripura,2015-06-23,,13,,12,1,,,,1888,1792,96,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Tripura,2016-04-30,,13,,12,1,,,,1888,1792,96,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Tripura,2016-07-28,,13,,12,1,,,,1888,1792,96,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Tripura,2016-08-01,,,,,,,,,2205,,,seats=36d04fdc
+Tripura,2016-12-01,,15,,,,,,,,,,itis=7a16313d
+Tripura,2017-02-09,,15,,,,,,,2867,,,itis=c72013bf; seats=c72013bf
+Tripura,2017-03-09,,,15,,,,,,2867,,,itis_admitting=0a348746; seats=0a348746
+Tripura,2017-03-23,144,15,,,,,,,2867,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Tripura,2017-08-03,,15,,13,2,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Tripura,2018-12-28,,19,,,,,,,,,,itis=63d81eb9
+Tripura,2021-01-01,,21,,,,,,,,,,itis=f6e88ccd
+Tripura,2021-02-12,,21,,,,,,,,,,itis=117f6967
+Tripura,2021-07-13,,21,,19,2,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Tripura,2021-12-15,,21,,19,2,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Tripura,2021-12-31,,,,19,2,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Tripura,2022-02-09,,21,,,,,,,,,,itis=b81f053c
+Tripura,2022-04-06,,21,,19,2,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Tripura,2022-06-30,,21,,19,2,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Tripura,2022-09-30,,,,20,2,,1,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Tripura,2023-03-31,,,,20,2,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Tripura,2023-12-31,,,,20,2,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Tripura,2024-06-30,,22,,,,1,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Tripura,2024-10-31,,22,,,,,,,,,,itis=605183f9
+Uttar Pradesh,2014-08-01,,,,,,,,,218206,,,seats=36d04fdc
+Uttar Pradesh,2015-06-23,,1918,,315,1603,,,,222222,32460,189762,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Uttar Pradesh,2016-04-30,,2185,,315,1870,,,,270654,32508,238146,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Uttar Pradesh,2016-07-28,,2185,,315,1870,,,,270654,32508,238146,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Uttar Pradesh,2016-08-01,,,,,,,,,385274,,,seats=36d04fdc
+Uttar Pradesh,2016-12-01,,2315,,,,,,,,,,itis=7a16313d
+Uttar Pradesh,2017-02-09,,2337,,,,,,,500835,,,itis=c72013bf; seats=c72013bf
+Uttar Pradesh,2017-03-09,,,2337,,,,,,500856,,,itis_admitting=0a348746; seats=0a348746
+Uttar Pradesh,2017-03-23,25043,2337,,,,,,,500856,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Uttar Pradesh,2017-08-03,,2337,,119,2218,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Uttar Pradesh,2018-12-28,,3148,,,,,,,,,,itis=63d81eb9
+Uttar Pradesh,2021-01-01,,3202,,,,,,,,,,itis=f6e88ccd
+Uttar Pradesh,2021-02-12,,3202,,,,,,,,,,itis=117f6967
+Uttar Pradesh,2021-07-13,,3058,,286,2772,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Uttar Pradesh,2021-12-15,,3171,,286,2885,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Uttar Pradesh,2021-12-31,,,,286,2885,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Uttar Pradesh,2022-02-09,,3171,,,,,,,,,,itis=b81f053c
+Uttar Pradesh,2022-04-06,,3171,,286,2885,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Uttar Pradesh,2022-06-30,,3173,,286,2887,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Uttar Pradesh,2022-09-30,,,,286,2937,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Uttar Pradesh,2023-03-31,,,,286,2943,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Uttar Pradesh,2023-12-31,,,,290,2968,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Uttar Pradesh,2024-06-30,,3263,,,,46,,2,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Uttar Pradesh,2024-10-31,,3282,,,,,,,,,,itis=605183f9
+Uttarakhand,2014-08-01,,,,,,,,,13937,,,seats=36d04fdc
+Uttarakhand,2015-06-23,,121,,60,61,,,,14081,7291,6790,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+Uttarakhand,2016-04-30,,131,,60,71,,,,16625,7387,9238,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+Uttarakhand,2016-07-28,,131,,60,71,,,,16625,7387,9238,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+Uttarakhand,2016-08-01,,,,,,,,,20565,,,seats=36d04fdc
+Uttarakhand,2016-12-01,,145,,,,,,,,,,itis=7a16313d
+Uttarakhand,2017-02-09,,145,,,,,,,26735,,,itis=c72013bf; seats=c72013bf
+Uttarakhand,2017-03-09,,,145,,,,,,26735,,,itis_admitting=0a348746; seats=0a348746
+Uttarakhand,2017-03-23,1337,145,,,,,,,26735,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+Uttarakhand,2017-08-03,,145,,67,78,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+Uttarakhand,2018-12-28,,181,,,,,,,,,,itis=63d81eb9
+Uttarakhand,2021-01-01,,189,,,,,,,,,,itis=f6e88ccd
+Uttarakhand,2021-02-12,,189,,,,,,,,,,itis=117f6967
+Uttarakhand,2021-07-13,,189,,105,84,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+Uttarakhand,2021-12-15,,188,,105,83,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+Uttarakhand,2021-12-31,,,,105,83,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+Uttarakhand,2022-02-09,,188,,,,,,,,,,itis=b81f053c
+Uttarakhand,2022-04-06,,189,,105,84,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+Uttarakhand,2022-06-30,,189,,105,84,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+Uttarakhand,2022-09-30,,,,105,84,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+Uttarakhand,2023-03-31,,,,105,84,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+Uttarakhand,2023-12-31,,,,105,82,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+Uttarakhand,2024-06-30,,187,,,,1,,0,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+Uttarakhand,2024-10-31,,184,,,,,,,,,,itis=605183f9
+West Bengal,2014-08-01,,,,,,,,,21732,,,seats=36d04fdc
+West Bengal,2015-06-23,,115,,52,63,,,,22212,13996,8216,itis=1b355466; itis_govt=1b355466; itis_pvt=1b355466; seats=1b355466; seats_govt=1b355466; seats_pvt=1b355466
+West Bengal,2016-04-30,,142,,52,90,,,,26404,14204,12200,itis=2e56e75f; itis_govt=2e56e75f; itis_pvt=2e56e75f; seats=2e56e75f; seats_govt=2e56e75f; seats_pvt=2e56e75f
+West Bengal,2016-07-28,,142,,52,90,,,,26404,14204,12200,itis=04dab8e6; itis_govt=04dab8e6; itis_pvt=04dab8e6; seats=04dab8e6; seats_govt=04dab8e6; seats_pvt=04dab8e6
+West Bengal,2016-08-01,,,,,,,,,54266,,,seats=36d04fdc
+West Bengal,2016-12-01,,226,,,,,,,,,,itis=7a16313d
+West Bengal,2017-02-09,,225,,,,,,,69190,,,itis=c72013bf; seats=c72013bf
+West Bengal,2017-03-09,,,227,,,,,,70546,,,itis_admitting=0a348746; seats=0a348746
+West Bengal,2017-03-23,3527,227,,,,,,,70546,,,instructors_required=354dfda5; itis=354dfda5; seats=354dfda5
+West Bengal,2017-08-03,,227,,123,104,,,,,,,itis=f96fb075; itis_govt=f96fb075; itis_pvt=f96fb075
+West Bengal,2018-12-28,,260,,,,,,,,,,itis=63d81eb9
+West Bengal,2021-01-01,,262,,,,,,,,,,itis=f6e88ccd
+West Bengal,2021-02-12,,262,,,,,,,,,,itis=117f6967
+West Bengal,2021-07-13,,266,,131,135,,,,,,,itis=597f89f5; itis_govt=597f89f5; itis_pvt=597f89f5
+West Bengal,2021-12-15,,266,,131,135,,,,,,,itis=0955ba2f; itis_govt=0955ba2f; itis_pvt=0955ba2f
+West Bengal,2021-12-31,,,,131,135,,,,,,,itis_govt=288d7261; itis_pvt=288d7261
+West Bengal,2022-02-09,,266,,,,,,,,,,itis=b81f053c
+West Bengal,2022-04-06,,266,,131,135,,,,,,,itis=8da0d40b; itis_govt=8da0d40b; itis_pvt=8da0d40b
+West Bengal,2022-06-30,,266,,131,135,,,,,,,itis=8310287f; itis_govt=4908bd73; itis_pvt=4908bd73
+West Bengal,2022-09-30,,,,150,138,,2,,,,,itis_govt=29b6c84e; itis_pvt=29b6c84e; nstis=29b6c84e
+West Bengal,2023-03-31,,,,150,138,,,,,,,itis_govt=2af9602e; itis_pvt=2af9602e
+West Bengal,2023-12-31,,,,163,139,,,,,,,itis_govt=2c87a4b3; itis_pvt=2c87a4b3
+West Bengal,2024-06-30,,302,,,,4,,1,,,,itis=943c6962; itis_women_only=943c6962; nstis_women_only=943c6962
+West Bengal,2024-10-31,,309,,,,,,,,,,itis=605183f9

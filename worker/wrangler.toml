@@ -1,0 +1,19 @@
+name = "iti-explorer-answers"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Comma-separated list of sites allowed to call this service, e.g. "https://your-user.github.io".
+# Origin is the site only (no path, no trailing slash).
+ALLOWED_ORIGINS = "https://YOUR-GITHUB-USER.github.io"
+MODEL = "claude-opus-5-5"
+EFFORT = "medium"
+
+# Per-visitor limit (needs Wrangler 4.36 or later). Counters are per Cloudflare location and approximate,
+# so this slows abuse but does not cap spend: set a spend limit on the Anthropic key as well.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 8, period = 60 }
+
+# The API key is NOT set here. Store it as a secret:  npx wrangler secret put ANTHROPIC_API_KEY

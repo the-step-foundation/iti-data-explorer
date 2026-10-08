@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ITI Data Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one working column — ask panel and answers first, then the standing overview (tiles, two trend charts, state explorer), then notes on the data. */
+:root {
+  --bg: #f4f6f8;
+  --surface: #fdfdfe;
+  --ink: #12161c;
+  --ink-2: #4a5160;
+  --muted: #7d8492;
+  --line: #e1e5eb;
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  --accent-soft: #e6effb;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #4a3aa7;
+  --grid: #e6e9ee;
+  --warn: #b77900;
+  --warn-soft: #fdf3dc;
+  --bad: #c03434;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
+    --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+    --grid: #252a32; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
+  --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+  --grid: #252a32; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 28px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+h1 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
+h2 { font-size: 1.05rem; font-weight: 600; }
+h3 { font-size: .95rem; font-weight: 600; }
+.eyebrow { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 500; }
+.sub { color: var(--ink-2); margin: 6px 0 0; max-width: 70ch; }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+button, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; min-width: 0; }
+
+/* Ask */
+.ask { display: grid; gap: 14px; }
+.ask-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+.ask-row textarea { flex: 1 1 320px; min-width: 0; min-height: 52px; max-height: 180px; resize: vertical; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); line-height: 1.4; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 10px 16px; cursor: pointer; font-weight: 500; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .55; cursor: default; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 5px 12px; font-size: .85rem; cursor: pointer; color: var(--ink-2); text-align: left; }
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+.notice { font-size: .88rem; color: var(--ink-2); background: var(--bg); border-radius: 8px; padding: 10px 12px; }
+
+.thread { display: grid; gap: 16px; }
+.turn { display: grid; gap: 12px; border-top: 1px solid var(--line); padding-top: 16px; }
+.q { font-weight: 600; }
+.status { color: var(--muted); font-size: .9rem; display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+.answer { max-width: 75ch; }
+.answer p { margin: 0 0 8px; }
+.answer ul { margin: 0 0 8px; padding-left: 20px; }
+.err { color: var(--bad); font-size: .9rem; }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; }
+.flag { display: inline-flex; gap: 6px; align-items: center; font-size: .8rem; padding: 3px 10px; border-radius: 999px; background: var(--warn-soft); color: var(--ink); }
+.flag::before { content: "!"; font-weight: 700; color: var(--warn); }
+.chart-box { position: relative; height: 320px; min-width: 0; }
+.chart-box.tall { height: auto; }
+details { border: 1px solid var(--line); border-radius: 8px; }
+details > summary { cursor: pointer; padding: 8px 12px; font-size: .88rem; color: var(--ink-2); }
+.tbl-wrap { overflow-x: auto; max-height: 360px; overflow-y: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+th, td { text-align: left; padding: 6px 12px; border-top: 1px solid var(--line); white-space: nowrap; }
+th { position: sticky; top: 0; background: var(--surface); font-weight: 600; color: var(--ink-2); }
+td.r, th.r { text-align: right; }
+.sources { font-size: .82rem; color: var(--ink-2); display: grid; gap: 2px; }
+
+/* Overview */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 4px; align-content: start; }
+.tile .v { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.01em; }
+.tile .d { font-size: .82rem; color: var(--ink-2); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 16px; }
+.chart-head { display: grid; gap: 2px; margin-bottom: 12px; }
+.chart-head p { margin: 0; font-size: .85rem; color: var(--ink-2); }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+.controls label { font-size: .82rem; color: var(--ink-2); display: grid; gap: 4px; }
+.controls select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); max-width: 100%; }
+.notes { display: grid; gap: 8px; font-size: .9rem; color: var(--ink-2); max-width: 80ch; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.loading { color: var(--muted); }
+html { color-scheme: light; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Craftsmen Training Scheme · Industrial Training Institutes</div>
+    <h1>ITI Data Explorer</h1>
+    <p class="sub" id="meta">State-level data on ITIs, seats and trainees from 55 data.gov.in tables, plus All-India figures read from the DGT Schemes Dashboard.</p>
+  </header>
+
+  <section class="panel ask" aria-labelledby="ask-h">
+    <h2 id="ask-h">Ask the data</h2>
+    <form class="ask-row" id="ask-form">
+      <textarea id="q" rows="2" placeholder="e.g. Which five states enrolled the most ITI trainees in 2023-24?" aria-label="Your question"></textarea>
+      <button class="btn primary" id="ask" type="submit">Ask</button>
+      <button class="btn" id="stop" type="button" hidden>Stop</button>
+    </form>
+    <div class="chips" id="examples" aria-label="Example questions"></div>
+    <div class="notice" id="ask-note" hidden></div>
+    <div class="thread" id="thread" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="ov-h" style="display:grid;gap:16px">
+    <h2 id="ov-h">Overview</h2>
+    <div class="tiles" id="tiles"><div class="tile loading">Loading data…</div></div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="chart-head"><h3>All-India enrolment by session</h3>
+          <p>data.gov.in (Rajya Sabha answers) against the DGT dashboard. The dashboard is complete only from 2023.</p></div>
+        <div class="chart-box"><canvas id="c-enrol" aria-label="Line chart of All-India ITI enrolment by session"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="chart-head"><h3>Number of ITIs, All India</h3>
+          <p>Government and private ITIs as reported on each date.</p></div>
+        <div class="chart-box"><canvas id="c-itis" aria-label="Line chart of the number of ITIs over time"></canvas></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="chart-head"><h3>Compare states</h3><p>Pick a measure and a period. Bars are sorted by value.</p></div>
+      <div class="controls">
+        <label for="s-metric">Measure<select id="s-metric"></select></label>
+        <label for="s-period">Period<select id="s-period"></select></label>
+        <button class="btn" id="s-table" type="button" aria-pressed="false">Show table</button>
+      </div>
+      <div class="chart-box tall" id="s-chart-box"><canvas id="c-states" aria-label="Bar chart comparing states"></canvas></div>
+      <div class="tbl-wrap" id="s-table-box" hidden></div>
+    </div>
+  </section>
+
+  <section class="panel notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">About the data</h2>
+    <ul>
+      <li>Sessions run August to July. Tables that use a calendar year ("2019") match session "2019-20" and are merged with it.</li>
+      <li>Since about 2018, ministry answers use "trained" to mean "enrolled". Those figures appear here as enrolment. Completions (trained) and certifications exist only up to 2017-18.</li>
+      <li>Where answers disagree, the most recently published figure is used. Values marked <em>revised</em> had other figures in earlier answers.</li>
+      <li>The DGT dashboard covers admission years 2019 to 2026 but holds only part of the candidates before 2023 (10% to 75% of data.gov.in enrolment).</li>
+      <li>Not available here: district, institute or trade-level data for all states, and assessed or passed counts by state. Those are on the DGT dashboard's Matrix Data page.</li>
+    </ul>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="config.js"></script>
+<script>
+(() => {
+  "use strict";
+  // ---------- data ----------
+  let D = null, ROWS = [], SRC = {};
+  const LABEL = {
+    enrolled: "Enrolled", trained: "Trained (completed)", certified: "Certified", seats: "Seats", vacant_seats: "Vacant seats",
+    in_training: "In training", enrolled_partial: "Enrolled (part year)", trained_in_women_itis: "Women trained in women's ITIs",
+    itis: "ITIs", itis_admitting: "ITIs admitting trainees", nstis: "NSTIs", instructors_required: "Instructors required",
+    itis_new: "New ITIs", itis_new_affiliated: "New ITIs affiliated", itis_new_govt_opened: "New Govt ITIs opened",
+    itis_third_shift: "ITIs with third shift", trained_cumulative: "Trained (cumulative)", enrolled_cumulative: "Enrolled (cumulative)",
+    trained_strive: "Trained under STRIVE", assessed: "Assessed", passed: "Passed"
+  };
+  const BD = { total: "", govt: "Govt", pvt: "Private", male: "Male", female: "Female", obc: "OBC", sc: "SC", st: "ST", gen: "General",
+    divyang: "Divyang", women_only: "Women-only" };
+  const nameOf = (m, b) => (LABEL[m] || m) + (b && b !== "total" ? " · " + (BD[b] || b) : "");
+  const fmt = n => n == null ? "—" : Number(n).toLocaleString("en-IN");
+  const lakh = n => (n / 1e5).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + " lakh";
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const fmtDate = p => /^\d{4}-\d{2}-\d{2}$/.test(p) ? new Date(p + "T00:00:00").toLocaleDateString("en-IN", { month: "short", year: "numeric" }) : p;
+
+  function load() {
+    return fetch("data.json").then(r => { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); }).then(d => {
+      D = d; SRC = d.sources;
+      ROWS = d.rows.map(r => ({ kind: r[0], state: d.states[r[1]], metric: r[2], breakdown: r[3], period: String(r[4]),
+        value: r[5], source: r[6], n: r[7], revised: !!r[8] }));
+      for (const k of d.dashboard) for (const m of ["enrolled", "trained", "assessed", "passed", "certified"])
+        if (k[m] != null) ROWS.push({ kind: "dgt_dashboard", state: "All India", metric: m, breakdown: "total",
+          period: String(k.admission_year), value: k[m], source: "dgt", n: 1, revised: false });
+      SRC.dgt = { title: "DGT Schemes Dashboard (Power BI), All India by admission year, read 7 Oct 2026",
+        url: "https://dgt.skillindiadigital.gov.in/", published: "2026-10-07" };
+    });
+  }
+
+  // ---------- query engine (used by the charts and by Claude's tool) ----------
+  const STATE_ALIAS = { india: "All India", "all-india": "All India", national: "All India", total: "All India",
+    "j&k": "Jammu and Kashmir", "up": "Uttar Pradesh", "mp": "Madhya Pradesh", "tn": "Tamil Nadu", "wb": "West Bengal",
+    "orissa": "Odisha", "pondicherry": "Puducherry", "uttaranchal": "Uttarakhand", "delhi ncr": "Delhi" };
+  function normState(s) {
+    const k = String(s).trim().toLowerCase();
+    if (STATE_ALIAS[k]) return STATE_ALIAS[k];
+    return D.states.find(x => x.toLowerCase() === k) || D.states.find(x => x.toLowerCase().startsWith(k)) || null;
+  }
+  function query({ metric, breakdown = "total", kind, states, periods } = {}) {
+    if (!metric) throw new Error("metric is required");
+    let st = null, bad = [];
+    if (Array.isArray(states) && states.length) {
+      st = new Set();
+      for (const s of states) { const n = normState(s); n ? st.add(n) : bad.push(s); }
+    }
+    const per = Array.isArray(periods) && periods.length ? periods.map(String) : null;
+    const rows = ROWS.filter(r => r.metric === metric && r.breakdown === (breakdown || "total") && (!kind || r.kind === kind)
+      && (!st || st.has(r.state)) && (!per || per.some(p => r.period === p || r.period.startsWith(p + "-") || r.period.startsWith(p))));
+    rows.sort((a, b) => a.state === b.state ? a.period.localeCompare(b.period) : (a.state === "All India" ? -1 : b.state === "All India" ? 1 : a.state.localeCompare(b.state)));
+    return { rows, unknownStates: bad };
+  }
+
+  function catalog() {
+    const m = new Map();
+    for (const r of ROWS) {
+      const k = r.kind + "|" + r.metric + "|" + r.breakdown;
+      if (!m.has(k)) m.set(k, { periods: new Set(), states: new Set() });
+      m.get(k).periods.add(r.period); m.get(k).states.add(r.state);
+    }
+    return [...m.entries()].sort().map(([k, v]) => {
+      const p = [...v.periods].sort();
+      const ns = [...v.states].filter(s => s !== "All India").length;
+      return `${k.replace(/\|/g, " | ")} | periods: ${p.length > 8 ? p.slice(0, 3).join(", ") + " … " + p.slice(-3).join(", ") + ` (${p.length})` : p.join(", ")} | ${ns} states${v.states.has("All India") ? " + All India" : ""}`;
+    }).join("\n");
+  }
+
+  // ---------- charts ----------
+  const charts = {};
+  function baseOpts(extra = {}) {
+    const ink2 = css("--ink-2"), grid = css("--grid"), muted = css("--muted");
+    return Object.assign({
+      responsive: true, maintainAspectRatio: false, animation: matchMedia("(prefers-reduced-motion: reduce)").matches ? false : { duration: 300 },
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { labels: { color: ink2, boxWidth: 10, boxHeight: 10, usePointStyle: true, font: { family: "IBM Plex Sans" } } },
+        tooltip: { backgroundColor: css("--surface"), titleColor: css("--ink"), bodyColor: ink2, borderColor: css("--line"), borderWidth: 1,
+          padding: 10, bodyFont: { family: "IBM Plex Mono" }, callbacks: { label: c => ` ${c.dataset.label}: ${fmt(c.parsed.y ?? c.parsed.x)}` } }
+      },
+      scales: {
+        x: { grid: { display: false }, border: { color: grid }, ticks: { color: muted, font: { family: "IBM Plex Sans", size: 11 }, maxRotation: 0, autoSkip: true } },
+        y: { grid: { color: grid }, border: { display: false }, ticks: { color: muted, font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true }
+      }
+    }, extra);
+  }
+  const compact = v => Math.abs(v) >= 1e5 ? (v / 1e5).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + "L" : Number(v).toLocaleString("en-IN");
+  const seriesColor = i => css(["--series-1", "--series-2", "--series-3", "--series-4"][i % 4]);
+  function draw(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); return charts[id]; }
+
+  function overview() {
+    const one = (q) => query(q).rows;
+    const allIndia = s => s.filter(r => r.state === "All India");
+    // tiles
+    const itis = allIndia(one({ kind: "snapshot", metric: "itis" })).sort((a, b) => a.period.localeCompare(b.period));
+    const lastIti = itis.at(-1);
+    const gov = allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "govt" })).sort((a, b) => a.period.localeCompare(b.period)).at(-1);
+    const pvt = allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "pvt" })).sort((a, b) => a.period.localeCompare(b.period)).at(-1);
+    const enr = allIndia(one({ kind: "series", metric: "enrolled" })).sort((a, b) => a.period.localeCompare(b.period));
+    const lastE = enr.at(-1);
+    const f = allIndia(one({ kind: "series", metric: "enrolled", breakdown: "female" })).sort((a, b) => a.period.localeCompare(b.period)).at(-1);
+    const mle = allIndia(one({ kind: "series", metric: "enrolled", breakdown: "male", periods: [f.period] }))[0];
+    const dash = ROWS.filter(r => r.kind === "dgt_dashboard" && r.metric === "enrolled").sort((a, b) => a.period.localeCompare(b.period));
+    const lastFull = dash.filter(r => r.value > 100000).at(-1);
+    document.getElementById("tiles").innerHTML = [
+      ["ITIs, as on " + fmtDate(lastIti.period), fmt(lastIti.value), `Govt ${fmt(gov.value)} · Private ${fmt(pvt.value)} (${fmtDate(gov.period)})`],
+      ["Enrolled, session " + lastE.period, fmt(lastE.value), lakh(lastE.value) + " trainees · data.gov.in"],
+      ["Women's share of enrolment", (100 * f.value / (f.value + mle.value)).toFixed(1) + "%", `Session ${f.period}: ${fmt(f.value)} women`],
+      ["Enrolled, admission year " + lastFull.period, fmt(lastFull.value), "DGT dashboard · latest complete year"]
+    ].map(([l, v, d]) => `<div class="tile"><div class="eyebrow">${esc(l)}</div><div class="v num">${v}</div><div class="d">${esc(d)}</div></div>`).join("");
+
+    // enrolment chart
+    const sess = y => `${y}-${String(+y + 1).slice(2)}`;
+    const labels = [...new Set([...enr.map(r => r.period), ...dash.map(r => sess(r.period))])].sort();
+    const mapE = Object.fromEntries(enr.map(r => [r.period, r.value]));
+    const mapD = Object.fromEntries(dash.map(r => [sess(r.period), r.value]));
+    draw("c-enrol", { type: "line", data: { labels, datasets: [
+      { label: "data.gov.in", data: labels.map(l => mapE[l] ?? null), borderColor: seriesColor(0), backgroundColor: seriesColor(0), borderWidth: 2, pointRadius: 3, spanGaps: false },
+      { label: "DGT dashboard", data: labels.map(l => mapD[l] ?? null), borderColor: seriesColor(1), backgroundColor: seriesColor(1), borderWidth: 2, pointRadius: 3, borderDash: [5, 3] }
+    ] }, options: baseOpts() });
+
+    // ITIs chart
+    const gMap = Object.fromEntries(allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "govt" })).map(r => [r.period, r.value]));
+    const pMap = Object.fromEntries(allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "pvt" })).map(r => [r.period, r.value]));
+    const o = baseOpts();
+    o.scales.y.beginAtZero = false;
+    o.plugins.legend.display = false;
+    o.plugins.tooltip.callbacks.afterLabel = c => { const p = itis[c.dataIndex].period; return gMap[p] != null ? `  Govt ${fmt(gMap[p])} · Private ${fmt(pMap[p])}` : ""; };
+    draw("c-itis", { type: "line", data: { labels: itis.map(r => fmtDate(r.period)), datasets: [
+      { label: "ITIs", data: itis.map(r => r.value), borderColor: seriesColor(0), backgroundColor: seriesColor(0), borderWidth: 2, pointRadius: 3, tension: 0 }
+    ] }, options: o });
+  }
+
+  // ---------- state explorer ----------
+  function stateExplorer() {
+    const opts = new Map();
+    for (const r of ROWS) if (r.kind !== "dgt_dashboard" && r.state !== "All India") {
+      const k = [r.kind, r.metric, r.breakdown].join("|");
+      if (!opts.has(k)) opts.set(k, new Map());
+      const pm = opts.get(k); pm.set(r.period, (pm.get(r.period) || 0) + 1);
+    }
+    const good = [...opts.entries()].filter(([, pm]) => [...pm.values()].some(n => n >= 15));
+    const order = k => ["series|enrolled|total", "snapshot|itis|total", "snapshot|itis|govt", "snapshot|itis|pvt", "series|enrolled|female"].indexOf(k);
+    good.sort((a, b) => ((order(a[0]) + 1 || 99) - (order(b[0]) + 1 || 99)) || a[0].localeCompare(b[0]));
+    const mSel = document.getElementById("s-metric"), pSel = document.getElementById("s-period");
+    mSel.innerHTML = good.map(([k]) => { const [kind, m, b] = k.split("|"); return `<option value="${k}">${esc(nameOf(m, b))}${kind === "snapshot" ? " (as on date)" : ""}</option>`; }).join("");
+    const fillPeriods = () => {
+      const pm = opts.get(mSel.value);
+      const ps = [...pm.entries()].filter(([, n]) => n >= 15).map(([p]) => p).sort().reverse();
+      pSel.innerHTML = ps.map(p => `<option value="${esc(p)}">${esc(fmtDate(p) === p ? p : fmtDate(p) + " (" + p + ")")}</option>`).join("");
+    };
+    const render = () => {
+      const [kind, metric, breakdown] = mSel.value.split("|");
+      const rows = query({ kind, metric, breakdown, periods: [pSel.value] }).rows.filter(r => r.state !== "All India" && r.period === pSel.value).sort((a, b) => b.value - a.value);
+      const box = document.getElementById("s-chart-box");
+      box.style.height = Math.max(260, rows.length * 22 + 40) + "px";
+      const o = baseOpts({ indexAxis: "y" });
+      o.plugins.legend.display = false;
+      o.interaction = { mode: "nearest", axis: "y", intersect: false };
+      o.scales.x = { grid: { color: css("--grid") }, border: { display: false }, ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true };
+      o.scales.y = { grid: { display: false }, border: { color: css("--grid") }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 }, autoSkip: false } };
+      o.plugins.tooltip.callbacks.label = c => ` ${fmt(c.parsed.x)}${rows[c.dataIndex].revised ? "  (revised)" : ""}`;
+      draw("c-states", { type: "bar", data: { labels: rows.map(r => r.state), datasets: [{ label: nameOf(metric, breakdown), data: rows.map(r => r.value),
+        backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .8, categoryPercentage: .9 }] }, options: o });
+      document.getElementById("s-table-box").innerHTML = tableHTML(rows);
+    };
+    mSel.onchange = () => { fillPeriods(); render(); };
+    pSel.onchange = render;
+    const tBtn = document.getElementById("s-table");
+    tBtn.onclick = () => { const box = document.getElementById("s-table-box"); box.hidden = !box.hidden; tBtn.setAttribute("aria-pressed", String(!box.hidden)); tBtn.textContent = box.hidden ? "Show table" : "Hide table"; };
+    fillPeriods(); render();
+  }
+
+  function tableHTML(rows) {
+    return `<table><thead><tr><th>State</th><th>Measure</th><th>Period</th><th class="r">Value</th><th>Source</th></tr></thead><tbody>` +
+      rows.map(r => `<tr><td>${esc(r.state)}</td><td>${esc(nameOf(r.metric, r.breakdown))}</td><td>${esc(r.period)}</td><td class="r num">${fmt(r.value)}${r.revised ? " *" : ""}</td><td>${srcLink(r.source)}</td></tr>`).join("") +
+      `</tbody></table>`;
+  }
+  function srcLink(id) { const s = SRC[id]; return s ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.title)}">${esc(id === "dgt" ? "DGT dashboard" : id)}</a>` : esc(id); }
+
+  // ---------- ask Claude ----------
+  const EXAMPLES = [
+    "Which five states enrolled the most ITI trainees in 2023-24?",
+    "How has enrolment in Uttar Pradesh changed since 2016-17?",
+    "Compare government and private ITIs in Maharashtra and Rajasthan over time.",
+    "What share of ITI trainees were women in 2021-22, by state?",
+    "How do DGT dashboard enrolment figures compare with data.gov.in?",
+    "Which states have the most ITIs per enrolled trainee?"
+  ];
+  let sample = null, ctl = null, history = [];
+  const $ = id => document.getElementById(id);
+
+  function rules() {
+    return `You answer questions about India's Industrial Training Institutes (ITIs) under the Craftsmen Training Scheme (CTS), for an analyst. Use ONLY data returned by the query_data tool. Never estimate, extrapolate, or use outside knowledge for numbers.
+
+DATA (each row: kind, state, metric, breakdown, period, value)
+- kind "series": one value per training session (Aug-Jul), period like "2019-20".
+- kind "snapshot": value as on a date, period "YYYY-MM-DD".
+- kind "other": flows or cumulative totals over a range.
+- kind "dgt_dashboard": All-India only, from DGT's Power BI dashboard, period = admission year "2019".."2026"; metrics enrolled, trained, assessed, passed, certified.
+Sources: 55 Rajya Sabha answer tables on data.gov.in (state level) + DGT dashboard readings (7 Oct 2026).
+
+CATALOG (kind | metric | breakdown | periods | coverage)
+${catalog()}
+
+STATES: ${D.states.join(", ")}
+
+CAVEATS you must apply
+- Since ~2018 ministry answers call enrolment "trained"; those are stored as enrolled. True completions ("trained") and "certified" exist only for 2014-15 to 2017-18 / 2016-17.
+- The DGT dashboard holds only part of candidates before admission year 2023 (2019: 10%, 2020-21: ~25%, 2022: 75% of data.gov.in). Do not treat dashboard 2019-2022 as complete.
+- Admission year Y on the dashboard ≈ session Y-(Y+1) on data.gov.in.
+- "revised": true means earlier answers gave a different figure; the latest is used. Mention it when it matters.
+- "Dadra and Nagar Haveli and Daman and Diu" (merged UT) and the two separate older UTs both appear; Ladakh appears from 2019-20.
+- Not in this data: district/institute/trade breakdowns, assessed/passed by state, placements. If asked, say so and point to the DGT dashboard's Matrix Data page or a request to DGT.
+
+HOW TO ANSWER
+- Call query_data for every number you state. Query broadly (e.g. all states for one period) rather than many narrow calls.
+- Do arithmetic yourself from returned values (shares, growth, ranks); show the basis briefly.
+- Use Indian number format (14,46,247) and lakh where helpful. State the period and source type for each figure.
+- If the data cannot answer, say so plainly in one or two sentences.
+- Keep "answer" under 140 words. Plain text; you may use **bold**, and lines starting "- " for short lists.
+
+FINAL MESSAGE: only one JSON object:
+{"answer": string, "chart": null or {"type": "bar"|"line", "title": string, "x": "state"|"period", "series": [{"name": string, "kind": string, "metric": string, "breakdown": string, "states": [string], "periods": [string]}]}, "caveats": [string]}
+Chart rules: the page draws the chart itself by running each series as a query, so use exact catalog values. x="state": each series must set ONE period (states optional, omit for all states; the page sorts and shows top 20). x="period": each series sets ONE state in "states" (periods optional). At most 4 series. Use a chart only when it helps; null otherwise. "caveats": 0-2 short strings for limits that affect this answer.`;
+  }
+
+  const TOOLS = [{
+    name: "query_data",
+    description: "Look up ITI values. Returns matching rows {state, period, value, revised, source}. metric is required; breakdown defaults to 'total'. Omit states/periods to get all. Periods match exactly or by prefix ('2019' matches '2019-20').",
+    inputSchema: { type: "object", properties: {
+      metric: { type: "string", description: "e.g. enrolled, itis, seats, trained, certified" },
+      breakdown: { type: "string", description: "total (default), govt, pvt, male, female, obc, sc, st, gen, divyang, women_only" },
+      kind: { type: "string", enum: ["series", "snapshot", "other", "dgt_dashboard"] },
+      states: { type: "array", items: { type: "string" } },
+      periods: { type: "array", items: { type: "string" } }
+    }, required: ["metric"] },
+    execute: null // set per call
+  }];
+
+  function setBusy(b) { $("ask").disabled = b; $("q").disabled = b; $("stop").hidden = !b; }
+
+  async function ask(question) {
+    question = question.trim();
+    if (!question || !sample) return;
+    const turn = document.createElement("article");
+    turn.className = "turn";
+    turn.innerHTML = `<div class="q">${esc(question)}</div><div class="status"><span class="dot"></span><span class="st">Thinking…</span></div>`;
+    $("thread").prepend(turn);
+    const st = turn.querySelector(".st");
+    const used = new Map();
+    const tools = TOOLS.map(t => ({ ...t, execute: (input) => {
+      const q = { metric: String(input.metric || ""), breakdown: input.breakdown ? String(input.breakdown) : "total",
+        kind: input.kind ? String(input.kind) : undefined,
+        states: Array.isArray(input.states) ? input.states.map(String) : undefined,
+        periods: Array.isArray(input.periods) ? input.periods.map(String) : undefined };
+      st.textContent = `Looking up ${nameOf(q.metric, q.breakdown).toLowerCase()}${q.states ? " for " + q.states.slice(0, 3).join(", ") + (q.states.length > 3 ? "…" : "") : ""}…`;
+      const { rows, unknownStates } = query(q);
+      if (!rows.length) throw new Error(`No rows for ${JSON.stringify(q)}. Check the catalog for valid kind/metric/breakdown/periods.` + (unknownStates.length ? ` Unknown states: ${unknownStates.join(", ")}` : ""));
+      for (const r of rows) used.set([r.kind, r.state, r.metric, r.breakdown, r.period].join("|"), r);
+      const cap = rows.slice(0, 450);
+      return { count: rows.length, truncated: rows.length > cap.length, unknownStates,
+        columns: ["state", "kind", "period", "value", "revised", "source"],
+        rows: cap.map(r => [r.state, r.kind, r.period, r.value, r.revised, r.source]) };
+    } }));
+    ctl = new AbortController();
+    setBusy(true);
+    const input = [{ role: "user", content: rules() }];
+    for (const h of history.slice(-4)) input.push({ role: "user", content: h.q }, { role: "assistant", content: h.a });
+    input.push({ role: "user", content: question });
+    try {
+      const out = await sample.json(input, { tools, signal: ctl.signal });
+      const ans = typeof out?.answer === "string" ? out.answer : "";
+      if (!ans) throw { code: "invalid_json", message: "no answer field" };
+      history.push({ q: question, a: ans });
+      renderAnswer(turn, out, [...used.values()]);
+    } catch (e) {
+      turn.querySelector(".status")?.remove();
+      const msg = {
+        cancelled: "Stopped.", not_granted: "Claude isn't allowed for this page, so questions are turned off. The charts below still work.",
+        sampling_disabled: "Claude isn't available for this account.", rate_limited: "Too many questions at once. Wait a minute, then ask again.",
+        session_expired: "Your session expired. Sign in again to ask questions.", tools_unavailable: "This view can't run data lookups. Open the page in Claude to ask questions.",
+        invalid_json: "The answer came back in an unexpected format. Ask again, or rephrase the question.",
+        refused: "Claude declined this question. Try rephrasing it.", prompt_too_large: "That question pulled too much data. Narrow it to fewer states or years."
+      }[e?.code] || "Something went wrong while answering. Ask again.";
+      turn.insertAdjacentHTML("beforeend", `<div class="err">${esc(msg)}</div>`);
+      if (["not_granted", "sampling_disabled", "tools_unavailable"].includes(e?.code)) disableAsk(msg);
+    } finally { setBusy(false); ctl = null; }
+  }
+
+  function md(s) {
+    const lines = esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").split(/\n/);
+    let html = "", list = false;
+    for (const l of lines) {
+      if (/^\s*[-•]\s+/.test(l)) { if (!list) { html += "<ul>"; list = true; } html += "<li>" + l.replace(/^\s*[-•]\s+/, "") + "</li>"; }
+      else { if (list) { html += "</ul>"; list = false; } if (l.trim()) html += "<p>" + l + "</p>"; }
+    }
+    return html + (list ? "</ul>" : "");
+  }
+
+  let chartSeq = 0;
+  function renderAnswer(turn, out, used) {
+    turn.querySelector(".status")?.remove();
+    const parts = [`<div class="answer">${md(out.answer)}</div>`];
+    const cav = (Array.isArray(out.caveats) ? out.caveats : []).filter(c => typeof c === "string" && c.trim()).slice(0, 3);
+    if (used.some(r => r.revised)) cav.push("Some figures were revised in later answers; the latest is shown.");
+    if (cav.length) parts.push(`<div class="flags">${cav.map(c => `<span class="flag">${esc(c)}</span>`).join("")}</div>`);
+    const id = "ans-" + (++chartSeq);
+    const spec = out.chart && typeof out.chart === "object" ? out.chart : null;
+    if (spec) parts.push(`<div><h3 style="margin-bottom:8px">${esc(spec.title || "")}</h3><div class="chart-box" id="${id}-box"><canvas id="${id}"></canvas></div></div>`);
+    if (used.length) {
+      const srcs = [...new Set(used.map(r => r.source))];
+      parts.push(`<details><summary>Data used · ${used.length} values from ${srcs.length} source${srcs.length > 1 ? "s" : ""}</summary><div class="tbl-wrap">${tableHTML(used.slice(0, 300))}</div>
+        <div class="sources" style="padding:8px 12px">${srcs.map(s => `<div>${srcLink(s)} — ${esc(SRC[s]?.title || "")}</div>`).join("")}</div></details>`);
+    }
+    turn.insertAdjacentHTML("beforeend", parts.join(""));
+    if (spec) try { drawAnswerChart(id, spec); } catch (e) { $(id + "-box").outerHTML = `<p class="err">The chart could not be drawn from this data.</p>`; }
+  }
+
+  function drawAnswerChart(id, spec) {
+    const series = (Array.isArray(spec.series) ? spec.series : []).slice(0, 4).map(s => ({
+      name: String(s.name || nameOf(s.metric, s.breakdown)),
+      rows: query({ metric: String(s.metric), breakdown: s.breakdown ? String(s.breakdown) : "total", kind: s.kind ? String(s.kind) : undefined,
+        states: Array.isArray(s.states) ? s.states : undefined, periods: Array.isArray(s.periods) ? s.periods : undefined }).rows
+    })).filter(s => s.rows.length);
+    if (!series.length) throw new Error("empty");
+    const byState = spec.x === "state";
+    let labels;
+    if (byState) {
+      const first = series[0].rows.filter(r => r.state !== "All India" || series[0].rows.every(x => x.state === "All India"));
+      labels = [...new Map(first.sort((a, b) => b.value - a.value).map(r => [r.state, 1])).keys()].slice(0, 20);
+    } else {
+      labels = [...new Set(series.flatMap(s => s.rows.map(r => r.period)))].sort();
+    }
+    const datasets = series.map((s, i) => {
+      const m = new Map(s.rows.map(r => [byState ? r.state : r.period, r.value]));
+      const c = seriesColor(i);
+      return { label: s.name, data: labels.map(l => m.get(l) ?? null), borderColor: c, backgroundColor: c, borderWidth: 2, pointRadius: 3, borderRadius: 3, spanGaps: true };
+    });
+    const type = spec.type === "line" && !byState ? "line" : "bar";
+    const o = baseOpts(byState ? { indexAxis: "y" } : {});
+    o.plugins.legend.display = datasets.length > 1;
+    if (byState) {
+      $(id + "-box").style.height = Math.max(240, labels.length * (18 + 8 * datasets.length) + 50) + "px";
+      o.interaction = { mode: "index", axis: "y", intersect: false };
+      o.scales = { x: { grid: { color: css("--grid") }, border: { display: false }, ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true },
+        y: { grid: { display: false }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 }, autoSkip: false } } };
+    }
+    draw(id, { type, data: { labels: byState ? labels : labels.map(fmtDate), datasets }, options: o });
+    answerSpecs.set(id, spec);
+  }
+  const answerSpecs = new Map();
+
+  function disableAsk(msg) {
+    $("ask-form").hidden = true; $("examples").hidden = true;
+    const n = $("ask-note"); n.hidden = false; n.textContent = msg;
+  }
+
+  // ---------- answer backend ----------
+  // Inside Claude the page asks through its own `sample` capability. Anywhere else (GitHub Pages) it
+  // uses the answer service in config.js: the page runs the tool loop, the service only forwards to Claude.
+  const MAX_ROUNDS = 8;
+  const fail = (code, message, text) => ({ code, message, text });
+  function parseJsonLoose(text) {
+    const t = String(text || "").trim();
+    const tries = [t, (t.match(/```(?:json)?\s*([\s\S]*?)```/) || [])[1], t.slice(t.indexOf("{"), t.lastIndexOf("}") + 1)];
+    for (const c of tries) { if (!c) continue; try { return JSON.parse(c); } catch (e) { /* next */ } }
+    throw fail("invalid_json", "no JSON in reply", t);
+  }
+  function makeProxy(url) {
+    async function post(messages, signal) {
+      let res;
+      try {
+        res = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages }), signal });
+      } catch (e) { throw e && e.name === "AbortError" ? fail("cancelled", "aborted") : fail("upstream_error", String(e)); }
+      if (!res.ok) throw fail({ 429: "rate_limited", 413: "prompt_too_large", 403: "not_granted" }[res.status] || "upstream_error", "service " + res.status);
+      return res.json();
+    }
+    async function json(input, { tools = [], signal } = {}) {
+      const messages = input.map(m => ({ role: m.role, content: m.content }));
+      for (let round = 0; round < MAX_ROUNDS; round++) {
+        const data = await post(messages, signal);
+        if (data.stop_reason === "refusal") throw fail("refused", "refusal");
+        // echo the whole assistant turn back unchanged (it may carry thinking blocks)
+        messages.push({ role: "assistant", content: data.content });
+        if (data.stop_reason === "tool_use") {
+          const results = [];
+          for (const b of data.content) {
+            if (b.type !== "tool_use") continue;
+            try {
+              const tool = tools.find(t => t.name === b.name);
+              if (!tool) throw new Error("Unknown tool " + b.name);
+              results.push({ type: "tool_result", tool_use_id: b.id, content: JSON.stringify(await tool.execute(b.input || {}, { signal })) });
+            } catch (e) {
+              results.push({ type: "tool_result", tool_use_id: b.id, content: "Error: " + (e && e.message || e), is_error: true });
+            }
+          }
+          messages.push({ role: "user", content: results });
+          continue;
+        }
+        const text = data.content.filter(b => b.type === "text").map(b => b.text).join("\n");
+        if (data.stop_reason === "max_tokens") throw fail("invalid_json", "answer cut short", text);
+        return parseJsonLoose(text);
+      }
+      throw fail("upstream_error", "too many lookups");
+    }
+    return { json };
+  }
+
+  // ---------- boot ----------
+  function redrawAll() {
+    if (!D) return;
+    overview();
+    $("s-metric").onchange && $("s-period").onchange();
+    for (const [id, spec] of answerSpecs) if (document.getElementById(id)) drawAnswerChart(id, spec);
+  }
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redrawAll);
+  new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  $("examples").innerHTML = EXAMPLES.map(e => `<button class="chip" type="button">${esc(e)}</button>`).join("");
+  $("examples").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b && !$("ask").disabled) { $("q").value = b.textContent; ask(b.textContent); } });
+  $("ask-form").addEventListener("submit", e => { e.preventDefault(); const v = $("q").value; ask(v); $("q").value = ""; });
+  $("q").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("ask-form").requestSubmit(); } });
+  $("stop").onclick = () => ctl?.abort();
+  setBusy(true); $("stop").hidden = true;
+
+  load().then(() => {
+    $("meta").textContent = `State-level data on ITIs, seats and trainees from ${Object.keys(SRC).length - 1} data.gov.in tables (${ROWS.length.toLocaleString("en-IN")} values), plus All-India figures read from the DGT Schemes Dashboard. Data built ${D.built}.`;
+    overview(); stateExplorer();
+    const ready = window.claude?.use ? window.claude.use("sample") : Promise.resolve(null);
+    const proxyUrl = (window.ITI_CONFIG && window.ITI_CONFIG.proxyUrl) || "";
+    return ready.then(async s => {
+      if (s) {
+        const lim = await s.limits().catch(() => null);
+        if (!lim?.tools) return disableAsk("This view can't run data lookups, so questions are turned off. The charts below still work.");
+        sample = s;
+      } else if (proxyUrl) {
+        sample = makeProxy(proxyUrl);
+        const n = $("ask-note"); n.hidden = false;
+        n.textContent = "Questions are answered by Claude through a service run by this site's owner. Your question and the data it looks up are sent to Anthropic. Don't enter personal information.";
+      } else {
+        return disableAsk("Questions are turned off on this copy because no answer service is set up. The charts below still work.");
+      }
+      setBusy(false); $("stop").hidden = true;
+    });
+  }).catch(err => {
+    $("tiles").innerHTML = `<div class="tile err">The data file didn't load (${esc(err.message)}). Reload the page.</div>`;
+  });
+})();
+</script>
+</body>
+</html>

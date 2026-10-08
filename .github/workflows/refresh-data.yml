@@ -1,0 +1,60 @@
+name: Refresh data
+
+on:
+  schedule:
+    - cron: "17 3 1 * *"      # 03:17 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download tables and rebuild
+        env:
+          # Optional. Without it the shared sample key is used, which is slower and easily rate limited.
+          DATA_GOV_IN_API_KEY: ${{ secrets.DATA_GOV_IN_API_KEY }}
+        run: |
+          python iti_datagovin.py --out iti_data --refresh
+          python build_dashboard_data.py
+
+      - name: Stop if any table failed
+        run: |
+          python - <<'PY'
+          import csv, sys
+          rows = list(csv.DictReader(open("iti_data/manifest.csv")))
+          bad = [r for r in rows if r["status"].startswith("ERROR")]
+          stale = [r for r in rows if "re-download failed" in r["status"]]
+          for r in stale: print("::warning::kept cached copy of", r["resource_id"], r["title"][:80])
+          for r in bad: print("::error::", r["resource_id"], r["status"])
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Commit changes
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A iti_data dashboard/data.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Refresh data from data.gov.in"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Redeploy the site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main

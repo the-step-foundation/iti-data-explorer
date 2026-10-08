@@ -1,0 +1,383 @@
+state,session,enrolled,enrolled_divyang,enrolled_female,enrolled_gen,enrolled_male,enrolled_obc,enrolled_partial,enrolled_sc,enrolled_st,trained,trained_in_women_itis_female,certified,in_training,seats,vacant_seats,sources
+All India,2014-15,951168,,,,,,,,,644410,,690455,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+All India,2015-16,1102121,,,,,,,,,1077932,,623725,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+All India,2016-17,1195487,,,,,,,,,1004073,,149998,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+All India,2017-18,1212680,,,,,,,,,984230,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+All India,2018-19,1455412,0,,340603,,653910,,321355,109630,,,,2312417,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+All India,2019-20,1359489,4341,166693,225827,1192545,643139,,301755,106044,,27330,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+All India,2020-21,1219446,4796,162254,289325,1057017,552609,,271304,101892,,26434,,,2360575,1024896,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+All India,2021-22,1225851,,168164,,1057634,,,,,,27998,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+All India,2022-23,1250679,,,,,,152322,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+All India,2023-24,1446247,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Andaman and Nicobar Islands,2014-15,186,,,,,,,,,109,,102,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Andaman and Nicobar Islands,2015-16,292,,,,,,,,,123,,103,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Andaman and Nicobar Islands,2016-17,371,,,,,,,,,247,,36,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Andaman and Nicobar Islands,2017-18,355,,,,,,,,,254,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Andaman and Nicobar Islands,2018-19,385,0,,180,,179,,0,26,,,,568,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Andaman and Nicobar Islands,2019-20,441,6,130,267,311,145,,0,68,,0,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Andaman and Nicobar Islands,2020-21,619,7,234,304,385,156,,0,159,,0,,,736,73,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Andaman and Nicobar Islands,2021-22,531,,145,,386,,,,,,0,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Andaman and Nicobar Islands,2022-23,450,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Andaman and Nicobar Islands,2023-24,481,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Andhra Pradesh,2014-15,56429,,,,,,,,,42924,,46565,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Andhra Pradesh,2015-16,53444,,,,,,,,,98101,,42162,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Andhra Pradesh,2016-17,56516,,,,,,,,,57686,,9862,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Andhra Pradesh,2017-18,52710,,,,,,,,,48279,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Andhra Pradesh,2018-19,60339,0,,9608,,32776,,14632,3084,,,,99658,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Andhra Pradesh,2019-20,56264,99,2086,4342,54178,30241,,13030,2889,,493,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Andhra Pradesh,2020-21,49142,154,1860,7204,47282,27082,,12038,2814,,473,,,92280,41023,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Andhra Pradesh,2021-22,45612,,1761,,43851,,,,,,453,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Andhra Pradesh,2022-23,48110,,,,,,726,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Andhra Pradesh,2023-24,50568,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Arunachal Pradesh,2014-15,355,,,,,,,,,384,,313,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Arunachal Pradesh,2015-16,411,,,,,,,,,306,,287,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Arunachal Pradesh,2016-17,611,,,,,,,,,425,,142,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Arunachal Pradesh,2017-18,598,,,,,,,,,413,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Arunachal Pradesh,2018-19,648,0,,33,,6,,3,605,,,,915,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Arunachal Pradesh,2019-20,564,0,200,541,364,21,,2,504,,0,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Arunachal Pradesh,2020-21,577,1,151,45,426,0,,0,532,,0,,,1404,799,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Arunachal Pradesh,2021-22,497,,147,,350,,,,,,18,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Arunachal Pradesh,2022-23,674,,,,,,412,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Arunachal Pradesh,2023-24,735,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Assam,2014-15,2765,,,,,,,,,1808,,2192,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Assam,2015-16,3054,,,,,,,,,3295,,2198,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Assam,2016-17,2673,,,,,,,,,2847,,803,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Assam,2017-18,2696,,,,,,,,,2413,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Assam,2018-19,2827,0,,772,,1279,,248,502,,,,4256,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Assam,2019-20,2965,22,755,1141,2210,1394,,246,553,,82,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Assam,2020-21,3210,26,781,896,2429,1469,,282,563,,97,,,6600,2705,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Assam,2021-22,3500,,777,,2723,,,,,,95,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Assam,2022-23,3548,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Assam,2023-24,5325,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Bihar,2014-15,65368,,,,,,,,,51460,,51963,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Bihar,2015-16,82138,,,,,,,,,61209,,69637,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Bihar,2016-17,94061,,,,,,,,,66460,,5316,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Bihar,2017-18,99516,,,,,,,,,80702,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Bihar,2018-19,107610,0,,21374,,61240,,14442,1833,,,,200186,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Bihar,2019-20,112408,541,4849,2904,107496,79322,,13206,1859,,628,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Bihar,2020-21,105030,271,6639,25524,98317,62166,,13151,1949,,1717,,,147872,39648,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Bihar,2021-22,110399,,6434,,103965,,,,,,1502,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Bihar,2022-23,90377,,,,,,59,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Bihar,2023-24,125577,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Chandigarh,2014-15,678,,,,,,,,,497,,541,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Chandigarh,2015-16,1029,,,,,,,,,634,,624,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Chandigarh,2016-17,937,,,,,,,,,871,,182,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Chandigarh,2017-18,1070,,,,,,,,,893,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Chandigarh,2018-19,907,0,,590,,100,,213,0,,,,1218,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Chandigarh,2019-20,968,4,462,587,506,129,,252,7,,379,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Chandigarh,2020-21,831,3,414,526,417,86,,216,3,,303,,,1032,109,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Chandigarh,2021-22,910,,458,,452,,,,,,373,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Chandigarh,2022-23,907,,,,,,907,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Chandigarh,2023-24,1083,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Chhattisgarh,2014-15,12362,,,,,,,,,8862,,8058,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Chhattisgarh,2015-16,14941,,,,,,,,,10383,,7339,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Chhattisgarh,2016-17,16179,,,,,,,,,13991,,3401,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Chhattisgarh,2017-18,17638,,,,,,,,,13727,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Chhattisgarh,2018-19,21838,0,,3316,,9888,,2717,5797,,,,28533,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Chhattisgarh,2019-20,21831,104,5828,7064,16003,9922,,2779,6083,,158,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Chhattisgarh,2020-21,19571,87,5416,2331,14151,8391,,2735,6111,,148,,,31816,10877,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Chhattisgarh,2021-22,22320,,5941,,16379,,,,,,209,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Chhattisgarh,2022-23,20816,,,,,,11117,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Chhattisgarh,2023-24,24226,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Dadra and Nagar Haveli,2014-15,108,,,,,,,,,98,,78,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Dadra and Nagar Haveli,2015-16,112,,,,,,,,,216,,76,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Dadra and Nagar Haveli,2016-17,113,,,,,,,,,108,,13,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Dadra and Nagar Haveli,2017-18,111,,,,,,,,,77,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Dadra and Nagar Haveli,2018-19,116,0,,25,,0,,1,90,,,,214,,,enrolled=ba097f68 (+3); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Dadra and Nagar Haveli,2019-20,160,0,0,155,160,2,,3,130,,,,,,,enrolled=ba097f68 (+3); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669
+Dadra and Nagar Haveli,2020-21,156,0,21,17,135,0,,0,139,,,,,,,enrolled=ba097f68 (+1); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669
+Dadra and Nagar Haveli,2021-22,251,,28,,223,,,,,,,,,,,enrolled=ba097f68; enrolled_female=62036996; enrolled_male=62036996
+Dadra and Nagar Haveli,2022-23,,,,,,,0,,,,,,,,,enrolled_partial=ba097f68
+Dadra and Nagar Haveli and Daman and Diu,2018-19,323,,,,,,,,,,,,,,,enrolled=7ca95fc4
+Dadra and Nagar Haveli and Daman and Diu,2019-20,319,,0,,0,,,,,,0,,,,,enrolled=cfc747c8 (+3); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Dadra and Nagar Haveli and Daman and Diu,2020-21,318,,0,,0,,,,,,0,,,508,151,enrolled=cfc747c8 (+4); enrolled_female=62036996; enrolled_male=62036996; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Dadra and Nagar Haveli and Daman and Diu,2021-22,443,,0,,0,,,,,,0,,,,,enrolled=7cc46a5e (+3); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Dadra and Nagar Haveli and Daman and Diu,2022-23,666,,,,,,,,,,,,,,,enrolled=7cc46a5e (+2)
+Dadra and Nagar Haveli and Daman and Diu,2023-24,908,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Daman and Diu,2014-15,156,,,,,,,,,0,,116,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Daman and Diu,2015-16,222,,,,,,,,,595,,120,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Daman and Diu,2016-17,206,,,,,,,,,176,,55,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Daman and Diu,2017-18,223,,,,,,,,,149,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Daman and Diu,2018-19,207,0,,170,,22,,2,13,,,,349,,,enrolled=ba097f68 (+3); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Daman and Diu,2019-20,159,1,19,138,140,18,,3,5,,,,,,,enrolled=ba097f68 (+3); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669
+Daman and Diu,2020-21,162,0,20,64,142,72,,7,19,,,,,,,enrolled=ba097f68 (+1); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669
+Daman and Diu,2021-22,192,,25,,167,,,,,,,,,,,enrolled=ba097f68; enrolled_female=62036996; enrolled_male=62036996
+Daman and Diu,2022-23,,,,,,,0,,,,,,,,,enrolled_partial=ba097f68
+Delhi,2014-15,6165,,,,,,,,,5196,,4783,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Delhi,2015-16,8083,,,,,,,,,5715,,4744,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Delhi,2016-17,9392,,,,,,,,,7128,,2204,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Delhi,2017-18,8623,,,,,,,,,7090,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Delhi,2018-19,13177,0,,7757,,1561,,3637,157,,,,16192,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Delhi,2019-20,9757,48,2978,4466,6779,1358,,2428,171,,957,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Delhi,2020-21,8672,39,2695,5509,5977,984,,2071,108,,729,,,18196,7856,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Delhi,2021-22,8774,,2871,,5903,,,,,,840,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Delhi,2022-23,9261,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Delhi,2023-24,10266,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Goa,2014-15,1247,,,,,,,,,1350,,1117,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Goa,2015-16,1851,,,,,,,,,2085,,1395,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Goa,2016-17,2053,,,,,,,,,1562,,537,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Goa,2017-18,2081,,,,,,,,,1781,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Goa,2018-19,1913,0,,1263,,314,,42,282,,,,2879,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Goa,2019-20,1727,9,359,1302,1368,347,,28,267,,11,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Goa,2020-21,1742,1,327,1127,1415,287,,35,293,,10,,,3632,1582,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Goa,2021-22,2080,,346,,1734,,,,,,4,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Goa,2022-23,2126,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Goa,2023-24,2256,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Gujarat,2014-15,43559,,,,,,,,,38174,,34881,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Gujarat,2015-16,65306,,,,,,,,,241655,,41019,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Gujarat,2016-17,66255,,,,,,,,,51703,,17789,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Gujarat,2017-18,71853,,,,,,,,,51540,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Gujarat,2018-19,92086,0,,23047,,37654,,12039,19032,,,,124394,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Gujarat,2019-20,69531,281,12957,27393,56574,29566,,7645,14297,,1827,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Gujarat,2020-21,85391,396,15498,20494,69892,35462,,11401,18022,,1759,,,126528,35208,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Gujarat,2021-22,81236,,15200,,66034,,,,,,1980,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Gujarat,2022-23,84648,,,,,,25392,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Gujarat,2023-24,98454,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Haryana,2014-15,26813,,,,,,,,,13841,,18443,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Haryana,2015-16,45885,,,,,,,,,32411,,22995,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Haryana,2016-17,44322,,,,,,,,,34655,,10030,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Haryana,2017-18,44161,,,,,,,,,38502,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Haryana,2018-19,68440,0,,23182,,23593,,21458,0,,,,89774,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Haryana,2019-20,53251,64,10669,12066,42544,17976,,16260,5,,3500,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Haryana,2020-21,54275,63,10814,19418,43461,18565,,16285,2,,3200,,,96504,35796,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Haryana,2021-22,49032,,9221,,39811,,,,,,3156,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Haryana,2022-23,45161,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Haryana,2023-24,54944,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Himachal Pradesh,2014-15,16795,,,,,,,,,12164,,14239,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Himachal Pradesh,2015-16,17212,,,,,,,,,17539,,12090,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Himachal Pradesh,2016-17,21707,,,,,,,,,17174,,4700,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Himachal Pradesh,2017-18,20700,,,,,,,,,16118,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Himachal Pradesh,2018-19,21556,0,,11473,,3674,,5311,883,,,,31991,,,enrolled=ba097f68 (+5); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Himachal Pradesh,2019-20,22203,131,5159,8513,17044,4023,,5765,1100,,1058,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Himachal Pradesh,2020-21,17923,103,3780,10111,14097,2723,,4208,832,,739,,,40940,6391,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Himachal Pradesh,2021-22,20332,,4621,,15710,,,,,,901,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Himachal Pradesh,2022-23,22691,,,,,,5762,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Himachal Pradesh,2023-24,23437,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Jammu and Kashmir,2014-15,2343,,,,,,,,,106,,1327,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Jammu and Kashmir,2015-16,2545,,,,,,,,,2461,,1058,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Jammu and Kashmir,2016-17,2653,,,,,,,,,2538,,1018,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Jammu and Kashmir,2017-18,2721,,,,,,,,,2221,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Jammu and Kashmir,2018-19,2772,0,,2459,,17,,147,109,,,,3483,,,enrolled=ba097f68 (+5); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Jammu and Kashmir,2019-20,4396,34,1865,4105,2531,16,,275,211,,172,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Jammu and Kashmir,2020-21,7545,43,2869,6661,4676,74,,519,286,,414,,,9120,233,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Jammu and Kashmir,2021-22,8062,,3229,,4833,,,,,,436,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Jammu and Kashmir,2022-23,8130,,,,,,1984,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Jammu and Kashmir,2023-24,8504,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Jharkhand,2014-15,26748,,,,,,,,,29506,,20623,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Jharkhand,2015-16,28735,,,,,,,,,46360,,20466,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Jharkhand,2016-17,31691,,,,,,,,,26710,,1780,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Jharkhand,2017-18,28981,,,,,,,,,27467,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Jharkhand,2018-19,29971,0,,5904,,15463,,3501,3986,,,,56817,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Jharkhand,2019-20,33463,47,1077,5010,32385,19670,,3864,4342,,202,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Jharkhand,2020-21,25626,29,911,4103,24695,14630,,3181,3626,,189,,,64000,27451,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Jharkhand,2021-22,29760,,1346,,28414,,,,,,310,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Jharkhand,2022-23,35573,,,,,,1758,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Jharkhand,2023-24,40103,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Karnataka,2014-15,69547,,,,,,,,,30675,,45870,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Karnataka,2015-16,71014,,,,,,,,,85865,,37111,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Karnataka,2016-17,71354,,,,,,,,,70781,,4704,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Karnataka,2017-18,72273,,,,,,,,,59095,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Karnataka,2018-19,81893,0,,6687,,46357,,16964,6923,,,,143845,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Karnataka,2019-20,73714,102,3723,8016,69989,45557,,14271,6593,,825,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Karnataka,2020-21,54244,142,3091,2913,51153,35304,,11395,4630,,592,,,126128,69388,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Karnataka,2021-22,66238,,3106,,63132,,,,,,971,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Karnataka,2022-23,73019,,,,,,181,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Karnataka,2023-24,78663,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Kerala,2014-15,30139,,,,,,,,,23201,,19451,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Kerala,2015-16,28699,,,,,,,,,31406,,12555,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Kerala,2016-17,29714,,,,,,,,,29774,,3374,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Kerala,2017-18,29624,,,,,,,,,26222,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Kerala,2018-19,38411,0,,7284,,21580,,6586,810,,,,55083,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Kerala,2019-20,35201,237,6916,3956,28285,21949,,5981,746,,2648,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Kerala,2020-21,31632,251,6053,5885,25579,19716,,5409,620,,2492,,,68994,36209,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Kerala,2021-22,35493,,6485,,29008,,,,,,2665,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Kerala,2022-23,34741,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Kerala,2023-24,33222,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Ladakh,2016-17,73,,,,,,,,,,,,,,,enrolled=d5a26bc1
+Ladakh,2017-18,70,,,,,,,,,,,,,,,enrolled=d5a26bc1
+Ladakh,2018-19,75,0,,0,,0,,0,0,,,,,,,enrolled=ba097f68 (+2); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669
+Ladakh,2019-20,151,0,123,0,28,0,,0,0,,0,,,,,enrolled=cfc747c8 (+5); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Ladakh,2020-21,118,0,101,0,17,0,,0,0,,0,,,224,57,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Ladakh,2021-22,171,,122,,49,,,,,,5,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Ladakh,2022-23,326,,,,,,18,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Ladakh,2023-24,368,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Lakshadweep,2014-15,94,,,,,,,,,98,,67,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Lakshadweep,2015-16,90,,,,,,,,,94,,23,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Lakshadweep,2016-17,93,,,,,,,,,90,,30,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Lakshadweep,2017-18,87,,,,,,,,,72,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Lakshadweep,2018-19,87,0,,0,,1,,0,86,,,,87,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Lakshadweep,2019-20,246,3,97,240,149,6,,0,239,,0,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Lakshadweep,2020-21,435,5,157,1,278,0,,0,434,,0,,,480,44,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Lakshadweep,2021-22,374,,167,,207,,,,,,0,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Lakshadweep,2022-23,303,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Lakshadweep,2023-24,360,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Madhya Pradesh,2014-15,38871,,,,,,,,,17404,,22073,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Madhya Pradesh,2015-16,61576,,,,,,,,,20917,,12804,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Madhya Pradesh,2016-17,63871,,,,,,,,,41136,,4259,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Madhya Pradesh,2017-18,56803,,,,,,,,,54754,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Madhya Pradesh,2018-19,82704,0,,18861,,41059,,13344,6597,,,,123076,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Madhya Pradesh,2019-20,73278,406,10464,9717,62813,38633,,12334,6278,,812,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Madhya Pradesh,2020-21,71096,257,10446,15796,60641,35461,,12855,6816,,708,,,157927,83335,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Madhya Pradesh,2021-22,63306,,9494,,53812,,,,,,747,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Madhya Pradesh,2022-23,69194,,,,,,18932,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Madhya Pradesh,2023-24,73223,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Maharashtra,2014-15,104419,,,,,,,,,69953,,77428,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Maharashtra,2015-16,108765,,,,,,,,,93346,,76837,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Maharashtra,2016-17,117070,,,,,,,,,105806,,31374,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Maharashtra,2017-18,118015,,,,,,,,,101247,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Maharashtra,2018-19,122219,0,,37706,,49804,,21089,12577,,,,186679,,,enrolled=ba097f68 (+5); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Maharashtra,2019-20,110734,344,17693,30506,93041,48306,,19623,10662,,2079,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Maharashtra,2020-21,102680,1021,16219,25966,86461,47528,,19325,9850,,1776,,,233232,125153,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Maharashtra,2021-22,112997,,18915,,94082,,,,,,2009,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Maharashtra,2022-23,121884,,,,,,35,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Maharashtra,2023-24,128333,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Manipur,2014-15,48,,,,,,,,,43,,28,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Manipur,2015-16,94,,,,,,,,,51,,46,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Manipur,2016-17,79,,,,,,,,,63,,11,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Manipur,2017-18,122,,,,,,,,,59,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Manipur,2018-19,117,0,,94,,0,,0,23,,,,174,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Manipur,2019-20,80,0,11,75,69,1,,4,14,,0,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Manipur,2020-21,82,0,14,68,68,1,,4,9,,0,,,220,130,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Manipur,2021-22,108,,8,,100,,,,,,0,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Manipur,2022-23,668,,,,,,103,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Manipur,2023-24,812,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Meghalaya,2014-15,546,,,,,,,,,433,,316,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Meghalaya,2015-16,479,,,,,,,,,556,,267,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Meghalaya,2016-17,645,,,,,,,,,583,,181,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Meghalaya,2017-18,566,,,,,,,,,387,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Meghalaya,2018-19,683,0,,6,,3,,6,668,,,,805,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Meghalaya,2019-20,512,0,228,509,284,1,,1,505,,101,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Meghalaya,2020-21,514,0,204,4,310,1,,0,509,,96,,,1000,137,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Meghalaya,2021-22,508,,202,,306,,,,,,117,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Meghalaya,2022-23,738,,,,,,148,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Meghalaya,2023-24,714,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Mizoram,2014-15,523,,,,,,,,,174,,157,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Mizoram,2015-16,436,,,,,,,,,385,,194,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Mizoram,2016-17,474,,,,,,,,,544,,130,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Mizoram,2017-18,419,,,,,,,,,333,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Mizoram,2018-19,443,0,,32,,0,,0,411,,,,588,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Mizoram,2019-20,274,0,78,274,196,0,,0,274,,0,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Mizoram,2020-21,242,0,81,0,161,0,,0,242,,0,,,788,488,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Mizoram,2021-22,256,,80,,176,,,,,,0,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Mizoram,2022-23,334,,,,,,319,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Mizoram,2023-24,396,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Nagaland,2014-15,171,,,,,,,,,0,,98,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Nagaland,2015-16,75,,,,,,,,,87,,37,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Nagaland,2016-17,169,,,,,,,,,150,,13,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Nagaland,2017-18,109,,,,,,,,,90,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Nagaland,2018-19,168,0,,0,,0,,0,165,,,,190,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Nagaland,2019-20,228,0,42,228,186,0,,0,227,,0,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Nagaland,2020-21,222,0,48,0,174,0,,0,222,,0,,,428,171,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Nagaland,2021-22,186,,44,,142,,,,,,0,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Nagaland,2022-23,267,,,,,,235,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Nagaland,2023-24,240,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Odisha,2014-15,47918,,,,,,,,,45779,,37736,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Odisha,2015-16,49199,,,,,,,,,40163,,26173,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Odisha,2016-17,49145,,,,,,,,,48480,,1938,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Odisha,2017-18,48398,,,,,,,,,38830,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Odisha,2018-19,51337,0,,22995,,9795,,9796,8365,,,,94416,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Odisha,2019-20,49043,148,4500,11670,44543,10289,,6973,7448,,54,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Odisha,2020-21,49694,222,5790,24216,43904,8715,,7845,8573,,71,,,101178,49985,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Odisha,2021-22,57401,,7756,,49645,,,,,,64,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Odisha,2022-23,54005,,,,,,7138,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Odisha,2023-24,65801,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Puducherry,2014-15,843,,,,,,,,,714,,482,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Puducherry,2015-16,965,,,,,,,,,634,,365,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Puducherry,2016-17,978,,,,,,,,,903,,108,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Puducherry,2017-18,1038,,,,,,,,,648,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Puducherry,2018-19,943,0,,355,,418,,148,2,,,,1789,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Puducherry,2019-20,789,20,117,44,672,491,,181,3,,48,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Puducherry,2020-21,687,17,134,191,553,360,,136,0,,55,,,1556,855,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Puducherry,2021-22,689,,101,,588,,,,,,34,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Puducherry,2022-23,737,,,,,,308,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Puducherry,2023-24,796,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Punjab,2014-15,33808,,,,,,,,,25677,,25733,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Punjab,2015-16,44146,,,,,,,,,31207,,27295,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Punjab,2016-17,37122,,,,,,,,,42146,,11766,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Punjab,2017-18,37189,,,,,,,,,34699,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Punjab,2018-19,41934,0,,25204,,5436,,10771,40,,,,53701,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Punjab,2019-20,39747,38,10441,6345,29306,5073,,10486,10,,3359,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Punjab,2020-21,47590,40,13663,27603,33927,6092,,13893,0,,3618,,,76332,21605,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Punjab,2021-22,39992,,12347,,27644,,,,,,3809,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Punjab,2022-23,39986,,,,,,10846,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Punjab,2023-24,43994,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Rajasthan,2014-15,121050,,,,,,,,,52377,,74926,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Rajasthan,2015-16,132555,,,,,,,,,52522,,43996,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Rajasthan,2016-17,122384,,,,,,,,,126957,,7378,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Rajasthan,2017-18,135209,,,,,,,,,113915,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Rajasthan,2018-19,125527,0,,16305,,50200,,30007,24047,,,,228027,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Rajasthan,2019-20,136224,102,10684,33971,125455,54739,,34956,30010,,892,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Rajasthan,2020-21,101614,134,9507,12118,92086,39023,,26083,24356,,788,,,238780,131996,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Rajasthan,2021-22,95342,,9936,,85357,,,,,,796,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Rajasthan,2022-23,99263,,,,,,36190,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Rajasthan,2023-24,109595,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Sikkim,2014-15,267,,,,,,,,,192,,191,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Sikkim,2015-16,219,,,,,,,,,648,,166,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Sikkim,2016-17,282,,,,,,,,,274,,104,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Sikkim,2017-18,339,,,,,,,,,206,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Sikkim,2018-19,401,0,,22,,228,,38,108,,,,475,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Sikkim,2019-20,207,0,98,108,109,89,,10,57,,0,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Sikkim,2020-21,260,0,106,16,154,149,,20,75,,0,,,696,421,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Sikkim,2021-22,181,,76,,105,,,,,,0,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Sikkim,2022-23,424,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Sikkim,2023-24,312,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Tamil Nadu,2014-15,38722,,,,,,,,,26985,,24820,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Tamil Nadu,2015-16,40624,,,,,,,,,74981,,18129,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Tamil Nadu,2016-17,41193,,,,,,,,,39840,,4452,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Tamil Nadu,2017-18,38430,,,,,,,,,34229,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Tamil Nadu,2018-19,42934,0,,2581,,27718,,10888,678,,,,66371,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Tamil Nadu,2019-20,35024,209,4219,875,30804,23674,,9977,626,,1130,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Tamil Nadu,2020-21,27315,158,4001,900,23314,18190,,7588,566,,1231,,,76912,46867,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Tamil Nadu,2021-22,28496,,4282,,24214,,,,,,1219,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Tamil Nadu,2022-23,35078,,,,,,34,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Tamil Nadu,2023-24,41168,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Telangana,2014-15,33728,,,,,,,,,21173,,28276,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Telangana,2015-16,34132,,,,,,,,,21276,,23772,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Telangana,2016-17,36546,,,,,,,,,34851,,6173,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Telangana,2017-18,32672,,,,,,,,,31825,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Telangana,2018-19,36215,0,,3527,,19993,,7620,5067,,,,59585,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Telangana,2019-20,32775,208,1977,4998,30798,18182,,6952,4565,,233,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Telangana,2020-21,29468,186,1666,3828,27802,14783,,6444,4395,,210,,,51784,21914,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Telangana,2021-22,27183,,1520,,25663,,,,,,162,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Telangana,2022-23,26480,,,,,,0,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Telangana,2023-24,29557,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Tripura,2014-15,1488,,,,,,,,,818,,956,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Tripura,2015-16,1144,,,,,,,,,858,,819,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Tripura,2016-17,1593,,,,,,,,,1352,,640,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Tripura,2017-18,1504,,,,,,,,,1050,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Tripura,2018-19,2792,0,,665,,281,,587,1254,,,,3282,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Tripura,2019-20,1497,7,387,960,1110,210,,319,612,,14,,,,,enrolled=cfc747c8 (+8); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Tripura,2020-21,2043,12,525,868,1518,37,,405,733,,5,,,4972,2262,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Tripura,2021-22,1603,,473,,1130,,,,,,27,,,,,enrolled=7cc46a5e (+5); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Tripura,2022-23,2470,,,,,,1276,,,,,,,,,enrolled=7cc46a5e (+3); enrolled_partial=ba097f68
+Tripura,2023-24,2462,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Uttar Pradesh,2014-15,147760,,,,,,,,,106482,,110584,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Uttar Pradesh,2015-16,177131,,,,,,,,,85380,,99845,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Uttar Pradesh,2016-17,233165,,,,,,,,,154853,,7257,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Uttar Pradesh,2017-18,246358,,,,,,,,,165192,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Uttar Pradesh,2018-19,355397,0,,65620,,186592,,100238,2671,,,,562799,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Uttar Pradesh,2019-20,336119,897,39847,17917,296212,174457,,100743,2483,,5180,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Uttar Pradesh,2020-21,279998,883,32003,48498,247995,146242,,81979,2203,,4668,,,486528,184165,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Uttar Pradesh,2021-22,273714,,35359,,238355,,,,,,4713,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Uttar Pradesh,2022-23,269106,,,,,,218,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Uttar Pradesh,2023-24,333601,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+Uttarakhand,2014-15,7462,,,,,,,,,5083,,5592,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+Uttarakhand,2015-16,10307,,,,,,,,,4696,,4577,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+Uttarakhand,2016-17,10718,,,,,,,,,8464,,1059,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+Uttarakhand,2017-18,10556,,,,,,,,,9270,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+Uttarakhand,2018-19,12879,0,,4023,,2538,,5075,1058,,,,19844,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+Uttarakhand,2019-20,11052,42,2104,3864,8948,2330,,3035,813,,112,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+Uttarakhand,2020-21,8344,11,1521,3451,6823,2193,,2026,672,,113,,,24356,5629,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+Uttarakhand,2021-22,8918,,1284,,7634,,,,,,87,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+Uttarakhand,2022-23,10807,,,,,,33,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+Uttarakhand,2023-24,11542,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
+West Bengal,2014-15,11687,,,,,,,,,10670,,10330,,,,certified=799ec786; enrolled=799ec786; trained=c23ae710 (+2)
+West Bengal,2015-16,15211,,,,,,,,,9772,,12401,,,,certified=799ec786; enrolled=4de52cc2 (+1); trained=c23ae710 (+2)
+West Bengal,2016-17,29152,,,,,,,,,12745,,7179,,,,certified=799ec786; enrolled=4de52cc2 (+2); trained=c23ae710 (+2)
+West Bengal,2017-18,28932,,,,,,,,,20481,,,,,,enrolled=4de52cc2 (+3); trained=c23ae710 (+2)
+West Bengal,2018-19,33461,0,,17483,,4141,,9805,1681,,,,50174,,,enrolled=ba097f68 (+4); enrolled_divyang=0fec4669; enrolled_gen=0fec4669; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; in_training=c23ae710 (+2)
+West Bengal,2019-20,32506,187,3551,11560,28955,5002,,10123,1388,,376,,,,,enrolled=cfc747c8 (+7); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; trained_in_women_itis_female=51c8e446
+West Bengal,2020-21,30696,234,4494,12669,26202,6667,,9768,1529,,233,,,66892,34183,enrolled=cfc747c8 (+6); enrolled_divyang=0fec4669; enrolled_female=62036996; enrolled_gen=0fec4669; enrolled_male=62036996; enrolled_obc=0fec4669; enrolled_sc=0fec4669; enrolled_st=0fec4669; seats=89bce479; trained_in_women_itis_female=51c8e446; vacant_seats=89bce479
+West Bengal,2021-22,29207,,3857,,25350,,,,,,296,,,,,enrolled=7cc46a5e (+4); enrolled_female=62036996; enrolled_male=62036996; trained_in_women_itis_female=51c8e446
+West Bengal,2022-23,37711,,,,,,28191,,,,,,,,,enrolled=7cc46a5e (+2); enrolled_partial=ba097f68
+West Bengal,2023-24,44221,,,,,,,,,,,,,,,enrolled=7cc46a5e (+1)
