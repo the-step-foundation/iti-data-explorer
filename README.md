@@ -22,6 +22,77 @@ iti_data/dashboard_kpis_by_admission_year.csv (typed in from the DGT dashboard) 
 - Without the Worker the charts and tables still work. The question box says it is turned off.
 - Opened inside Claude (as an artifact), the page uses Claude directly and needs no Worker.
 
+## Code walkthrough
+
+Start here if you're new to the project; each file does one job in the pipeline above.
+
+**`iti_datagovin.py`** — the scraper. `TABLES` is the heart of it: one entry per data.gov.in
+resource, each a hand-written spec mapping that table's column names to `(metric, breakdown,
+period)`. There's no schema to infer because every Rajya Sabha answer table has a different
+layout, so a new source always means adding an entry here (see "Add to it over time" below).
+`norm_state()`/`STATES` collapse the many spellings of each state name to one canonical form;
+`parse_period()` turns a column header or value into a session label (`"2019-20"`). After every
+table is fetched and parsed into `long.csv`, the script re-groups by `(state, metric, breakdown,
+period)` across all sources to build `conflicts.csv` (same cell, different values — see below)
+and `totals_check.csv` (does a table's own "Total" row match the sum of its states).
+
+**`build_dashboard_data.py`** — the merge step. It re-reads `long.csv` plus any CSV dropped in
+`extra/`, groups by the same key as above, and for each group keeps the value from the
+latest-published table (ties broken by resource id) — this is "where tables disagree, the newest
+answer wins," the same rule `iti_datagovin.py` uses for `conflicts.csv`. The result is one flat
+array of rows (`[kind, state, metric, breakdown, period, value, source, n_sources, revised]`)
+plus the hand-entered `dashboard` array from `dashboard_kpis_by_admission_year.csv`, written to
+`dashboard/data.json`. The `built` date is only bumped when the payload actually changes, so the
+monthly refresh commits nothing when nothing moved.
+
+**`dashboard/index.html`** — the whole front end, as one file with Chart.js loaded from a CDN.
+Reading order inside the `<script>` block:
+1. **data** — `load()` fetches `data.json` and expands the compact row arrays plus the DGT
+   dashboard KPIs into one `ROWS` array of objects.
+2. **query engine** — `query()` is the single read path over `ROWS`: the overview charts, the
+   state explorer and Claude's `query_data` tool all call it, so a chart and an answer can never
+   disagree about what a metric means. `catalog()` turns `ROWS` into the plain-text index of
+   available data that gets embedded in Claude's system prompt.
+3. **charts** — thin Chart.js wrappers (`baseOpts`, `numAxis`, `seriesColor`) shared by the
+   overview charts, the state explorer and any chart Claude's answer asks for.
+4. **state explorer** — the "compare states" panel; purely derived from `query()`, no network calls.
+5. **ask Claude** — `rules()` builds the system prompt (data model, caveats, output format) fresh
+   per question; `TOOLS` declares the one tool Claude can call (kept in sync with `QUERY_TOOL` in
+   the Worker — see its comment). `ask()` runs the tool loop against whichever backend is
+   available: inside Claude it uses `window.claude.use("sample")` directly; on a plain page it
+   uses `makeProxy()`, which replays the same loop against the Worker, one HTTP call per round.
+6. **boot** — wires up the form, loads the data, and picks a backend (`sample` vs proxy vs "off").
+
+**`worker/src/index.js`** — the Cloudflare Worker. It does not run the tool loop itself; it is a
+narrow, stateless forwarder: validate the shape of the incoming messages (`validateMessages`),
+attach the fixed model/system prompt/tool/effort (`buildUpstream`), check the origin
+(`allowedOrigin`), rate-limit by IP, and relay the Claude API's response back unchanged. Those
+three functions are exported and unit-testable without a Workers runtime.
+
+## DGT dashboard vs data.gov.in: what differs
+
+The full comparison (page by page, with an item-by-item coverage table) is in
+[iti_data/DASHBOARD_COVERAGE.md](iti_data/DASHBOARD_COVERAGE.md). The headline:
+
+- **Enrolment totals don't match for 2019–2022.** The DGT dashboard's admission-year figures hold
+  only part of those candidates — 10% of data.gov.in's total for 2019, ~25–27% for 2020–21, 75%
+  for 2022 — apparently only part of the older records were migrated into the new portal. 2023
+  onward the two agree almost exactly (100% for 2023), and the dashboard is the only source from
+  2024 on (data.gov.in's latest session is 2023-24).
+- **Different granularity.** data.gov.in only has state-level figures; the dashboard also breaks
+  enrolment down by district, institute, trade and sector, and tracks Assessed/Passed/Certified,
+  none of which data.gov.in has after 2016-17 (completions) or 2016-17 (certifications).
+- **data.gov.in has the longer history.** It goes back to 2014-15 and also has ITI/seat counts
+  (2015–2024), which aren't on the dashboard at all.
+- **Within data.gov.in itself, the same state/year is often reported differently by different
+  Rajya Sabha answers** — see `iti_data/conflicts.csv` for every case (180 rows). Most are
+  provisional-vs-revised figures a few percent apart; a handful (e.g. Ladakh 2018-19, reported as
+  both 0 and 75) are clearly one source being wrong. The build always keeps the latest-published
+  figure and flags the row `revised` so the dashboard and Claude's answers can say so.
+
+**Practical takeaway:** for 2019–2022 totals, data.gov.in is the better source; for 2024+, or for
+anything below state level, only the DGT dashboard (or a fresh ask to DGT/MSDE) has it.
+
 ## Run it on your machine
 
 ```bash
@@ -89,7 +160,8 @@ Questions that need data this project does not have (seat fill rate by ITI, pass
 | `iti_data/` | Merged CSVs, the cached source tables (`raw/`) and the coverage notes |
 | `datagovin_iti_skilling_inventory.csv` | All 949 skilling-related datasets found on data.gov.in |
 | `.github/workflows/` | Deploy and monthly refresh |
+| `LICENSE` | MIT licence for the code |
 
 ## Licence and data terms
 
-No licence file is included yet. Until you add one, others cannot legally reuse the code; choose one before sharing widely. The data is published by the Government of India on data.gov.in under its open data terms, and the DGT dashboard figures were read from a public page. Check both sources' terms before reusing the data commercially.
+The code is MIT-licensed (see [LICENSE](LICENSE)). The data is published by the Government of India on data.gov.in under its open data terms, and the DGT dashboard figures were read from a public page. Check both sources' terms before reusing the data commercially.

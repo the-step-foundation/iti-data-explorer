@@ -217,12 +217,16 @@ img { max-width: 100%; }
   }
 
   // ---------- query engine (used by the charts and by Claude's tool) ----------
+  // This is the single read path over ROWS: both the on-page charts and Claude's query_data
+  // tool (below, in TOOLS) call query() so a chart and an answer never disagree on what a
+  // metric/breakdown/period means.
   const STATE_ALIAS = { india: "All India", "all-india": "All India", national: "All India", total: "All India",
     "j&k": "Jammu and Kashmir", "up": "Uttar Pradesh", "mp": "Madhya Pradesh", "tn": "Tamil Nadu", "wb": "West Bengal",
     "orissa": "Odisha", "pondicherry": "Puducherry", "uttaranchal": "Uttarakhand", "delhi ncr": "Delhi" };
   function normState(s) {
     const k = String(s).trim().toLowerCase();
     if (STATE_ALIAS[k]) return STATE_ALIAS[k];
+    // exact match first, then startsWith so Claude can pass a partial name ("Andhra") and still resolve.
     return D.states.find(x => x.toLowerCase() === k) || D.states.find(x => x.toLowerCase().startsWith(k)) || null;
   }
   function query({ metric, breakdown = "total", kind, states, periods } = {}) {
@@ -232,6 +236,8 @@ img { max-width: 100%; }
       st = new Set();
       for (const s of states) { const n = normState(s); n ? st.add(n) : bad.push(s); }
     }
+    // A period filter matches by prefix as well as exact value, so "2019" matches session "2019-20"
+    // and a date-based snapshot period like "2019-03-31" without the caller needing the exact label.
     const per = Array.isArray(periods) && periods.length ? periods.map(String) : null;
     const rows = ROWS.filter(r => r.metric === metric && r.breakdown === (breakdown || "total") && (!kind || r.kind === kind)
       && (!st || st.has(r.state)) && (!per || per.some(p => r.period === p || r.period.startsWith(p + "-") || r.period.startsWith(p))));
@@ -267,27 +273,32 @@ img { max-width: 100%; }
       },
       scales: {
         x: { grid: { display: false }, border: { color: grid }, ticks: { color: muted, font: { family: "IBM Plex Sans", size: 11 }, maxRotation: 0, autoSkip: true } },
-        y: { grid: { color: grid }, border: { display: false }, ticks: { color: muted, font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true }
+        y: numAxis()
       }
     }, extra);
   }
   const compact = v => Math.abs(v) >= 1e5 ? (v / 1e5).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + "L" : Number(v).toLocaleString("en-IN");
   const seriesColor = i => css(["--series-1", "--series-2", "--series-3", "--series-4"][i % 4]);
+  // Shared numeric axis (compact ticks, e.g. "1.2L"): used for the default y axis and for the
+  // horizontal bar charts (state explorer, "by state" answer charts) where it becomes the x axis.
+  const numAxis = () => ({ grid: { color: css("--grid") }, border: { display: false },
+    ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true });
   function draw(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); return charts[id]; }
 
+  const byPeriod = (a, b) => a.period.localeCompare(b.period);
   function overview() {
     const one = (q) => query(q).rows;
     const allIndia = s => s.filter(r => r.state === "All India");
     // tiles
-    const itis = allIndia(one({ kind: "snapshot", metric: "itis" })).sort((a, b) => a.period.localeCompare(b.period));
+    const itis = allIndia(one({ kind: "snapshot", metric: "itis" })).sort(byPeriod);
     const lastIti = itis.at(-1);
-    const gov = allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "govt" })).sort((a, b) => a.period.localeCompare(b.period)).at(-1);
-    const pvt = allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "pvt" })).sort((a, b) => a.period.localeCompare(b.period)).at(-1);
-    const enr = allIndia(one({ kind: "series", metric: "enrolled" })).sort((a, b) => a.period.localeCompare(b.period));
+    const gov = allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "govt" })).sort(byPeriod).at(-1);
+    const pvt = allIndia(one({ kind: "snapshot", metric: "itis", breakdown: "pvt" })).sort(byPeriod).at(-1);
+    const enr = allIndia(one({ kind: "series", metric: "enrolled" })).sort(byPeriod);
     const lastE = enr.at(-1);
-    const f = allIndia(one({ kind: "series", metric: "enrolled", breakdown: "female" })).sort((a, b) => a.period.localeCompare(b.period)).at(-1);
+    const f = allIndia(one({ kind: "series", metric: "enrolled", breakdown: "female" })).sort(byPeriod).at(-1);
     const mle = allIndia(one({ kind: "series", metric: "enrolled", breakdown: "male", periods: [f.period] }))[0];
-    const dash = ROWS.filter(r => r.kind === "dgt_dashboard" && r.metric === "enrolled").sort((a, b) => a.period.localeCompare(b.period));
+    const dash = ROWS.filter(r => r.kind === "dgt_dashboard" && r.metric === "enrolled").sort(byPeriod);
     const lastFull = dash.filter(r => r.value > 100000).at(-1);
     document.getElementById("tiles").innerHTML = [
       ["ITIs, as on " + fmtDate(lastIti.period), fmt(lastIti.value), `Govt ${fmt(gov.value)} · Private ${fmt(pvt.value)} (${fmtDate(gov.period)})`],
@@ -344,7 +355,7 @@ img { max-width: 100%; }
       const o = baseOpts({ indexAxis: "y" });
       o.plugins.legend.display = false;
       o.interaction = { mode: "nearest", axis: "y", intersect: false };
-      o.scales.x = { grid: { color: css("--grid") }, border: { display: false }, ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true };
+      o.scales.x = numAxis();
       o.scales.y = { grid: { display: false }, border: { color: css("--grid") }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 }, autoSkip: false } };
       o.plugins.tooltip.callbacks.label = c => ` ${fmt(c.parsed.x)}${rows[c.dataIndex].revised ? "  (revised)" : ""}`;
       draw("c-states", { type: "bar", data: { labels: rows.map(r => r.state), datasets: [{ label: nameOf(metric, breakdown), data: rows.map(r => r.value),
@@ -377,6 +388,8 @@ img { max-width: 100%; }
   let sample = null, ctl = null, history = [];
   const $ = id => document.getElementById(id);
 
+  // The system prompt, sent as the first user turn (see ask()). Built fresh per question so the
+  // catalog and state list always reflect the data.json actually loaded in this page.
   function rules() {
     return `You answer questions about India's Industrial Training Institutes (ITIs) under the Craftsmen Training Scheme (CTS), for an analyst. Use ONLY data returned by the query_data tool. Never estimate, extrapolate, or use outside knowledge for numbers.
 
@@ -412,6 +425,9 @@ FINAL MESSAGE: only one JSON object:
 Chart rules: the page draws the chart itself by running each series as a query, so use exact catalog values. x="state": each series must set ONE period (states optional, omit for all states; the page sorts and shows top 20). x="period": each series sets ONE state in "states" (periods optional). At most 4 series. Use a chart only when it helps; null otherwise. "caveats": 0-2 short strings for limits that affect this answer.`;
   }
 
+  // Keep this schema in sync with QUERY_TOOL in worker/src/index.js: the proxy backend sends this
+  // same tool definition to Claude, and its execute() here must accept whatever the page's own
+  // `sample` capability (when opened inside Claude) and the proxy both produce as input.
   const TOOLS = [{
     name: "query_data",
     description: "Look up ITI values. Returns matching rows {state, period, value, revised, source}. metric is required; breakdown defaults to 'total'. Omit states/periods to get all. Periods match exactly or by prefix ('2019' matches '2019-20').",
@@ -530,8 +546,7 @@ Chart rules: the page draws the chart itself by running each series as a query, 
     if (byState) {
       $(id + "-box").style.height = Math.max(240, labels.length * (18 + 8 * datasets.length) + 50) + "px";
       o.interaction = { mode: "index", axis: "y", intersect: false };
-      o.scales = { x: { grid: { color: css("--grid") }, border: { display: false }, ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true },
-        y: { grid: { display: false }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 }, autoSkip: false } } };
+      o.scales = { x: numAxis(), y: { grid: { display: false }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 }, autoSkip: false } } };
     }
     draw(id, { type, data: { labels: byState ? labels : labels.map(fmtDate), datasets }, options: o });
     answerSpecs.set(id, spec);
