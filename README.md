@@ -1,5 +1,7 @@
 # ITI Data Explorer
 
+**Live dashboard: [the-step-foundation.github.io/iti-data-explorer](https://the-step-foundation.github.io/iti-data-explorer/)**
+
 A dashboard for India's Industrial Training Institutes (ITIs) under the Craftsmen Training Scheme. You can read the charts, or ask questions in plain language and get an answer, a chart and the exact values and sources behind it.
 
 The data comes from 55 tables on [data.gov.in](https://www.data.gov.in/) (almost all are Rajya Sabha answers, state level) plus All-India figures read from the [DGT Schemes Dashboard](https://dgt.skillindiadigital.gov.in/). What the data can and cannot answer is written up in [iti_data/DASHBOARD_COVERAGE.md](iti_data/DASHBOARD_COVERAGE.md). In short: state-level enrolment (2014-15 to 2023-24), counts of ITIs and seats, and women's share are covered. Anything per institute, per trade or per district is not.
