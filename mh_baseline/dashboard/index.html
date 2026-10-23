@@ -69,8 +69,11 @@ button, select, input { font: inherit; color: inherit; }
 
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
 .tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 4px; align-content: start; }
+.tile .t-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
 .tile .v { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
 .tile .d { font-size: .82rem; color: var(--ink-2); }
+.tile .t-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.tile .t-spark { width: 64px; height: 28px; flex: none; }
 
 .segmented { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .segmented button { border: 0; background: var(--surface); padding: 7px 14px; cursor: pointer; font-size: .85rem; color: var(--ink-2); border-right: 1px solid var(--line); }
@@ -117,6 +120,14 @@ tbody tr:hover { background: var(--accent-soft); }
 .cov-badge.filled { background: var(--good-soft); color: var(--good); }
 .cov-badge.pending { background: var(--bg); color: var(--muted); }
 
+/* collapsible detail sections (full tables, indicator groups) */
+details.disclosure summary { cursor: pointer; padding: 10px 14px; font-weight: 500; font-size: .92rem; color: var(--ink-2);
+  list-style: none; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+details.disclosure summary::-webkit-details-marker { display: none; }
+details.disclosure summary::before { content: "\25b8"; color: var(--muted); display: inline-block; transition: transform .15s ease; }
+details.disclosure[open] summary::before { transform: rotate(90deg); }
+details.disclosure summary:hover { border-color: var(--muted); }
+
 .notes { display: grid; gap: 8px; font-size: .9rem; color: var(--ink-2); max-width: 82ch; }
 .notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .loading { color: var(--muted); }
@@ -134,17 +145,14 @@ footer { font-size: .8rem; color: var(--muted); }
   </header>
 
   <section aria-labelledby="ov-h" style="display:grid;gap:16px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
-      <h2 id="ov-h">Statewide, <span id="yr-label-ov"></span></h2>
-      <div class="segmented" id="year-toggle" role="group" aria-label="Year"></div>
-    </div>
+    <h2 id="ov-h">Statewide</h2>
     <div class="tiles" id="tiles"><div class="tile loading">Loading data&hellip;</div></div>
 
     <div class="grid2">
       <div class="panel">
-        <div class="chart-head"><h3>Seats vs. enrolment, by year</h3>
-          <p>Statewide totals across all 419 government ITIs.</p></div>
-        <div class="chart-box"><canvas id="c-seats-enrol" aria-label="Bar chart of statewide seats and enrolment by year"></canvas></div>
+        <div class="chart-head"><h3>Female share of enrolment, by year</h3>
+          <p>Statewide share of enrolled trainees who are women, 2023&ndash;2025.</p></div>
+        <div class="chart-box"><canvas id="c-female-share" aria-label="Line chart of statewide female share of enrolment by year"></canvas></div>
       </div>
       <div class="panel">
         <div class="chart-head"><h3>Enrolment by gender, by year</h3>
@@ -154,8 +162,14 @@ footer { font-size: .8rem; color: var(--muted); }
     </div>
 
     <div class="panel">
-      <div class="chart-head"><h3>District trend, 2023&ndash;2025</h3>
-        <p>Top 15 districts by 2025 seats, with the 3-year trend. Figures for any single year are in the district table below.</p></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+        <div class="chart-head" style="margin-bottom:0"><h3>District trend, 2023&ndash;2025</h3>
+          <p id="district-trend-sub">Top 15 districts by 2025 seats, with the 3-year trend.</p></div>
+        <div class="segmented" id="district-sort-toggle" role="group" aria-label="Sort districts">
+          <button type="button" data-mode="size" aria-pressed="true">By size</button>
+          <button type="button" data-mode="change" aria-pressed="false">By change</button>
+        </div>
+      </div>
       <div class="trend-grid" id="district-trend"></div>
     </div>
   </section>
@@ -163,30 +177,44 @@ footer { font-size: .8rem; color: var(--muted); }
   <section class="panel" aria-labelledby="cov-h" style="display:grid;gap:14px">
     <div>
       <h2 id="cov-h">Indicator coverage</h2>
-      <p class="sub" style="margin-top:4px">Every column this baseline tracks, grouped. <span class="cov-badge filled" style="margin:0 2px">filled</span> indicators drive the charts and tables below; <span class="cov-badge pending" style="margin:0 2px">pending</span> ones are defined in the sheet but not yet reported for any institute &mdash; they will appear automatically once filled in.</p>
+      <p class="sub" style="margin-top:4px">Every column this baseline tracks, grouped &mdash; <span id="cov-summary"></span>. <span class="cov-badge filled" style="margin:0 2px">filled</span> indicators drive the charts and tables below; <span class="cov-badge pending" style="margin:0 2px">pending</span> ones are defined in the sheet but not yet reported for any institute &mdash; they will appear automatically once filled in.</p>
     </div>
-    <div class="cov-groups" id="coverage"></div>
+    <details class="disclosure">
+      <summary>Show indicator groups</summary>
+      <div class="cov-groups" id="coverage" style="margin-top:10px"></div>
+    </details>
   </section>
+
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span class="hint">Tables below show:</span>
+    <div class="segmented" id="year-toggle" role="group" aria-label="Year for the tables"></div>
+  </div>
 
   <section aria-labelledby="dist-h" style="display:grid;gap:14px">
     <h2 id="dist-h">By district</h2>
-    <div class="panel">
-      <div class="tbl-wrap" id="district-table"></div>
-    </div>
+    <details class="disclosure">
+      <summary>Show full district table (<span id="n-districts-2"></span> districts, sortable)</summary>
+      <div class="panel" style="margin-top:10px">
+        <div class="tbl-wrap" id="district-table"></div>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="iti-h" style="display:grid;gap:14px">
     <h2 id="iti-h">By institute</h2>
-    <div class="panel">
-      <div class="controls">
-        <input type="search" id="iti-search" placeholder="Search institute or district&hellip;" aria-label="Search institutes">
-        <label for="iti-district">District
-          <select id="iti-district"><option value="">All districts</option></select>
-        </label>
-        <span class="hint" id="iti-count"></span>
+    <details class="disclosure">
+      <summary>Show full institute table (<span id="n-rows-2"></span> institutes, searchable)</summary>
+      <div class="panel" style="margin-top:10px">
+        <div class="controls">
+          <input type="search" id="iti-search" placeholder="Search institute or district&hellip;" aria-label="Search institutes">
+          <label for="iti-district">District
+            <select id="iti-district"><option value="">All districts</option></select>
+          </label>
+          <span class="hint" id="iti-count"></span>
+        </div>
+        <div class="tbl-wrap" id="iti-table"></div>
       </div>
-      <div class="tbl-wrap" id="iti-table"></div>
-    </div>
+    </details>
   </section>
 
   <section class="panel notes" aria-labelledby="notes-h">
@@ -270,35 +298,73 @@ footer { font-size: .8rem; color: var(--muted); }
     }, extra);
   }
 
+  function sparkPoints(values, w, h, pad) {
+    const min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
+    const x = i => pad + (i * (w - 2 * pad)) / (values.length - 1 || 1);
+    const y = v => h - pad - ((v - min) / span) * (h - 2 * pad);
+    return { pts: values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" "), lastX: x(values.length - 1), lastY: y(values.at(-1)) };
+  }
+  // Shared sparkline markup used by both the KPI tiles and the district cards —
+  // first-vs-last signed delta, colored by direction; a flat (<0.5%) change gets
+  // no color, since that's "about the same," not a direction.
+  function sparkSvg(values, w, h, pad, ariaLabel) {
+    const accent = css("--accent");
+    const { pts, lastX, lastY } = sparkPoints(values, w, h, pad);
+    const a11y = ariaLabel ? `role="img" aria-label="${esc(ariaLabel)}"` : `aria-hidden="true"`;
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" ${a11y}>
+      <polyline points="${pts}" fill="none" stroke="${accent}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+      <circle cx="${lastX.toFixed(1)}" cy="${lastY.toFixed(1)}" r="2.5" fill="${accent}" /></svg>`;
+  }
+  function deltaOf(values) {
+    const first = values[0], latest = values.at(-1);
+    return first ? (100 * (latest - first) / first) : null;
+  }
+  function deltaBadge(delta) {
+    const dir = delta == null ? "" : delta > 0.5 ? "up" : delta < -0.5 ? "down" : "";
+    const arrow = dir === "up" ? "↑" : dir === "down" ? "↓" : "";
+    return { dir, text: delta == null ? "" : `${arrow} ${Math.abs(delta).toFixed(1)}%` };
+  }
+
+  function tileHTML(label, value, sub, trendValues) {
+    const { dir, text } = trendValues ? deltaBadge(deltaOf(trendValues)) : { dir: "", text: "" };
+    const spark = trendValues ? `<span class="t-spark">${sparkSvg(trendValues, 64, 28, 3)}</span>` : "";
+    return `<div class="tile">
+      <div class="t-head"><span class="eyebrow">${esc(label)}</span><span class="tc-delta ${dir}">${esc(text)}</span></div>
+      <div class="t-row"><div class="v num">${value}</div>${spark}</div>
+      <div class="d">${sub}</div>
+    </div>`;
+  }
+
   function renderTiles() {
-    const t = stateTotals(YEAR);
-    const prev = D.years[0] !== YEAR ? stateTotals(D.years[0]) : null;
-    const delta = (now, then) => then ? (((now - then) / then * 100).toFixed(1)) : null;
-    const trend = (now, then, label) => {
-      if (then == null) return "";
-      const d = delta(now, then);
-      if (d == null) return "";
-      const sign = d > 0 ? "+" : "";
-      return ` &middot; ${sign}${d}% vs ${D.years[0]}`;
-    };
+    const totals = D.years.map(y => stateTotals(y));
+    const t = totals.at(-1);
+    const years = `${D.years[0]}–${D.years.at(-1)}`;
+    const trends = allDistrictTrends();
+    const growing = trends.filter(r => r.delta != null && r.delta > 15).length;
+    const declining = trends.filter(r => r.delta != null && r.delta < -15).length;
     $("tiles").innerHTML = [
-      ["Government ITIs", fmt(D.rows.length), `${D.districts.length} districts`],
-      ["Trade-seats, summed", fmt(D.rows.reduce((a, r) => a + (r.total_trades || 0), 0)), "Summed across institutes, not a count of distinct trades"],
-      [`Seats, ${YEAR}`, fmt(t.seats), prev ? trend(t.seats, prev.seats).replace(" &middot; ", "") : ""],
-      [`Enrolled, ${YEAR}`, fmt(t.total), `Male ${fmt(t.male)} &middot; Female ${fmt(t.female)}`],
-      ["Female share of enrolment", pct(t.femaleShare), `${YEAR} intake`]
-    ].map(([l, v, d]) => `<div class="tile"><div class="eyebrow">${esc(l)}</div><div class="v num">${v}</div><div class="d">${d}</div></div>`).join("");
+      tileHTML("Government ITIs", fmt(D.rows.length), `${D.districts.length} districts`),
+      tileHTML("Seats", fmt(t.seats), years, totals.map(x => x.seats)),
+      tileHTML("Enrolled", fmt(t.total), `Male ${fmt(t.male)} &middot; Female ${fmt(t.female)}`, totals.map(x => x.total)),
+      tileHTML("Female share of enrolment", pct(t.femaleShare), years, totals.map(x => x.femaleShare)),
+      tileHTML("Districts growing >15%", fmt(growing), `${declining} declining &gt;15% &middot; of ${D.districts.length}, ${years}`)
+    ].join("");
   }
 
   function renderTrendCharts() {
     const totals = D.years.map(y => stateTotals(y));
-    draw("c-seats-enrol", {
-      type: "bar",
+    const pctAxis = () => ({ grid: { color: css("--grid") }, border: { display: false },
+      ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => Number(v).toFixed(1) + "%" } });
+    const o1 = baseOpts();
+    o1.scales.y = pctAxis();
+    o1.plugins.legend.display = false;
+    o1.plugins.tooltip.callbacks.label = c => ` Female share: ${c.parsed.y.toFixed(1)}%`;
+    draw("c-female-share", {
+      type: "line",
       data: { labels: D.years.map(String), datasets: [
-        { label: "Seats", data: totals.map(t => t.seats), backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .7, categoryPercentage: .7 },
-        { label: "Enrolled", data: totals.map(t => t.total), backgroundColor: seriesColor(1), borderRadius: 3, barPercentage: .7, categoryPercentage: .7 }
+        { label: "Female share", data: totals.map(t => t.femaleShare), borderColor: seriesColor(2), backgroundColor: seriesColor(2), borderWidth: 2, pointRadius: 4, tension: 0 }
       ] },
-      options: baseOpts()
+      options: o1
     });
     const o = baseOpts();
     o.scales.x.stacked = true; o.scales.y.stacked = true;
@@ -312,53 +378,56 @@ footer { font-size: .8rem; color: var(--muted); }
     });
   }
 
-  // One hue throughout this grid means "seats" (the metric), not district identity —
-  // each card is its own small multiple, self-scaled to its own 3 values.
-  function districtTrendRows(n = 15) {
+  // One hue throughout the district grid means "seats" (the metric), not district
+  // identity — each card is its own small multiple, self-scaled to its own 3 values.
+  function allDistrictTrends() {
     const byDistrict = new Map();
     for (const y of D.years) for (const g of districtRollup(y)) {
       if (!byDistrict.has(g.district)) byDistrict.set(g.district, {});
       byDistrict.get(g.district)[y] = g.seats;
     }
-    const rows = [...byDistrict.entries()].map(([district, byYear]) => {
+    return [...byDistrict.entries()].map(([district, byYear]) => {
       const values = D.years.map(y => byYear[y] ?? 0);
-      const first = values[0], latest = values.at(-1);
-      return { district, values, latest, delta: first ? (100 * (latest - first) / first) : null };
+      return { district, values, latest: values.at(-1), delta: deltaOf(values) };
     });
-    rows.sort((a, b) => b.latest - a.latest);
-    return rows.slice(0, n);
   }
 
-  function sparkPoints(values, w, h, pad) {
-    const min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
-    const x = i => pad + (i * (w - 2 * pad)) / (values.length - 1 || 1);
-    const y = v => h - pad - ((v - min) / span) * (h - 2 * pad);
-    return { pts: values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" "), lastX: x(values.length - 1), lastY: y(values.at(-1)) };
+  function districtTrendRows(mode) {
+    const rows = allDistrictTrends();
+    if (mode === "change") {
+      const byDelta = (a, b) => (b.delta ?? -Infinity) - (a.delta ?? -Infinity);
+      const gainers = [...rows].sort(byDelta).slice(0, 8);
+      const decliners = [...rows].sort(byDelta).slice(-7).reverse();
+      return [...gainers, ...decliners];
+    }
+    return [...rows].sort((a, b) => b.latest - a.latest).slice(0, 15);
   }
 
+  let districtSortMode = "size";
   function renderDistrictTrend() {
-    const rows = districtTrendRows(15);
-    const accent = css("--accent");
-    const w = 160, h = 34, pad = 4;
+    const rows = districtTrendRows(districtSortMode);
     $("district-trend").innerHTML = rows.map(r => {
-      const { pts, lastX, lastY } = sparkPoints(r.values, w, h, pad);
-      const dir = r.delta == null ? "" : r.delta > 0.5 ? "up" : r.delta < -0.5 ? "down" : "";
-      const arrow = dir === "up" ? "↑" : dir === "down" ? "↓" : "";
-      const deltaText = r.delta == null ? "" : `${arrow} ${Math.abs(r.delta).toFixed(1)}%`;
+      const { dir, text } = deltaBadge(r.delta);
       const name = titleCase(r.district);
+      const label = `Seats ${D.years[0]}–${D.years.at(-1)}: ${r.values.map(fmt).join(", ")}`;
       return `<div class="trend-card">
-        <div class="tc-head"><span class="tc-name" title="${esc(name)}">${esc(name)}</span><span class="tc-delta ${dir}">${deltaText}</span></div>
+        <div class="tc-head"><span class="tc-name" title="${esc(name)}">${esc(name)}</span><span class="tc-delta ${dir}">${esc(text)}</span></div>
         <div class="tc-value num">${fmt(r.latest)}</div>
-        <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Seats ${D.years[0]}–${D.years.at(-1)}: ${r.values.map(fmt).join(", ")}">
-          <polyline points="${pts}" fill="none" stroke="${accent}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
-          <circle cx="${lastX.toFixed(1)}" cy="${lastY.toFixed(1)}" r="2.5" fill="${accent}" />
-        </svg>
+        ${sparkSvg(r.values, 160, 34, 4, label)}
       </div>`;
     }).join("");
   }
 
   // ---------- indicator coverage ----------
   function renderCoverage() {
+    const byMetricAll = new Map();
+    for (const c of D.columns) {
+      if (!byMetricAll.has(c.metric)) byMetricAll.set(c.metric, false);
+      if (c.filled) byMetricAll.set(c.metric, true);
+    }
+    const filledMetrics = [...byMetricAll.values()].filter(Boolean).length;
+    $("cov-summary").textContent = `${filledMetrics} of ${byMetricAll.size} tracked indicators have data`;
+
     const groups = new Map();
     for (const c of D.columns) {
       if (!groups.has(c.group)) groups.set(c.group, []);
@@ -448,17 +517,25 @@ footer { font-size: .8rem; color: var(--muted); }
     });
   }
 
-  // ---------- year toggle & boot ----------
+  // ---------- year toggle (tables only) & boot ----------
   function setYear(y) {
     YEAR = y;
-    $("yr-label-ov").textContent = y;
     document.querySelectorAll("#year-toggle button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.year === y)));
-    renderTiles(); renderDistrictTable(); renderItiTable();
+    renderDistrictTable(); renderItiTable();
   }
 
   function boot() {
     $("year-toggle").innerHTML = D.years.map(y => `<button type="button" data-year="${y}" aria-pressed="false">${y}</button>`).join("");
     $("year-toggle").querySelectorAll("button").forEach(b => b.onclick = () => setYear(+b.dataset.year));
+
+    $("district-sort-toggle").querySelectorAll("button").forEach(b => b.onclick = () => {
+      districtSortMode = b.dataset.mode;
+      document.querySelectorAll("#district-sort-toggle button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      $("district-trend-sub").textContent = districtSortMode === "size"
+        ? "Top 15 districts by 2025 seats, with the 3-year trend."
+        : "8 largest gainers and 7 steepest decliners in seats, 2023→2025.";
+      renderDistrictTrend();
+    });
 
     $("iti-district").innerHTML += D.districts.map(d => `<option value="${esc(d)}">${esc(titleCase(d))}</option>`).join("");
     $("iti-search").oninput = e => { itiFilter.q = e.target.value; renderItiTable(); };
@@ -467,9 +544,12 @@ footer { font-size: .8rem; color: var(--muted); }
     $("meta").textContent = `A statewide baseline of Maharashtra’s government ITIs: seats and enrolment by gender, ${D.years[0]}–${D.years.at(-1)}, for all ${D.rows.length} institutes across ${D.districts.length} districts.`;
     $("n-rows").textContent = D.rows.length;
     $("n-districts").textContent = D.districts.length;
+    $("n-rows-2").textContent = D.rows.length;
+    $("n-districts-2").textContent = D.districts.length;
     $("src-name").textContent = D.source;
     $("built").textContent = D.built;
 
+    renderTiles();
     renderTrendCharts();
     renderDistrictTrend();
     renderCoverage();
