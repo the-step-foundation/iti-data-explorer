@@ -4,6 +4,8 @@
 
 A dashboard for India's Industrial Training Institutes (ITIs) under the Craftsmen Training Scheme. You can read the charts, or ask questions in plain language and get an answer, a chart and the exact values and sources behind it.
 
+Also published from this repo: **[Maharashtra ITI baseline dashboard](https://the-step-foundation.github.io/iti-data-explorer/mh-baseline/)** (`mh-baseline/`), a separate, institute-level dashboard for Maharashtra's 419 government ITIs — see [mh_baseline/](mh_baseline/) below.
+
 The data comes from 55 tables on [data.gov.in](https://www.data.gov.in/) (almost all are Rajya Sabha answers, state level) plus All-India figures read from the [DGT Schemes Dashboard](https://dgt.skillindiadigital.gov.in/). What the data can and cannot answer is written up in [iti_data/DASHBOARD_COVERAGE.md](iti_data/DASHBOARD_COVERAGE.md). In short: state-level enrolment (2014-15 to 2023-24), counts of ITIs and seats, and women's share are covered. Anything per institute, per trade or per district is not.
 
 ## How it fits together
@@ -161,7 +163,8 @@ Questions that need data this project does not have (seat fill rate by ITI, pass
 | `worker/` | The Cloudflare Worker (answer service) |
 | `iti_data/` | Merged CSVs, the cached source tables (`raw/`) and the coverage notes |
 | `datagovin_iti_skilling_inventory.csv` | All 949 skilling-related datasets found on data.gov.in |
-| `.github/workflows/` | Deploy and monthly refresh |
+| `mh_baseline/` | A separate institute-level dashboard for Maharashtra's government ITIs: `raw/` (source CSV), `build_data.py`, `dashboard/` (published to `/mh-baseline/`) |
+| `.github/workflows/` | Deploy (both dashboards) and monthly refresh (data.gov.in only) |
 | `LICENSE` | MIT licence for the code |
 
 ## Licence and data terms
