@@ -92,6 +92,17 @@ td.name, th.name { white-space: normal; max-width: 360px; }
 tbody tr:hover { background: var(--accent-soft); }
 .muted-cell { color: var(--muted); }
 
+/* district trend (small multiples) */
+.trend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.trend-card { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 4px; min-width: 0; }
+.trend-card .tc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+.trend-card .tc-name { font-size: .82rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trend-card .tc-delta { font-size: .76rem; font-weight: 500; color: var(--muted); flex: none; }
+.trend-card .tc-delta.up { color: var(--good); }
+.trend-card .tc-delta.down { color: var(--bad); }
+.trend-card .tc-value { font-size: 1.05rem; font-weight: 600; }
+.trend-card svg { display: block; width: 100%; height: 34px; }
+
 /* indicator coverage */
 .cov-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 .cov-group { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; align-content: start; }
@@ -143,9 +154,9 @@ footer { font-size: .8rem; color: var(--muted); }
     </div>
 
     <div class="panel">
-      <div class="chart-head"><h3>Seats by district, <span id="yr-label-dist"></span></h3>
-        <p>Top 15 districts by seat capacity. The full breakdown is in the district table below.</p></div>
-      <div class="chart-box" id="dist-chart-box"><canvas id="c-districts" aria-label="Bar chart of seats by district"></canvas></div>
+      <div class="chart-head"><h3>District trend, 2023&ndash;2025</h3>
+        <p>Top 15 districts by 2025 seats, with the 3-year trend. Figures for any single year are in the district table below.</p></div>
+      <div class="trend-grid" id="district-trend"></div>
     </div>
   </section>
 
@@ -182,7 +193,7 @@ footer { font-size: .8rem; color: var(--muted); }
     <h2 id="notes-h">About this baseline</h2>
     <ul>
       <li>Source: a government-supplied sheet of all Maharashtra government ITIs (<span class="num" id="n-rows"></span> institutes across <span class="num" id="n-districts"></span> districts), covering seat capacity and enrolment by gender for 2023, 2024 and 2025.</li>
-      <li>Enrolment here means reported admission intake, not a fill rate &mdash; seats and enrolled counts come from the same reporting exercise and are not independently verified against each other.</li>
+      <li>Enrolled always equals seats, for every institute and year &mdash; the enrolled-by-gender columns read as a gender split of seat capacity, not an independently measured enrolment figure. Treat this as reported intake, not a fill rate, until the department confirms what the field means.</li>
       <li>Pass rates, trainer vacancy and qualifications, dropout, employability-skills scores, and industry linkage (MSMEs engaged, active MoUs) are tracked columns with no data yet for any institute; see &ldquo;Indicator coverage&rdquo; above.</li>
       <li>One institute (Government Higher Level ITI, Chembur, Mumbai Suburban) opened in 2025 and has no 2023/2024 figures &mdash; it is included with those years blank.</li>
       <li>Built from <code id="src-name"></code>, last rebuilt <span id="built"></span>.</li>
@@ -272,7 +283,7 @@ footer { font-size: .8rem; color: var(--muted); }
     };
     $("tiles").innerHTML = [
       ["Government ITIs", fmt(D.rows.length), `${D.districts.length} districts`],
-      ["Total trades offered", fmt(D.rows.reduce((a, r) => a + (r.total_trades || 0), 0)), "Summed across all institutes"],
+      ["Trade-seats, summed", fmt(D.rows.reduce((a, r) => a + (r.total_trades || 0), 0)), "Summed across institutes, not a count of distinct trades"],
       [`Seats, ${YEAR}`, fmt(t.seats), prev ? trend(t.seats, prev.seats).replace(" &middot; ", "") : ""],
       [`Enrolled, ${YEAR}`, fmt(t.total), `Male ${fmt(t.male)} &middot; Female ${fmt(t.female)}`],
       ["Female share of enrolment", pct(t.femaleShare), `${YEAR} intake`]
@@ -301,19 +312,49 @@ footer { font-size: .8rem; color: var(--muted); }
     });
   }
 
-  function renderDistrictChart() {
-    const rows = districtRollup(YEAR).sort((a, b) => b.seats - a.seats).slice(0, 15);
-    $("dist-chart-box").style.height = Math.max(260, rows.length * 26 + 40) + "px";
-    const o = baseOpts({ indexAxis: "y" });
-    o.plugins.legend.display = false;
-    o.interaction = { mode: "nearest", axis: "y", intersect: false };
-    o.scales.x = numAxis();
-    o.scales.y = { grid: { display: false }, border: { color: css("--grid") }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 } } };
-    draw("c-districts", {
-      type: "bar",
-      data: { labels: rows.map(r => titleCase(r.district)), datasets: [{ label: "Seats", data: rows.map(r => r.seats), backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .8, categoryPercentage: .9 }] },
-      options: o
+  // One hue throughout this grid means "seats" (the metric), not district identity —
+  // each card is its own small multiple, self-scaled to its own 3 values.
+  function districtTrendRows(n = 15) {
+    const byDistrict = new Map();
+    for (const y of D.years) for (const g of districtRollup(y)) {
+      if (!byDistrict.has(g.district)) byDistrict.set(g.district, {});
+      byDistrict.get(g.district)[y] = g.seats;
+    }
+    const rows = [...byDistrict.entries()].map(([district, byYear]) => {
+      const values = D.years.map(y => byYear[y] ?? 0);
+      const first = values[0], latest = values.at(-1);
+      return { district, values, latest, delta: first ? (100 * (latest - first) / first) : null };
     });
+    rows.sort((a, b) => b.latest - a.latest);
+    return rows.slice(0, n);
+  }
+
+  function sparkPoints(values, w, h, pad) {
+    const min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
+    const x = i => pad + (i * (w - 2 * pad)) / (values.length - 1 || 1);
+    const y = v => h - pad - ((v - min) / span) * (h - 2 * pad);
+    return { pts: values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" "), lastX: x(values.length - 1), lastY: y(values.at(-1)) };
+  }
+
+  function renderDistrictTrend() {
+    const rows = districtTrendRows(15);
+    const accent = css("--accent");
+    const w = 160, h = 34, pad = 4;
+    $("district-trend").innerHTML = rows.map(r => {
+      const { pts, lastX, lastY } = sparkPoints(r.values, w, h, pad);
+      const dir = r.delta == null ? "" : r.delta > 0.5 ? "up" : r.delta < -0.5 ? "down" : "";
+      const arrow = dir === "up" ? "↑" : dir === "down" ? "↓" : "";
+      const deltaText = r.delta == null ? "" : `${arrow} ${Math.abs(r.delta).toFixed(1)}%`;
+      const name = titleCase(r.district);
+      return `<div class="trend-card">
+        <div class="tc-head"><span class="tc-name" title="${esc(name)}">${esc(name)}</span><span class="tc-delta ${dir}">${deltaText}</span></div>
+        <div class="tc-value num">${fmt(r.latest)}</div>
+        <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Seats ${D.years[0]}–${D.years.at(-1)}: ${r.values.map(fmt).join(", ")}">
+          <polyline points="${pts}" fill="none" stroke="${accent}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+          <circle cx="${lastX.toFixed(1)}" cy="${lastY.toFixed(1)}" r="2.5" fill="${accent}" />
+        </svg>
+      </div>`;
+    }).join("");
   }
 
   // ---------- indicator coverage ----------
@@ -411,9 +452,8 @@ footer { font-size: .8rem; color: var(--muted); }
   function setYear(y) {
     YEAR = y;
     $("yr-label-ov").textContent = y;
-    $("yr-label-dist").textContent = y;
     document.querySelectorAll("#year-toggle button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.year === y)));
-    renderTiles(); renderDistrictChart(); renderDistrictTable(); renderItiTable();
+    renderTiles(); renderDistrictTable(); renderItiTable();
   }
 
   function boot() {
@@ -431,6 +471,7 @@ footer { font-size: .8rem; color: var(--muted); }
     $("built").textContent = D.built;
 
     renderTrendCharts();
+    renderDistrictTrend();
     renderCoverage();
     setYear(D.years.at(-1));
   }
