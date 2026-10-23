@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MH ITI Baseline Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f4f6f8;
+  --surface: #fdfdfe;
+  --ink: #12161c;
+  --ink-2: #4a5160;
+  --muted: #7d8492;
+  --line: #e1e5eb;
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  --accent-soft: #e6effb;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #4a3aa7;
+  --grid: #e6e9ee;
+  --good: #0ca30c;
+  --good-soft: #e5f6e5;
+  --warn: #b77900;
+  --warn-soft: #fdf3dc;
+  --bad: #c03434;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
+    --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+    --grid: #252a32; --good: #0ca30c; --good-soft: #112b16; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
+  --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+  --grid: #252a32; --good: #0ca30c; --good-soft: #112b16; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 22px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+h1 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
+h2 { font-size: 1.05rem; font-weight: 600; }
+h3 { font-size: .95rem; font-weight: 600; }
+.eyebrow { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 500; }
+.sub { color: var(--ink-2); margin: 6px 0 0; max-width: 78ch; }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+button, select, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; min-width: 0; }
+.chart-head { display: grid; gap: 2px; margin-bottom: 12px; }
+.chart-head p { margin: 0; font-size: .85rem; color: var(--ink-2); }
+.chart-box { position: relative; height: 300px; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 16px; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 4px; align-content: start; }
+.tile .v { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
+.tile .d { font-size: .82rem; color: var(--ink-2); }
+
+.segmented { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.segmented button { border: 0; background: var(--surface); padding: 7px 14px; cursor: pointer; font-size: .85rem; color: var(--ink-2); border-right: 1px solid var(--line); }
+.segmented button:last-child { border-right: 0; }
+.segmented button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 14px; }
+.controls label { font-size: .82rem; color: var(--ink-2); display: flex; gap: 6px; align-items: center; }
+.controls select, .controls input[type=search] { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); max-width: 100%; }
+.controls input[type=search] { min-width: 220px; flex: 1 1 220px; }
+.hint { font-size: .8rem; color: var(--muted); }
+
+.tbl-wrap { overflow: auto; max-height: 460px; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: .84rem; }
+th, td { text-align: left; padding: 7px 12px; border-top: 1px solid var(--line); white-space: nowrap; }
+thead th { position: sticky; top: 0; background: var(--surface); font-weight: 600; color: var(--ink-2); cursor: pointer; user-select: none; z-index: 1; }
+thead th.sorted::after { content: " " attr(data-dir); color: var(--accent); }
+td.r, th.r { text-align: right; }
+td.name, th.name { white-space: normal; max-width: 360px; }
+tbody tr:hover { background: var(--accent-soft); }
+.muted-cell { color: var(--muted); }
+
+/* indicator coverage */
+.cov-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.cov-group { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; align-content: start; }
+.cov-group h3 { font-size: .88rem; }
+.cov-list { display: grid; gap: 6px; font-size: .82rem; }
+.cov-item { display: flex; align-items: center; gap: 7px; }
+.cov-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.cov-dot.filled { background: var(--good); }
+.cov-dot.pending { background: var(--muted); }
+.cov-item.pending { color: var(--muted); }
+.cov-badge { font-size: .72rem; padding: 2px 8px; border-radius: 999px; font-weight: 500; }
+.cov-badge.filled { background: var(--good-soft); color: var(--good); }
+.cov-badge.pending { background: var(--bg); color: var(--muted); }
+
+.notes { display: grid; gap: 8px; font-size: .9rem; color: var(--ink-2); max-width: 82ch; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.loading { color: var(--muted); }
+img { max-width: 100%; }
+footer { font-size: .8rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Maharashtra &middot; Government Industrial Training Institutes</div>
+    <h1>MH ITI Baseline Dashboard</h1>
+    <p class="sub" id="meta">A statewide baseline of Maharashtra&rsquo;s government ITIs: seats and enrolment by gender, 2023&ndash;2025, for every institute and district. Loading&hellip;</p>
+  </header>
+
+  <section aria-labelledby="ov-h" style="display:grid;gap:16px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px">
+      <h2 id="ov-h">Statewide, <span id="yr-label-ov"></span></h2>
+      <div class="segmented" id="year-toggle" role="group" aria-label="Year"></div>
+    </div>
+    <div class="tiles" id="tiles"><div class="tile loading">Loading data&hellip;</div></div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="chart-head"><h3>Seats vs. enrolment, by year</h3>
+          <p>Statewide totals across all 419 government ITIs.</p></div>
+        <div class="chart-box"><canvas id="c-seats-enrol" aria-label="Bar chart of statewide seats and enrolment by year"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="chart-head"><h3>Enrolment by gender, by year</h3>
+          <p>Male and female enrolment, stacked to the statewide total.</p></div>
+        <div class="chart-box"><canvas id="c-gender" aria-label="Stacked bar chart of enrolment by gender by year"></canvas></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="chart-head"><h3>Seats by district, <span id="yr-label-dist"></span></h3>
+        <p>Top 15 districts by seat capacity. The full breakdown is in the district table below.</p></div>
+      <div class="chart-box" id="dist-chart-box"><canvas id="c-districts" aria-label="Bar chart of seats by district"></canvas></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="cov-h" style="display:grid;gap:14px">
+    <div>
+      <h2 id="cov-h">Indicator coverage</h2>
+      <p class="sub" style="margin-top:4px">Every column this baseline tracks, grouped. <span class="cov-badge filled" style="margin:0 2px">filled</span> indicators drive the charts and tables below; <span class="cov-badge pending" style="margin:0 2px">pending</span> ones are defined in the sheet but not yet reported for any institute &mdash; they will appear automatically once filled in.</p>
+    </div>
+    <div class="cov-groups" id="coverage"></div>
+  </section>
+
+  <section aria-labelledby="dist-h" style="display:grid;gap:14px">
+    <h2 id="dist-h">By district</h2>
+    <div class="panel">
+      <div class="tbl-wrap" id="district-table"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="iti-h" style="display:grid;gap:14px">
+    <h2 id="iti-h">By institute</h2>
+    <div class="panel">
+      <div class="controls">
+        <input type="search" id="iti-search" placeholder="Search institute or district&hellip;" aria-label="Search institutes">
+        <label for="iti-district">District
+          <select id="iti-district"><option value="">All districts</option></select>
+        </label>
+        <span class="hint" id="iti-count"></span>
+      </div>
+      <div class="tbl-wrap" id="iti-table"></div>
+    </div>
+  </section>
+
+  <section class="panel notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">About this baseline</h2>
+    <ul>
+      <li>Source: a government-supplied sheet of all Maharashtra government ITIs (<span class="num" id="n-rows"></span> institutes across <span class="num" id="n-districts"></span> districts), covering seat capacity and enrolment by gender for 2023, 2024 and 2025.</li>
+      <li>Enrolment here means reported admission intake, not a fill rate &mdash; seats and enrolled counts come from the same reporting exercise and are not independently verified against each other.</li>
+      <li>Pass rates, trainer vacancy and qualifications, dropout, employability-skills scores, and industry linkage (MSMEs engaged, active MoUs) are tracked columns with no data yet for any institute; see &ldquo;Indicator coverage&rdquo; above.</li>
+      <li>One institute (Government Higher Level ITI, Chembur, Mumbai Suburban) opened in 2025 and has no 2023/2024 figures &mdash; it is included with those years blank.</li>
+      <li>Built from <code id="src-name"></code>, last rebuilt <span id="built"></span>.</li>
+    </ul>
+  </section>
+
+  <footer>Data and build script in <code>mh_baseline/</code> of this repository. Rebuild with <code>python3 mh_baseline/build_data.py</code> after updating the raw CSV.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(() => {
+  "use strict";
+  let D = null, YEAR = null;
+  const $ = id => document.getElementById(id);
+  const fmt = n => n == null ? "—" : Number(n).toLocaleString("en-IN");
+  const pct = n => n == null ? "—" : Number(n).toFixed(1) + "%";
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const compact = v => Math.abs(v) >= 1e5 ? (v / 1e5).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + "L" : Number(v).toLocaleString("en-IN");
+  const seriesColor = i => css(["--series-1", "--series-2", "--series-3", "--series-4"][i % 4]);
+  const titleCase = s => s.replace(/\w\S*/g, w => w[0] + w.slice(1).toLowerCase());
+
+  function load() {
+    return fetch("data.json").then(r => { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); }).then(d => { D = d; });
+  }
+
+  // ---------- derived aggregates ----------
+  // Per-row seat/enrolment accessors for a given year (the only metric family
+  // guaranteed filled; everything else in `columns` may or may not be yet).
+  const seats = (r, y) => r[`seats_${y}`];
+  const male = (r, y) => r[`enrolled_male_${y}`];
+  const female = (r, y) => r[`enrolled_female_${y}`];
+  const enrolled = (r, y) => (male(r, y) ?? 0) + (female(r, y) ?? 0);
+
+  function stateTotals(y) {
+    let s = 0, m = 0, f = 0;
+    for (const r of D.rows) { s += seats(r, y) || 0; m += male(r, y) || 0; f += female(r, y) || 0; }
+    return { seats: s, male: m, female: f, total: m + f, femaleShare: m + f ? (100 * f / (m + f)) : null };
+  }
+
+  function districtRollup(y) {
+    const by = new Map();
+    for (const r of D.rows) {
+      if (!by.has(r.district)) by.set(r.district, { district: r.district, n: 0, seats: 0, male: 0, female: 0, trades: 0 });
+      const g = by.get(r.district);
+      g.n++; g.seats += seats(r, y) || 0; g.male += male(r, y) || 0; g.female += female(r, y) || 0; g.trades += r.total_trades || 0;
+    }
+    return [...by.values()].map(g => ({ ...g, total: g.male + g.female, femaleShare: g.male + g.female ? 100 * g.female / (g.male + g.female) : null }));
+  }
+
+  // ---------- charts ----------
+  const charts = {};
+  function draw(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); return charts[id]; }
+  // afterFit pads the computed gutter a little: Chart.js can undersize a vertical
+  // axis's label gutter by a few pixels for comma-grouped numbers, clipping the
+  // leading digit. The pad is a no-op when this scale ends up on the x-axis (its
+  // layout uses height, not width).
+  const numAxis = () => ({ grid: { color: css("--grid") }, border: { display: false },
+    afterFit: scale => { scale.width += 10; },
+    ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true });
+  function baseOpts(extra = {}) {
+    const ink2 = css("--ink-2"), grid = css("--grid"), muted = css("--muted");
+    return Object.assign({
+      responsive: true, maintainAspectRatio: false,
+      animation: matchMedia("(prefers-reduced-motion: reduce)").matches ? false : { duration: 300 },
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { labels: { color: ink2, boxWidth: 10, boxHeight: 10, usePointStyle: true, font: { family: "IBM Plex Sans" } } },
+        tooltip: { backgroundColor: css("--surface"), titleColor: css("--ink"), bodyColor: ink2, borderColor: css("--line"), borderWidth: 1,
+          padding: 10, bodyFont: { family: "IBM Plex Mono" }, callbacks: { label: c => ` ${c.dataset.label}: ${fmt(c.parsed.y ?? c.parsed.x)}` } }
+      },
+      scales: { x: { grid: { display: false }, border: { color: grid }, ticks: { color: muted, font: { family: "IBM Plex Sans", size: 11 } } }, y: numAxis() }
+    }, extra);
+  }
+
+  function renderTiles() {
+    const t = stateTotals(YEAR);
+    const prev = D.years[0] !== YEAR ? stateTotals(D.years[0]) : null;
+    const delta = (now, then) => then ? (((now - then) / then * 100).toFixed(1)) : null;
+    const trend = (now, then, label) => {
+      if (then == null) return "";
+      const d = delta(now, then);
+      if (d == null) return "";
+      const sign = d > 0 ? "+" : "";
+      return ` &middot; ${sign}${d}% vs ${D.years[0]}`;
+    };
+    $("tiles").innerHTML = [
+      ["Government ITIs", fmt(D.rows.length), `${D.districts.length} districts`],
+      ["Total trades offered", fmt(D.rows.reduce((a, r) => a + (r.total_trades || 0), 0)), "Summed across all institutes"],
+      [`Seats, ${YEAR}`, fmt(t.seats), prev ? trend(t.seats, prev.seats).replace(" &middot; ", "") : ""],
+      [`Enrolled, ${YEAR}`, fmt(t.total), `Male ${fmt(t.male)} &middot; Female ${fmt(t.female)}`],
+      ["Female share of enrolment", pct(t.femaleShare), `${YEAR} intake`]
+    ].map(([l, v, d]) => `<div class="tile"><div class="eyebrow">${esc(l)}</div><div class="v num">${v}</div><div class="d">${d}</div></div>`).join("");
+  }
+
+  function renderTrendCharts() {
+    const totals = D.years.map(y => stateTotals(y));
+    draw("c-seats-enrol", {
+      type: "bar",
+      data: { labels: D.years.map(String), datasets: [
+        { label: "Seats", data: totals.map(t => t.seats), backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .7, categoryPercentage: .7 },
+        { label: "Enrolled", data: totals.map(t => t.total), backgroundColor: seriesColor(1), borderRadius: 3, barPercentage: .7, categoryPercentage: .7 }
+      ] },
+      options: baseOpts()
+    });
+    const o = baseOpts();
+    o.scales.x.stacked = true; o.scales.y.stacked = true;
+    draw("c-gender", {
+      type: "bar",
+      data: { labels: D.years.map(String), datasets: [
+        { label: "Male", data: totals.map(t => t.male), backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .6, categoryPercentage: .7 },
+        { label: "Female", data: totals.map(t => t.female), backgroundColor: seriesColor(2), borderRadius: 3, barPercentage: .6, categoryPercentage: .7 }
+      ] },
+      options: o
+    });
+  }
+
+  function renderDistrictChart() {
+    const rows = districtRollup(YEAR).sort((a, b) => b.seats - a.seats).slice(0, 15);
+    $("dist-chart-box").style.height = Math.max(260, rows.length * 26 + 40) + "px";
+    const o = baseOpts({ indexAxis: "y" });
+    o.plugins.legend.display = false;
+    o.interaction = { mode: "nearest", axis: "y", intersect: false };
+    o.scales.x = numAxis();
+    o.scales.y = { grid: { display: false }, border: { color: css("--grid") }, ticks: { color: css("--ink-2"), font: { family: "IBM Plex Sans", size: 11 } } };
+    draw("c-districts", {
+      type: "bar",
+      data: { labels: rows.map(r => titleCase(r.district)), datasets: [{ label: "Seats", data: rows.map(r => r.seats), backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .8, categoryPercentage: .9 }] },
+      options: o
+    });
+  }
+
+  // ---------- indicator coverage ----------
+  function renderCoverage() {
+    const groups = new Map();
+    for (const c of D.columns) {
+      if (!groups.has(c.group)) groups.set(c.group, []);
+      groups.get(c.group).push(c);
+    }
+    const order = ["Seats & enrolment", "Pass rates", "Trainers", "Employability", "Dropout", "Industry linkage", "Institute status"];
+    const names = [...groups.keys()].sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99));
+    $("coverage").innerHTML = names.map(g => {
+      const cols = groups.get(g);
+      const filled = cols.filter(c => c.filled).length;
+      // Collapse per-year duplicates (e.g. "Seats" x3 years) to one line per metric.
+      const byMetric = new Map();
+      for (const c of cols) {
+        const label = c.year ? c.label : c.label;
+        if (!byMetric.has(c.metric)) byMetric.set(c.metric, { label: c.label, filled: false });
+        if (c.filled) byMetric.get(c.metric).filled = true;
+      }
+      const items = [...byMetric.values()].map(m =>
+        `<div class="cov-item ${m.filled ? "filled" : "pending"}"><span class="cov-dot ${m.filled ? "filled" : "pending"}"></span>${esc(m.label)}</div>`).join("");
+      const allFilled = filled === cols.length;
+      return `<div class="cov-group">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <h3>${esc(g)}</h3>
+          <span class="cov-badge ${allFilled ? "filled" : "pending"}">${allFilled ? "filled" : `${filled}/${cols.length}`}</span>
+        </div>
+        <div class="cov-list">${items}</div>
+      </div>`;
+    }).join("");
+  }
+
+  // ---------- district table ----------
+  let distSort = { key: "seats", dir: -1 };
+  function renderDistrictTable() {
+    let rows = districtRollup(YEAR);
+    rows.sort((a, b) => (a[distSort.key] > b[distSort.key] ? 1 : a[distSort.key] < b[distSort.key] ? -1 : 0) * distSort.dir);
+    const cols = [
+      ["district", "District", "name"], ["n", "ITIs", "r"], ["trades", "Total trades", "r"],
+      ["seats", `Seats ${YEAR}`, "r"], ["male", `Male ${YEAR}`, "r"], ["female", `Female ${YEAR}`, "r"],
+      ["total", `Enrolled ${YEAR}`, "r"], ["femaleShare", "Female share", "r"]
+    ];
+    const head = cols.map(([k, l, cls]) => `<th class="${cls || ""} ${distSort.key === k ? "sorted" : ""}" data-key="${k}" data-cls="${cls || ""}" data-dir="${distSort.key === k ? (distSort.dir > 0 ? "↑" : "↓") : ""}">${esc(l)}</th>`).join("");
+    const body = rows.map(r => `<tr>
+      <td class="name">${esc(titleCase(r.district))}</td><td class="r num">${fmt(r.n)}</td><td class="r num">${fmt(r.trades)}</td>
+      <td class="r num">${fmt(r.seats)}</td><td class="r num">${fmt(r.male)}</td><td class="r num">${fmt(r.female)}</td>
+      <td class="r num">${fmt(r.total)}</td><td class="r num">${pct(r.femaleShare)}</td>
+    </tr>`).join("");
+    $("district-table").innerHTML = `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+    $("district-table").querySelectorAll("th[data-key]").forEach(th => th.onclick = () => {
+      const k = th.dataset.key;
+      distSort = { key: k, dir: distSort.key === k ? -distSort.dir : -1 };
+      renderDistrictTable();
+    });
+  }
+
+  // ---------- institute table ----------
+  let itiSort = { key: "seats", dir: -1 }, itiFilter = { q: "", district: "" };
+  function itiRows() {
+    const q = itiFilter.q.trim().toLowerCase();
+    return D.rows
+      .map(r => ({ r, seats: seats(r, YEAR), male: male(r, YEAR), female: female(r, YEAR), total: enrolled(r, YEAR),
+        femaleShare: enrolled(r, YEAR) ? 100 * (female(r, YEAR) || 0) / enrolled(r, YEAR) : null }))
+      .filter(x => (!itiFilter.district || x.r.district === itiFilter.district)
+        && (!q || x.r.iti_name.toLowerCase().includes(q) || x.r.district.toLowerCase().includes(q)));
+  }
+  function renderItiTable() {
+    let rows = itiRows();
+    const key = itiSort.key;
+    const val = x => key === "district" || key === "iti_name" ? x.r[key] : (key === "year_established" || key === "trades" ? (key === "trades" ? x.r.total_trades : x.r.year_established) : x[key]);
+    rows.sort((a, b) => { const av = val(a), bv = val(b); return (av > bv ? 1 : av < bv ? -1 : 0) * itiSort.dir; });
+    $("iti-count").textContent = `${rows.length} of ${D.rows.length} institutes`;
+    const cols = [
+      ["iti_name", "Institute", "name"], ["district", "District", "name"], ["year_established", "Est.", "r"],
+      ["trades", "Trades", "r"], ["seats", `Seats ${YEAR}`, "r"], ["male", `Male ${YEAR}`, "r"],
+      ["female", `Female ${YEAR}`, "r"], ["total", `Enrolled ${YEAR}`, "r"], ["femaleShare", "Female share", "r"]
+    ];
+    const head = cols.map(([k, l, cls]) => `<th class="${cls || ""} ${itiSort.key === k ? "sorted" : ""}" data-key="${k}" data-dir="${itiSort.key === k ? (itiSort.dir > 0 ? "↑" : "↓") : ""}">${esc(l)}</th>`).join("");
+    const body = rows.map(x => `<tr>
+      <td class="name">${esc(x.r.iti_name)}</td><td class="name">${esc(titleCase(x.r.district))}</td><td class="r num">${x.r.year_established ?? "—"}</td>
+      <td class="r num">${fmt(x.r.total_trades)}</td><td class="r num">${fmt(x.seats)}</td><td class="r num">${fmt(x.male)}</td>
+      <td class="r num">${fmt(x.female)}</td><td class="r num">${fmt(x.total)}</td><td class="r num">${pct(x.femaleShare)}</td>
+    </tr>`).join("");
+    $("iti-table").innerHTML = rows.length ? `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>` : `<p class="hint" style="padding:12px">No institutes match.</p>`;
+    $("iti-table").querySelectorAll("th[data-key]").forEach(th => th.onclick = () => {
+      const k = th.dataset.key;
+      itiSort = { key: k, dir: itiSort.key === k ? -itiSort.dir : (k === "iti_name" || k === "district" ? 1 : -1) };
+      renderItiTable();
+    });
+  }
+
+  // ---------- year toggle & boot ----------
+  function setYear(y) {
+    YEAR = y;
+    $("yr-label-ov").textContent = y;
+    $("yr-label-dist").textContent = y;
+    document.querySelectorAll("#year-toggle button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.year === y)));
+    renderTiles(); renderDistrictChart(); renderDistrictTable(); renderItiTable();
+  }
+
+  function boot() {
+    $("year-toggle").innerHTML = D.years.map(y => `<button type="button" data-year="${y}" aria-pressed="false">${y}</button>`).join("");
+    $("year-toggle").querySelectorAll("button").forEach(b => b.onclick = () => setYear(+b.dataset.year));
+
+    $("iti-district").innerHTML += D.districts.map(d => `<option value="${esc(d)}">${esc(titleCase(d))}</option>`).join("");
+    $("iti-search").oninput = e => { itiFilter.q = e.target.value; renderItiTable(); };
+    $("iti-district").onchange = e => { itiFilter.district = e.target.value; renderItiTable(); };
+
+    $("meta").textContent = `A statewide baseline of Maharashtra’s government ITIs: seats and enrolment by gender, ${D.years[0]}–${D.years.at(-1)}, for all ${D.rows.length} institutes across ${D.districts.length} districts.`;
+    $("n-rows").textContent = D.rows.length;
+    $("n-districts").textContent = D.districts.length;
+    $("src-name").textContent = D.source;
+    $("built").textContent = D.built;
+
+    renderTrendCharts();
+    renderCoverage();
+    setYear(D.years.at(-1));
+  }
+
+  load().then(boot).catch(e => { $("meta").textContent = "Could not load data.json: " + e.message; });
+})();
+</script>
+</body>
+</html>
