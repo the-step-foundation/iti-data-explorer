@@ -1,10 +1,11 @@
-name: Deploy dashboard
+name: Deploy dashboards
 
 on:
   push:
     branches: [main]
     paths:
       - "dashboard/**"
+      - "mh_baseline/dashboard/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -34,9 +35,16 @@ jobs:
             "$(jq -cn --arg u "$PROXY_URL" '{proxyUrl: $u}')" > dashboard/config.js
           cat dashboard/config.js
 
+      - name: Assemble combined site (ITI Data Explorer at /, MH ITI baseline at /mh-baseline/)
+        run: |
+          mkdir -p _site
+          cp -r dashboard/. _site/
+          mkdir -p _site/mh-baseline
+          cp -r mh_baseline/dashboard/. _site/mh-baseline/
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dashboard
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
