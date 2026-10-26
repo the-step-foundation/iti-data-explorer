@@ -120,14 +120,14 @@ tbody tr:hover { background: var(--accent-soft); }
 .mover-row svg { display: block; width: 70px; height: 22px; }
 .mover-divider { border-top: 1px dashed var(--line); margin: 2px 0; }
 
-/* district grid map */
+/* district choropleth map */
 .map-wrap { display: grid; gap: 10px; }
-.district-map { display: grid; grid-template-columns: repeat(10, 1fr); grid-auto-rows: 56px; gap: 4px; max-width: 640px; }
-.dm-cell { border: 1px solid var(--line); border-radius: 6px; cursor: pointer; display: grid; align-content: center; justify-items: center;
-  gap: 1px; padding: 2px; font-size: .66rem; font-weight: 600; color: var(--ink); line-height: 1.15; }
-.dm-cell .dm-v { font-family: var(--font-num); font-size: .62rem; font-weight: 500; opacity: .85; }
-.dm-cell:hover { border-color: var(--ink-2); }
-.dm-cell.selected { border-color: var(--ink); border-width: 2px; }
+.district-map { max-width: 560px; }
+.district-map svg { width: 100%; height: auto; display: block; }
+.dm-path { stroke: var(--surface); stroke-width: 1; cursor: pointer; transition: opacity .1s ease; }
+.dm-path:hover { opacity: .8; }
+.dm-path.selected { stroke: var(--ink); stroke-width: 2.5; }
+.dm-path:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .dm-legend { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--muted); }
 .dm-legend .dm-ramp { width: 120px; height: 10px; border-radius: 5px; border: 1px solid var(--line); }
 .district-detail { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 4px; }
@@ -223,7 +223,7 @@ footer { font-size: .8rem; color: var(--muted); }
     <h2 id="dist-h">By district</h2>
     <div class="panel">
       <div class="chart-head"><h3>Female share of enrolment by district, <span id="map-year"></span></h3>
-        <p>Schematic layout, not to scale &mdash; positions approximate each district's real location. Click a district for its 2023&ndash;2025 trend.</p></div>
+        <p>Click a district for its 2023&ndash;2025 trend.</p></div>
       <div class="map-wrap">
         <div class="district-map" id="district-map"></div>
         <div class="dm-legend" id="dm-legend"></div>
@@ -265,7 +265,7 @@ footer { font-size: .8rem; color: var(--muted); }
       <li>Pass rates, trainer vacancy and qualifications, dropout, employability-skills scores, and industry linkage (MSMEs engaged, active MoUs) are tracked columns with no data yet for any institute; see &ldquo;Indicator coverage&rdquo; above.</li>
       <li>One institute (Government Higher Level ITI, Chembur, Mumbai Suburban) opened in 2025 and has no 2023/2024 figures &mdash; it is included with those years blank.</li>
       <li>&ldquo;Gender ratio&rdquo; / &ldquo;female share&rdquo; on this page means female enrolment as a percentage of total enrolment, not a sex-ratio (females per 1,000 males).</li>
-      <li>The district map's layout is schematic (a grid positioned to roughly match each district's real location), not drawn from actual district boundaries.</li>
+      <li>District boundaries on the map are from Survey of India (via <a href="https://data.opencity.in/dataset/district-maps-for-states-of-india/resource/10a9e732-4e2e-4740-bb57-0533b6abf101" target="_blank" rel="noopener">opencity.in</a>, Public Domain), simplified for the web; names predate the 2021&ndash;2024 district renames and are normalised to match this baseline (see <code>mh_baseline/build_geo.py</code>).</li>
       <li>Built from <code id="src-name"></code>, last rebuilt <span id="built"></span>.</li>
     </ul>
   </section>
@@ -277,7 +277,7 @@ footer { font-size: .8rem; color: var(--muted); }
 <script>
 (() => {
   "use strict";
-  let D = null, YEAR = null;
+  let D = null, GEO = null, YEAR = null;
   const $ = id => document.getElementById(id);
   const fmt = n => n == null ? "—" : Number(n).toLocaleString("en-IN");
   const pct = n => n == null ? "—" : Number(n).toFixed(1) + "%";
@@ -288,7 +288,10 @@ footer { font-size: .8rem; color: var(--muted); }
   const titleCase = s => s.replace(/\w\S*/g, w => w[0] + w.slice(1).toLowerCase());
 
   function load() {
-    return fetch("data.json").then(r => { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); }).then(d => { D = d; });
+    return Promise.all([
+      fetch("data.json").then(r => { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); }),
+      fetch("districts.json").then(r => r.ok ? r.json() : null).catch(() => null)
+    ]).then(([d, g]) => { D = d; GEO = g; });
   }
 
   // ---------- derived aggregates ----------
@@ -485,24 +488,11 @@ footer { font-size: .8rem; color: var(--muted); }
     }).join("");
   }
 
-  // ---------- district grid map (schematic, not to scale) ----------
-  // Approximate column/row position of each district relative to Maharashtra's
-  // real geography: Konkan coast on the west edge (col 0), Vidarbha to the east
-  // (col 7-9), Marathwada center-south, North Maharashtra/Western Maharashtra
-  // (Desh) in between. Not derived from any boundary data — a layout aid only.
-  const DISTRICT_GRID = {
-    PALGHAR: [0, 1], THANE: [0, 2], "MUMBAI SUBURBAN": [0, 3], "MUMBAI CITY": [1, 3],
-    RAIGAD: [0, 4], RATNAGIRI: [0, 5], SINDHUDURG: [0, 6],
-    NANDURBAR: [1, 0], DHULE: [2, 0], JALGAON: [3, 0], NASHIK: [1, 1],
-    AHILYANAGAR: [2, 1], PUNE: [1, 4], SATARA: [1, 5], SANGLI: [2, 6], KOLHAPUR: [1, 6], SOLAPUR: [3, 4],
-    "CHHATRAPATI SAMBHAJINAGAR": [3, 2], JALNA: [4, 2], BEED: [3, 3], PARBHANI: [5, 2],
-    HINGOLI: [5, 1], NANDED: [6, 3], LATUR: [5, 4], DHARASHIV: [4, 4],
-    BULDANA: [4, 0], AKOLA: [5, 0], AMRAVATI: [6, 0], WASHIM: [6, 1], YAVATMAL: [7, 2],
-    WARDHA: [7, 0], NAGPUR: [8, 0], BHANDARA: [8, 1], GONDIYA: [9, 1], CHANDRAPUR: [8, 2], GADCHIROLI: [9, 2]
-  };
-  const SHORT_NAME = { "MUMBAI SUBURBAN": "Mum Sub", "MUMBAI CITY": "Mum City", "CHHATRAPATI SAMBHAJINAGAR": "C.S.Nagar" };
-  const shortName = d => SHORT_NAME[d] || titleCase(d).split(" ")[0].slice(0, 8);
-
+  // ---------- district choropleth map ----------
+  // Real district boundaries: Survey of India, via opencity.in (Public
+  // Domain), simplified at build time — see build_geo.py. GEO is null if
+  // districts.json failed to load; the map degrades to a message, nothing
+  // else on the page depends on it.
   function hexToRgb(hex) { const n = parseInt(hex.replace("#", ""), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
   function mapColor(t) {
     // Blend surface->accent, but floor the mix at 18% so the lowest value still
@@ -516,6 +506,7 @@ footer { font-size: .8rem; color: var(--muted); }
 
   let selectedDistrict = null;
   function renderDistrictMap() {
+    if (!GEO) { $("district-map").innerHTML = `<p class="hint">Map data (districts.json) didn’t load.</p>`; return; }
     const y = D.years.at(-1);
     $("map-year").textContent = y;
     const rows = districtRollup(y).filter(r => r.femaleShare != null);
@@ -523,20 +514,19 @@ footer { font-size: .8rem; color: var(--muted); }
     const min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
     const byDistrict = Object.fromEntries(rows.map(r => [r.district, r]));
 
-    $("district-map").innerHTML = Object.entries(DISTRICT_GRID).map(([d, [col, row]]) => {
+    const paths = Object.entries(GEO.paths).map(([d, dAttr]) => {
       const g = byDistrict[d];
       const t = g ? (g.femaleShare - min) / span : 0;
-      const bg = g ? mapColor(t) : css("--bg");
+      const fill = g ? mapColor(t) : css("--bg");
       const label = g ? `${titleCase(d)}: ${g.femaleShare.toFixed(1)}% female share, ${y}` : titleCase(d);
-      return `<button type="button" class="dm-cell${d === selectedDistrict ? " selected" : ""}" style="grid-column:${col + 1};grid-row:${row + 1};background:${bg}"
-        data-district="${esc(d)}" title="${esc(label)}" aria-label="${esc(label)}">
-        <span>${esc(shortName(d))}</span>${g ? `<span class="dm-v">${g.femaleShare.toFixed(1)}%</span>` : ""}
-      </button>`;
+      return `<path d="${dAttr}" fill-rule="evenodd" fill="${fill}" class="dm-path${d === selectedDistrict ? " selected" : ""}"
+        data-district="${esc(d)}" tabindex="0" role="button" aria-label="${esc(label)}"><title>${esc(label)}</title></path>`;
     }).join("");
-    $("district-map").querySelectorAll(".dm-cell").forEach(b => b.onclick = () => {
-      selectedDistrict = b.dataset.district;
-      renderDistrictMap();
-      renderDistrictDetail();
+    $("district-map").innerHTML = `<svg viewBox="${GEO.viewBox}" role="img" aria-label="Maharashtra district map, female share of enrolment, ${y}">${paths}</svg>`;
+    $("district-map").querySelectorAll(".dm-path").forEach(p => {
+      const select = () => { selectedDistrict = p.dataset.district; renderDistrictMap(); renderDistrictDetail(); };
+      p.onclick = select;
+      p.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(); } };
     });
 
     $("dm-legend").innerHTML = `<span>${min.toFixed(1)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0)}, ${mapColor(1)})"></span><span>${max.toFixed(1)}%</span><span>&nbsp;female share, ${y}</span>`;
