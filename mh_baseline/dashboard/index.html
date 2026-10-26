@@ -21,6 +21,8 @@
   --series-2: #eb6834;
   --series-3: #1baf7a;
   --series-4: #4a3aa7;
+  --pink: #e87ba4;
+  --yellow: #eda100;
   --grid: #e6e9ee;
   --good: #0ca30c;
   --good-soft: #e5f6e5;
@@ -36,6 +38,7 @@
     --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
     --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
     --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+    --pink: #d55181; --yellow: #c98500;
     --grid: #252a32; --good: #0ca30c; --good-soft: #112b16; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
   }
 }
@@ -43,6 +46,7 @@
   --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
   --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
   --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+  --pink: #d55181; --yellow: #c98500;
   --grid: #252a32; --good: #0ca30c; --good-soft: #112b16; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -285,7 +289,6 @@ footer { font-size: .8rem; color: var(--muted); }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const compact = v => Math.abs(v) >= 1e5 ? (v / 1e5).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + "L" : Number(v).toLocaleString("en-IN");
-  const seriesColor = i => css(["--series-1", "--series-2", "--series-3", "--series-4"][i % 4]);
   const titleCase = s => s.replace(/\w\S*/g, w => w[0] + w.slice(1).toLowerCase());
 
   function load() {
@@ -355,8 +358,8 @@ footer { font-size: .8rem; color: var(--muted); }
   // Shared sparkline markup used by both the KPI tiles and the district cards —
   // first-vs-last signed delta, colored by direction; a flat (<0.5%) change gets
   // no color, since that's "about the same," not a direction.
-  function sparkSvg(values, w, h, pad, ariaLabel) {
-    const accent = css("--accent");
+  function sparkSvg(values, w, h, pad, ariaLabel, colorVar) {
+    const accent = css(colorVar || "--accent");
     const { pts, lastX, lastY } = sparkPoints(values, w, h, pad);
     const a11y = ariaLabel ? `role="img" aria-label="${esc(ariaLabel)}"` : `aria-hidden="true"`;
     return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" ${a11y}>
@@ -373,9 +376,9 @@ footer { font-size: .8rem; color: var(--muted); }
     return { dir, text: delta == null ? "" : `${arrow} ${Math.abs(delta).toFixed(1)}%` };
   }
 
-  function tileHTML(label, value, sub, trendValues) {
+  function tileHTML(label, value, sub, trendValues, colorVar) {
     const { dir, text } = trendValues ? deltaBadge(deltaOf(trendValues)) : { dir: "", text: "" };
-    const spark = trendValues ? `<span class="t-spark">${sparkSvg(trendValues, 64, 28, 3)}</span>` : "";
+    const spark = trendValues ? `<span class="t-spark">${sparkSvg(trendValues, 64, 28, 3, null, colorVar)}</span>` : "";
     return `<div class="tile">
       <div class="t-head"><span class="eyebrow">${esc(label)}</span><span class="tc-delta ${dir}">${esc(text)}</span></div>
       <div class="t-row"><div class="v num">${value}</div>${spark}</div>
@@ -392,9 +395,9 @@ footer { font-size: .8rem; color: var(--muted); }
     const declining = trends.filter(r => r.delta != null && r.delta < -15).length;
     $("tiles").innerHTML = [
       tileHTML("Government ITIs", fmt(D.rows.length), `${D.districts.length} districts`),
-      tileHTML("Seats", fmt(t.seats), years, totals.map(x => x.seats)),
+      tileHTML("Seats", fmt(t.seats), years, totals.map(x => x.seats), "--yellow"),
       tileHTML("Enrolled", fmt(t.total), `Male ${fmt(t.male)} &middot; Female ${fmt(t.female)}`, totals.map(x => x.total)),
-      tileHTML("Female share of enrolment", pct(t.femaleShare), years, totals.map(x => x.femaleShare)),
+      tileHTML("Female share of enrolment", pct(t.femaleShare), years, totals.map(x => x.femaleShare), "--pink"),
       tileHTML("Districts growing >15%", fmt(growing), `${declining} declining &gt;15% &middot; of ${D.districts.length}, ${years}`)
     ].join("");
   }
@@ -408,7 +411,7 @@ footer { font-size: .8rem; color: var(--muted); }
     draw("c-female-share", {
       type: "line",
       data: { labels: D.years.map(String), datasets: [
-        { label: "Female share", data: totals.map(t => t.femaleShare), borderColor: seriesColor(2), backgroundColor: seriesColor(2), borderWidth: 2, pointRadius: 4, tension: 0 }
+        { label: "Female share", data: totals.map(t => t.femaleShare), borderColor: css("--pink"), backgroundColor: css("--pink"), borderWidth: 2, pointRadius: 4, tension: 0 }
       ] },
       options: o1
     });
@@ -443,7 +446,7 @@ footer { font-size: .8rem; color: var(--muted); }
         <span class="m-rank ${dir}">${arrow}</span>
         <span class="m-name" title="${esc(titleCase(r.district))}">${esc(titleCase(r.district))}</span>
         <span class="m-delta ${dir}">${sign}${r.delta.toFixed(1)} pp</span>
-        ${sparkSvg(values, 70, 22, 3)}
+        ${sparkSvg(values, 70, 22, 3, null, "--pink")}
       </div>`;
     };
     $("gender-movers").innerHTML = rising.map(row).join("") + `<div class="mover-divider"></div>` + falling.map(row).join("");
@@ -469,21 +472,21 @@ footer { font-size: .8rem; color: var(--muted); }
   // districts.json failed to load; each map degrades to a message, nothing
   // else on the page depends on it.
   function hexToRgb(hex) { const n = parseInt(hex.replace("#", ""), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
-  function mapColor(t) {
-    // Sequential (magnitude): blend surface->accent, floored at 18% so the
+  function mapColor(t, hiVar) {
+    // Sequential (magnitude): blend surface->hi, floored at 18% so the
     // lowest value still reads as "some color" in both themes (a pure
-    // surface->accent lerp compresses too far toward invisible in dark mode).
+    // surface->hi lerp compresses too far toward invisible in dark mode).
     const tt = 0.18 + 0.82 * Math.max(0, Math.min(1, t));
-    const lo = hexToRgb(css("--surface")), hi = hexToRgb(css("--accent"));
+    const lo = hexToRgb(css("--surface")), hi = hexToRgb(css(hiVar || "--accent"));
     const c = lo.map((v, i) => Math.round(v + (hi[i] - v) * tt));
     return `rgb(${c[0]},${c[1]},${c[2]})`;
   }
-  function divergingColor(t) {
+  function divergingColor(t, posVar) {
     // Polarity (signed change): a neutral gray midpoint (t=0, still visibly
-    // colored, distinct from "no data") fanning out to accent blue (growth)
+    // colored, distinct from "no data") fanning out to `posVar` (growth)
     // or --bad red (decline) at the extremes.
     t = Math.max(-1, Math.min(1, t));
-    const mid = hexToRgb(css("--line")), pole = hexToRgb(t >= 0 ? css("--accent") : css("--bad"));
+    const mid = hexToRgb(css("--line")), pole = hexToRgb(t >= 0 ? css(posVar || "--accent") : css("--bad"));
     const c = mid.map((v, i) => Math.round(v + (pole[i] - v) * Math.abs(t)));
     return `rgb(${c[0]},${c[1]},${c[2]})`;
   }
@@ -520,9 +523,9 @@ footer { font-size: .8rem; color: var(--muted); }
     renderChoropleth("district-map", "dm-legend", {
       selected: selectedDistrict,
       valueOf: d => byDistrict[d] ? byDistrict[d].femaleShare : null,
-      colorOf: v => mapColor((v - min) / span),
+      colorOf: v => mapColor((v - min) / span, "--pink"),
       labelOf: (d, v) => v == null ? titleCase(d) : `${titleCase(d)}: ${v.toFixed(1)}% female share, ${y}`,
-      legendOf: () => `<span>${min.toFixed(1)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0)}, ${mapColor(1)})"></span><span>${max.toFixed(1)}%</span><span>&nbsp;female share, ${y}</span>`,
+      legendOf: () => `<span>${min.toFixed(1)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0, "--pink")}, ${mapColor(1, "--pink")})"></span><span>${max.toFixed(1)}%</span><span>&nbsp;female share, ${y}</span>`,
       onSelect: d => { selectedDistrict = d; renderDistrictMap(); renderDistrictDetail(); }
     });
   }
@@ -543,7 +546,7 @@ footer { font-size: .8rem; color: var(--muted); }
     draw("c-district-detail", {
       type: "line",
       data: { labels: D.years.map(String), datasets: [
-        { label: "Female share", data: trend.values, borderColor: seriesColor(2), backgroundColor: seriesColor(2), borderWidth: 2, pointRadius: 4, tension: 0, spanGaps: true }
+        { label: "Female share", data: trend.values, borderColor: css("--pink"), backgroundColor: css("--pink"), borderWidth: 2, pointRadius: 4, tension: 0, spanGaps: true }
       ] },
       options: o
     });
@@ -567,9 +570,9 @@ footer { font-size: .8rem; color: var(--muted); }
       renderChoropleth("seats-map", "seats-map-legend", {
         selected: selectedSeatsDistrict,
         valueOf: d => byDistrict[d] ? byDistrict[d].latest : null,
-        colorOf: v => mapColor((v - min) / span),
+        colorOf: v => mapColor((v - min) / span, "--yellow"),
         labelOf: (d, v) => v == null ? titleCase(d) : `${titleCase(d)}: ${fmt(v)} seats, ${y}`,
-        legendOf: () => `<span>${fmt(min)}</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0)}, ${mapColor(1)})"></span><span>${fmt(max)}</span><span>&nbsp;seats, ${y}</span>`,
+        legendOf: () => `<span>${fmt(min)}</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0, "--yellow")}, ${mapColor(1, "--yellow")})"></span><span>${fmt(max)}</span><span>&nbsp;seats, ${y}</span>`,
         onSelect: d => { selectedSeatsDistrict = d; renderSeatsMap(); renderSeatsDetail(); }
       });
     } else {
@@ -578,9 +581,9 @@ footer { font-size: .8rem; color: var(--muted); }
       renderChoropleth("seats-map", "seats-map-legend", {
         selected: selectedSeatsDistrict,
         valueOf: d => byDistrict[d] ? byDistrict[d].delta : null,
-        colorOf: v => divergingColor(v / absMax),
+        colorOf: v => divergingColor(v / absMax, "--yellow"),
         labelOf: (d, v) => v == null ? titleCase(d) : `${titleCase(d)}: ${v > 0 ? "+" : ""}${v.toFixed(1)}% seats, ${y0}→${y}`,
-        legendOf: () => `<span>−${absMax.toFixed(0)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${divergingColor(-1)}, ${divergingColor(0)}, ${divergingColor(1)})"></span><span>+${absMax.toFixed(0)}%</span><span>&nbsp;change, ${y0}→${y}</span>`,
+        legendOf: () => `<span>−${absMax.toFixed(0)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${divergingColor(-1, "--yellow")}, ${divergingColor(0, "--yellow")}, ${divergingColor(1, "--yellow")})"></span><span>+${absMax.toFixed(0)}%</span><span>&nbsp;change, ${y0}→${y}</span>`,
         onSelect: d => { selectedSeatsDistrict = d; renderSeatsMap(); renderSeatsDetail(); }
       });
     }
@@ -601,7 +604,7 @@ footer { font-size: .8rem; color: var(--muted); }
     draw("c-seats-detail", {
       type: "line",
       data: { labels: D.years.map(String), datasets: [
-        { label: "Seats", data: trend.values, borderColor: seriesColor(0), backgroundColor: seriesColor(0), borderWidth: 2, pointRadius: 4, tension: 0 }
+        { label: "Seats", data: trend.values, borderColor: css("--yellow"), backgroundColor: css("--yellow"), borderWidth: 2, pointRadius: 4, tension: 0 }
       ] },
       options: o
     });
