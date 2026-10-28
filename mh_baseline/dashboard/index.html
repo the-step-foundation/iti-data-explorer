@@ -66,6 +66,36 @@ button, select, input { font: inherit; color: inherit; }
 [hidden] { display: none !important; }
 
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; min-width: 0; }
+
+/* ask the data */
+.ask { display: grid; gap: 14px; }
+.ask-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+.ask-row textarea { flex: 1 1 320px; min-width: 0; min-height: 52px; max-height: 180px; resize: vertical; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); line-height: 1.4; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 10px 16px; cursor: pointer; font-weight: 500; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .55; cursor: default; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 5px 12px; font-size: .85rem; cursor: pointer; color: var(--ink-2); text-align: left; }
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+.notice { font-size: .88rem; color: var(--ink-2); background: var(--bg); border-radius: 8px; padding: 10px 12px; }
+.thread { display: grid; gap: 16px; }
+.turn { display: grid; gap: 12px; border-top: 1px solid var(--line); padding-top: 16px; }
+.turn .q { font-weight: 600; }
+.status { color: var(--muted); font-size: .9rem; display: flex; align-items: center; gap: 8px; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .status .dot { animation: none; } }
+.answer { max-width: 75ch; }
+.answer p { margin: 0 0 8px; }
+.answer ul { margin: 0 0 8px; padding-left: 20px; }
+.err { color: var(--bad); font-size: .9rem; }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; }
+.flag { display: inline-flex; gap: 6px; align-items: center; font-size: .8rem; padding: 3px 10px; border-radius: 999px; background: var(--warn-soft); color: var(--ink); }
+.flag::before { content: "!"; font-weight: 700; color: var(--warn); }
+
 .chart-head { display: grid; gap: 2px; margin-bottom: 12px; }
 .chart-head p { margin: 0; font-size: .85rem; color: var(--ink-2); }
 .chart-box { position: relative; height: 300px; min-width: 0; }
@@ -171,6 +201,18 @@ footer { font-size: .8rem; color: var(--muted); }
     <p class="sub" id="meta">A statewide baseline of Maharashtra&rsquo;s government ITIs: seats and enrolment by gender, 2023&ndash;2025, for every institute and district. Loading&hellip;</p>
     <p class="sub"><a href="../">&larr; ITI Data Explorer (All India, data.gov.in)</a></p>
   </header>
+
+  <section class="panel ask" aria-labelledby="ask-h">
+    <h2 id="ask-h">Ask the data</h2>
+    <form class="ask-row" id="ask-form">
+      <textarea id="q" rows="2" placeholder="e.g. Which districts have female share below 20% in 2025?" aria-label="Your question"></textarea>
+      <button class="btn primary" id="ask" type="submit">Ask</button>
+      <button class="btn" id="stop" type="button" hidden>Stop</button>
+    </form>
+    <div class="chips" id="examples" aria-label="Example questions"></div>
+    <div class="notice" id="ask-note" hidden></div>
+    <div class="thread" id="thread" aria-live="polite"></div>
+  </section>
 
   <section aria-labelledby="ov-h" style="display:grid;gap:16px">
     <h2 id="ov-h">Statewide</h2>
@@ -279,6 +321,7 @@ footer { font-size: .8rem; color: var(--muted); }
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="config.js"></script>
 <script>
 (() => {
   "use strict";
@@ -719,6 +762,288 @@ footer { font-size: .8rem; color: var(--muted); }
     renderDistrictTable(); renderItiTable();
   }
 
+  // ---------- ask the data: query engine ----------
+  // The single read path for "Ask the data" — reuses the same per-district and
+  // per-institute accessors as the charts/tables above, so a chart and an
+  // answer can never disagree about what a number means.
+  const BASELINE_FILTER_OPS = { "<": (a, b) => a < b, "<=": (a, b) => a <= b, ">": (a, b) => a > b, ">=": (a, b) => a >= b, "=": (a, b) => a === b };
+
+  function districtQueryRows(year) {
+    const seatsTrend = new Map(allDistrictTrends().map(r => [r.district, r]));
+    const shareTrend = new Map(genderShareTrends().map(r => [r.district, r]));
+    return districtRollup(year).map(g => ({
+      district: titleCase(g.district), n_institutes: g.n, total_trades: g.trades,
+      seats: g.seats, male: g.male, female: g.female, enrolled: g.total,
+      female_share: g.femaleShare != null ? Number(g.femaleShare.toFixed(1)) : null,
+      seats_change_pct: seatsTrend.get(g.district)?.delta != null ? Number(seatsTrend.get(g.district).delta.toFixed(1)) : null,
+      female_share_change_pp: shareTrend.get(g.district)?.delta != null ? Number(shareTrend.get(g.district).delta.toFixed(1)) : null,
+      _district: g.district
+    }));
+  }
+
+  function instituteQueryRows(year) {
+    return D.rows.map(r => {
+      const e = enrolled(r, year);
+      return {
+        institute: r.iti_name, district: titleCase(r.district), year_established: r.year_established, total_trades: r.total_trades,
+        seats: seats(r, year), male: male(r, year), female: female(r, year), enrolled: e,
+        female_share: e ? Number((100 * (female(r, year) || 0) / e).toFixed(1)) : null,
+        _district: r.district
+      };
+    });
+  }
+
+  function runBaselineQuery(input) {
+    input = input || {};
+    const level = input.level === "institute" ? "institute" : "district";
+    const year = [2023, 2024, 2025].includes(Number(input.year)) ? Number(input.year) : D.years.at(-1);
+    let rows = level === "district" ? districtQueryRows(year) : instituteQueryRows(year);
+
+    if (input.district) {
+      const want = String(input.district).trim().toLowerCase();
+      rows = rows.filter(r => r._district.toLowerCase().includes(want) || r.district.toLowerCase().includes(want));
+    }
+    if (input.search) {
+      const q = String(input.search).trim().toLowerCase();
+      rows = rows.filter(r => (r.institute && r.institute.toLowerCase().includes(q)) || r.district.toLowerCase().includes(q));
+    }
+    for (const f of (Array.isArray(input.filters) ? input.filters : [])) {
+      const op = BASELINE_FILTER_OPS[f && f.op];
+      if (!op || !f.metric) continue;
+      const val = Number(f.value);
+      rows = rows.filter(r => r[f.metric] != null && op(r[f.metric], val));
+    }
+    if (input.sort && input.sort.metric) {
+      const key = input.sort.metric, dir = input.sort.dir === "asc" ? 1 : -1;
+      rows = [...rows].sort((a, b) => {
+        const av = a[key], bv = b[key];
+        if (av == null && bv == null) return 0;
+        if (av == null) return 1;
+        if (bv == null) return -1;
+        return av > bv ? dir : av < bv ? -dir : 0;
+      });
+    }
+    const total = rows.length;
+    const limit = Math.min(Math.max(parseInt(input.limit) || 50, 1), 200);
+    const page = rows.slice(0, limit).map(({ _district, ...rest }) => rest);
+    return { level, year, count: total, truncated: total > page.length, rows: page };
+  }
+
+  // ---------- ask the data: Claude integration ----------
+  const BASELINE_EXAMPLES = [
+    "Which districts have female share below 20% in 2025?",
+    "Top 10 institutes by seats in 2025",
+    "Which district had the steepest decline in female share since 2023?",
+    "Show me institutes in Nashik district",
+    "Which districts grew more than 15% in seats since 2023?",
+    "Institutes established before 1970"
+  ];
+  let askSample = null, askCtl = null, askHistory = [];
+
+  // Sent as the first user turn (see askBaseline()). Built fresh per question so it
+  // always reflects the data.json actually loaded in this page.
+  function baselineRules() {
+    return `You answer questions about Maharashtra's government Industrial Training Institutes (ITIs) for a department official. Use ONLY the query_baseline tool for numbers; never estimate or use outside knowledge.
+
+DATA: a government-supplied sheet of ${D.rows.length} government ITIs across ${D.districts.length} districts, with seat capacity and enrolment by gender for ${D.years.join(", ")}.
+
+CAVEATS you must apply
+- "seats" and "enrolled" are always equal in this data (same reporting exercise) — treat enrolled as reported intake, not a verified fill rate, until the department confirms what the field means.
+- "female_share" is enrolled-female as a percentage of total enrolled (not a sex ratio).
+- Pass rates, trainer vacancy/qualifications, dropout, employability-skills scores, MSMEs engaged and active industry MoUs are tracked columns with NO data for any institute yet. If asked about these, say so plainly — do not guess or substitute another figure.
+- One institute (Government Higher Level ITI, Chembur, Mumbai Suburban) opened in 2025 and has no 2023/2024 figures.
+
+TOOL: query_baseline(level, year, filters, district, search, sort, limit)
+- level: "district" (${D.districts.length} rows, aggregated) or "institute" (${D.rows.length} rows). Required.
+- year: one of ${D.years.join(", ")} (default ${D.years.at(-1)}).
+- filters: array of {metric, op, value}, op one of <, <=, >, >=, =.
+- metrics on every row: seats, male, female, enrolled, female_share, total_trades.
+  district rows also have: n_institutes, seats_change_pct, female_share_change_pp (both ${D.years[0]}→year).
+  institute rows also have: year_established.
+- district: substring match, restricts results to one district.
+- search: substring match on institute name or district (institute level).
+- sort: {metric, dir: "asc"|"desc"}. limit: max rows to return, default 50, capped at 200.
+
+HOW TO ANSWER
+- Call query_baseline for every number you state. Prefer one broad call (with filters/sort/limit) over many narrow ones.
+- Keep "answer" under 100 words. Plain text; you may use **bold** and lines starting "- " for short lists.
+- If the question needs data this baseline does not have (pass rates, trade-level or pre-2023 figures), say so plainly in one sentence.
+
+FINAL MESSAGE: only one JSON object: {"answer": string, "caveats": [string]}. "caveats": 0-2 short strings for limits that affect this specific answer.`;
+  }
+
+  // Keep in sync with QUERY_TOOL in worker/src/index.js.
+  const BASELINE_TOOLS = [{
+    name: "query_baseline",
+    description: "Look up MH ITI baseline figures by district or institute. Returns matching rows plus a total count.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        level: { type: "string", enum: ["district", "institute"] },
+        year: { type: "integer", enum: [2023, 2024, 2025] },
+        filters: { type: "array", items: { type: "object", properties: {
+          metric: { type: "string" }, op: { type: "string", enum: ["<", "<=", ">", ">=", "="] }, value: { type: "number" }
+        }, required: ["metric", "op", "value"] } },
+        district: { type: "string" },
+        search: { type: "string" },
+        sort: { type: "object", properties: { metric: { type: "string" }, dir: { type: "string", enum: ["asc", "desc"] } } },
+        limit: { type: "integer" }
+      },
+      required: ["level"]
+    },
+    execute: null
+  }];
+
+  function setAskBusy(b) { $("ask").disabled = b; $("q").disabled = b; $("stop").hidden = !b; }
+
+  async function askBaseline(question) {
+    question = question.trim();
+    if (!question || !askSample) return;
+    const turn = document.createElement("article");
+    turn.className = "turn";
+    turn.innerHTML = `<div class="q">${esc(question)}</div><div class="status"><span class="dot"></span><span class="st">Thinking…</span></div>`;
+    $("thread").prepend(turn);
+    const st = turn.querySelector(".st");
+    let lastResult = null;
+    const tools = BASELINE_TOOLS.map(t => ({ ...t, execute: (input) => {
+      st.textContent = `Looking up ${input.level === "institute" ? "institutes" : "districts"}…`;
+      const result = runBaselineQuery(input);
+      lastResult = result;
+      return result;
+    } }));
+    askCtl = new AbortController();
+    setAskBusy(true);
+    const input = [{ role: "user", content: baselineRules() }];
+    for (const h of askHistory.slice(-4)) input.push({ role: "user", content: h.q }, { role: "assistant", content: h.a });
+    input.push({ role: "user", content: question });
+    try {
+      const out = await askSample.json(input, { tools, signal: askCtl.signal });
+      const ans = typeof out?.answer === "string" ? out.answer : "";
+      if (!ans) throw { code: "invalid_json", message: "no answer field" };
+      askHistory.push({ q: question, a: ans });
+      renderBaselineAnswer(turn, out, lastResult);
+    } catch (e) {
+      turn.querySelector(".status")?.remove();
+      const msg = {
+        cancelled: "Stopped.", rate_limited: "Too many questions at once. Wait a minute, then ask again.",
+        invalid_json: "The answer came back in an unexpected format. Ask again, or rephrase the question.",
+        refused: "Claude declined this question. Try rephrasing it.", prompt_too_large: "That question pulled too much data. Narrow it down.",
+        upstream_error: "The answer service is unavailable right now. Try again shortly."
+      }[e?.code] || "Something went wrong while answering. Ask again.";
+      turn.insertAdjacentHTML("beforeend", `<div class="err">${esc(msg)}</div>`);
+    } finally { setAskBusy(false); askCtl = null; }
+  }
+
+  function md(s) {
+    const lines = esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").split(/\n/);
+    let html = "", list = false;
+    for (const l of lines) {
+      if (/^\s*[-•]\s+/.test(l)) { if (!list) { html += "<ul>"; list = true; } html += "<li>" + l.replace(/^\s*[-•]\s+/, "") + "</li>"; }
+      else { if (list) { html += "</ul>"; list = false; } if (l.trim()) html += "<p>" + l + "</p>"; }
+    }
+    return html + (list ? "</ul>" : "");
+  }
+
+  const BASELINE_COL_LABEL = {
+    district: "District", institute: "Institute", n_institutes: "ITIs", total_trades: "Total trades",
+    seats: "Seats", male: "Male", female: "Female", enrolled: "Enrolled", female_share: "Female share",
+    seats_change_pct: "Seats change", female_share_change_pp: "Female share change", year_established: "Established"
+  };
+  const BASELINE_NUMERIC_COLS = new Set(["n_institutes", "total_trades", "seats", "male", "female", "enrolled", "female_share", "seats_change_pct", "female_share_change_pp", "year_established"]);
+
+  function baselineRowsTableHTML(result) {
+    if (!result || !result.rows.length) return `<p class="hint" style="padding:8px 0">No matching rows.</p>`;
+    const cols = Object.keys(result.rows[0]);
+    const head = cols.map(c => `<th class="${BASELINE_NUMERIC_COLS.has(c) ? "r" : "name"}">${esc(BASELINE_COL_LABEL[c] || c)}</th>`).join("");
+    const body = result.rows.map(r => `<tr>${cols.map(c => {
+      const v = r[c];
+      const cls = BASELINE_NUMERIC_COLS.has(c) ? "r num" : "name";
+      const text = v == null ? "—" : (c === "female_share" ? pct(v) : (typeof v === "number" ? fmt(v) : esc(v)));
+      return `<td class="${cls}">${text}</td>`;
+    }).join("")}</tr>`).join("");
+    return `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+  }
+
+  function renderBaselineAnswer(turn, out, result) {
+    turn.querySelector(".status")?.remove();
+    const parts = [`<div class="answer">${md(out.answer)}</div>`];
+    const cav = (Array.isArray(out.caveats) ? out.caveats : []).filter(c => typeof c === "string" && c.trim()).slice(0, 2);
+    if (cav.length) parts.push(`<div class="flags">${cav.map(c => `<span class="flag">${esc(c)}</span>`).join("")}</div>`);
+    if (result && result.rows.length) {
+      const scope = result.level === "district" ? "districts" : "institutes";
+      parts.push(`<details open><summary>Data used · ${result.count} ${scope}${result.truncated ? `, showing ${result.rows.length}` : ""}, ${result.year}</summary><div class="tbl-wrap">${baselineRowsTableHTML(result)}</div></details>`);
+    }
+    turn.insertAdjacentHTML("beforeend", parts.join(""));
+  }
+
+  // ---------- ask the data: answer backend (Worker proxy) ----------
+  // The page runs the tool loop itself (it owns the data and the query_baseline tool);
+  // the Worker only forwards each turn to the Claude API so the API key never reaches
+  // the browser. Mirrors worker/src/index.js's contract exactly — see mh_baseline/worker/.
+  const ASK_MAX_ROUNDS = 8;
+  const askFail = (code, message, text) => ({ code, message, text });
+  function parseJsonLoose(text) {
+    const t = String(text || "").trim();
+    const tries = [t, (t.match(/```(?:json)?\s*([\s\S]*?)```/) || [])[1], t.slice(t.indexOf("{"), t.lastIndexOf("}") + 1)];
+    for (const c of tries) { if (!c) continue; try { return JSON.parse(c); } catch (e) { /* next */ } }
+    throw askFail("invalid_json", "no JSON in reply", t);
+  }
+  function makeAskProxy(url) {
+    async function post(messages, signal) {
+      let res;
+      try {
+        res = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages }), signal });
+      } catch (e) { throw e && e.name === "AbortError" ? askFail("cancelled", "aborted") : askFail("upstream_error", String(e)); }
+      if (!res.ok) throw askFail({ 429: "rate_limited", 413: "prompt_too_large", 403: "not_granted" }[res.status] || "upstream_error", "service " + res.status);
+      return res.json();
+    }
+    async function json(input, { tools = [], signal } = {}) {
+      const messages = input.map(m => ({ role: m.role, content: m.content }));
+      for (let round = 0; round < ASK_MAX_ROUNDS; round++) {
+        const data = await post(messages, signal);
+        if (data.stop_reason === "refusal") throw askFail("refused", "refusal");
+        messages.push({ role: "assistant", content: data.content });
+        if (data.stop_reason === "tool_use") {
+          const results = [];
+          for (const b of data.content) {
+            if (b.type !== "tool_use") continue;
+            try {
+              const tool = tools.find(t => t.name === b.name);
+              if (!tool) throw new Error("Unknown tool " + b.name);
+              results.push({ type: "tool_result", tool_use_id: b.id, content: JSON.stringify(await tool.execute(b.input || {}, { signal })) });
+            } catch (e) {
+              results.push({ type: "tool_result", tool_use_id: b.id, content: "Error: " + (e && e.message || e), is_error: true });
+            }
+          }
+          messages.push({ role: "user", content: results });
+          continue;
+        }
+        const text = data.content.filter(b => b.type === "text").map(b => b.text).join("\n");
+        if (data.stop_reason === "max_tokens") throw askFail("invalid_json", "answer cut short", text);
+        return parseJsonLoose(text);
+      }
+      throw askFail("upstream_error", "too many lookups");
+    }
+    return { json };
+  }
+
+  function disableAsk(msg) {
+    $("ask-form").hidden = true; $("examples").hidden = true;
+    const n = $("ask-note"); n.hidden = false; n.textContent = msg;
+  }
+
+  function bootAsk() {
+    $("examples").innerHTML = BASELINE_EXAMPLES.map(e => `<button class="chip" type="button">${esc(e)}</button>`).join("");
+    $("examples").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b && !$("ask").disabled) { $("q").value = b.textContent; askBaseline(b.textContent); } });
+    $("ask-form").addEventListener("submit", e => { e.preventDefault(); const v = $("q").value; askBaseline(v); $("q").value = ""; });
+    $("q").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("ask-form").requestSubmit(); } });
+    $("stop").onclick = () => askCtl?.abort();
+
+    const proxyUrl = (window.MH_ITI_CONFIG && window.MH_ITI_CONFIG.proxyUrl) || "";
+    if (proxyUrl) { askSample = makeAskProxy(proxyUrl); setAskBusy(false); }
+    else disableAsk("Questions are turned off on this copy because no answer service is set up. The charts below still work.");
+  }
+
   function boot() {
     $("year-toggle").innerHTML = D.years.map(y => `<button type="button" data-year="${y}" aria-pressed="false">${y}</button>`).join("");
     $("year-toggle").querySelectorAll("button").forEach(b => b.onclick = () => setYear(+b.dataset.year));
@@ -753,6 +1078,7 @@ footer { font-size: .8rem; color: var(--muted); }
     renderDistrictDetail();
     renderCoverage();
     setYear(D.years.at(-1));
+    bootAsk();
   }
 
   load().then(boot).catch(e => { $("meta").textContent = "Could not load data.json: " + e.message; });

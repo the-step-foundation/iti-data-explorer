@@ -4,7 +4,7 @@
 
 A dashboard for India's Industrial Training Institutes (ITIs) under the Craftsmen Training Scheme. You can read the charts, or ask questions in plain language and get an answer, a chart and the exact values and sources behind it.
 
-Also published from this repo: **[Maharashtra ITI baseline dashboard](https://the-step-foundation.github.io/iti-data-explorer/mh-baseline/)** (`mh-baseline/`), a separate, institute-level dashboard for Maharashtra's 419 government ITIs — see [mh_baseline/](mh_baseline/) below.
+Also published from this repo: **[Maharashtra ITI baseline dashboard](https://the-step-foundation.github.io/iti-data-explorer/mh-baseline/)** (`mh-baseline/`), a separate, institute-level dashboard for Maharashtra's 419 government ITIs, with its own question box ("ask the data") backed by its own Worker — see [mh_baseline/](mh_baseline/) below.
 
 The data comes from 55 tables on [data.gov.in](https://www.data.gov.in/) (almost all are Rajya Sabha answers, state level) plus All-India figures read from the [DGT Schemes Dashboard](https://dgt.skillindiadigital.gov.in/). What the data can and cannot answer is written up in [iti_data/DASHBOARD_COVERAGE.md](iti_data/DASHBOARD_COVERAGE.md). In short: state-level enrolment (2014-15 to 2023-24), counts of ITIs and seats, and women's share are covered. Anything per institute, per trade or per district is not.
 
@@ -107,6 +107,16 @@ python3 -m http.server 8000 --directory dashboard  # open http://localhost:8000
 
 Python 3.8 or later, standard library only. The question box stays off locally unless you set `proxyUrl` in `dashboard/config.js`.
 
+The MH baseline dashboard runs the same way, from its own folder:
+
+```bash
+python3 mh_baseline/build_data.py                               # writes mh_baseline/dashboard/data.json
+python3 mh_baseline/build_geo.py                                # writes mh_baseline/dashboard/districts.json
+python3 -m http.server 8001 --directory mh_baseline/dashboard    # open http://localhost:8001
+```
+
+Its question box stays off locally unless you set `proxyUrl` in `mh_baseline/dashboard/config.js`.
+
 ## Put it on GitHub
 
 1. **Create the repository** on GitHub (public) and push this folder:
@@ -118,10 +128,10 @@ Python 3.8 or later, standard library only. The question box stays off locally u
 
 2. **Turn on Pages.** Repository → Settings → Pages → Source: **GitHub Actions**. The "Deploy dashboard" workflow publishes `dashboard/` on every push to `main`. The site is at `https://YOUR-USER.github.io/YOUR-REPO/`.
 
-3. **Deploy the answer service** (skip this to keep the question box off):
+3. **Deploy the answer service(s)** (skip either to keep that dashboard's question box off — the two are independent deployments, since the dashboards have unrelated data shapes):
 
    ```bash
-   cd worker
+   cd worker                                     # ITI Data Explorer (All India, data.gov.in)
    # edit wrangler.toml: set ALLOWED_ORIGINS to https://YOUR-USER.github.io  (site only, no path)
    npm install
    npx wrangler login
@@ -129,13 +139,26 @@ Python 3.8 or later, standard library only. The question box stays off locally u
    npx wrangler deploy                           # prints https://iti-explorer-answers.<you>.workers.dev
    ```
 
-4. **Tell the site where the service is.** Repository → Settings → Secrets and variables → Actions → **Variables** → New: `PROXY_URL` = `https://iti-explorer-answers.<you>.workers.dev/ask`. Then Actions → "Deploy dashboard" → Run workflow. The workflow writes this into `dashboard/config.js` on the server; you don't commit it.
+   ```bash
+   cd mh_baseline/worker                         # MH ITI Baseline Dashboard
+   # edit wrangler.toml: set ALLOWED_ORIGINS to https://YOUR-USER.github.io  (site only, no path)
+   npm install
+   npx wrangler login
+   npx wrangler secret put ANTHROPIC_API_KEY     # a separate key/workspace is recommended, so spend and limits don't mix with the other dashboard
+   npx wrangler deploy                           # prints https://mh-iti-baseline-answers.<you>.workers.dev
+   ```
 
-5. **Cap the spend.** Anyone who opens the site can ask questions, and your key pays. Use a key from a dedicated workspace in the Anthropic Console and set a monthly spend limit there. The Worker's rate limit (8 requests a minute per visitor, per Cloudflare location) slows abuse but does not cap cost. The origin check stops other websites from using your service from a browser. It does not stop someone calling it directly.
+4. **Tell the site where each service is.** Repository → Settings → Secrets and variables → Actions → **Variables** → New:
+   - `PROXY_URL` = `https://iti-explorer-answers.<you>.workers.dev/ask` (ITI Data Explorer)
+   - `MH_PROXY_URL` = `https://mh-iti-baseline-answers.<you>.workers.dev/ask` (MH ITI Baseline Dashboard)
 
-**Cost.** Each question takes 2 to 4 requests to Claude. The model defaults to `claude-opus-5-5` at medium effort. My rough estimate is 10 to 20 US cents per question at current prices (not measured). Change `MODEL` and `EFFORT` in `wrangler.toml` to trade quality for cost, then redeploy. Check answers after any change, since the instructions in `dashboard/index.html` were written and tested against Opus.
+   Then Actions → "Deploy dashboards" → Run workflow. The workflow writes these into `dashboard/config.js` and `mh_baseline/dashboard/config.js` on the server; you don't commit either file with a real URL in it.
 
-**Privacy.** Questions and the data they look up are sent to Anthropic through your Worker. The page says so above the question box.
+5. **Cap the spend.** Anyone who opens a site can ask questions, and your key pays. Use a key from a dedicated workspace in the Anthropic Console and set a monthly spend limit there — a separate workspace per Worker is recommended, so one dashboard's questions can't exhaust the other's budget. Each Worker's rate limit (8 requests a minute per visitor, per Cloudflare location) slows abuse but does not cap cost. The origin check stops other websites from using your service from a browser. It does not stop someone calling it directly.
+
+**Cost.** Each question takes 2 to 4 requests to Claude. The model defaults to `claude-opus-5-5` at medium effort. My rough estimate is 10 to 20 US cents per question at current prices (not measured). Change `MODEL` and `EFFORT` in a Worker's `wrangler.toml` to trade quality for cost, then redeploy. Check answers after any change, since the instructions each page sends (in `dashboard/index.html` or `mh_baseline/dashboard/index.html`) were written and tested against Opus.
+
+**Privacy.** Questions and the data they look up are sent to Anthropic through the matching Worker. Each page says so above its question box.
 
 ## Keep the data fresh
 
@@ -163,7 +186,7 @@ Questions that need data this project does not have (seat fill rate by ITI, pass
 | `worker/` | The Cloudflare Worker (answer service) |
 | `iti_data/` | Merged CSVs, the cached source tables (`raw/`) and the coverage notes |
 | `datagovin_iti_skilling_inventory.csv` | All 949 skilling-related datasets found on data.gov.in |
-| `mh_baseline/` | A separate institute-level dashboard for Maharashtra's government ITIs: `raw/` (source CSV), `build_data.py`, `dashboard/` (published to `/mh-baseline/`) |
+| `mh_baseline/` | A separate institute-level dashboard for Maharashtra's government ITIs: `raw/` (source CSV + district boundary KML), `build_data.py`, `build_geo.py`, `dashboard/` (published to `/mh-baseline/`), `worker/` (its own Cloudflare Worker, see "Put it on GitHub") |
 | `.github/workflows/` | Deploy (both dashboards) and monthly refresh (data.gov.in only) |
 | `LICENSE` | MIT licence for the code |
 
