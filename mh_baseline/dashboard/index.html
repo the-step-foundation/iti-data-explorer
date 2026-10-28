@@ -21,6 +21,8 @@
   --series-2: #eb6834;
   --series-3: #1baf7a;
   --series-4: #4a3aa7;
+  --pink: #e87ba4;
+  --yellow: #eda100;
   --grid: #e6e9ee;
   --good: #0ca30c;
   --good-soft: #e5f6e5;
@@ -36,6 +38,7 @@
     --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
     --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
     --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+    --pink: #d55181; --yellow: #c98500;
     --grid: #252a32; --good: #0ca30c; --good-soft: #112b16; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
   }
 }
@@ -43,6 +46,7 @@
   --bg: #0f1216; --surface: #171b21; --ink: #eef1f5; --ink-2: #b6bdc9; --muted: #858c99;
   --line: #2a3039; --accent: #3987e5; --accent-ink: #ffffff; --accent-soft: #1b2a3f;
   --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #9085e9;
+  --pink: #d55181; --yellow: #c98500;
   --grid: #252a32; --good: #0ca30c; --good-soft: #112b16; --warn: #fab219; --warn-soft: #33290f; --bad: #e66767; color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -96,15 +100,39 @@ tbody tr:hover { background: var(--accent-soft); }
 .muted-cell { color: var(--muted); }
 
 /* district trend (small multiples) */
-.trend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
-.trend-card { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 4px; min-width: 0; }
-.trend-card .tc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
-.trend-card .tc-name { font-size: .82rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.trend-card .tc-delta { font-size: .76rem; font-weight: 500; color: var(--muted); flex: none; }
-.trend-card .tc-delta.up { color: var(--good); }
-.trend-card .tc-delta.down { color: var(--bad); }
-.trend-card .tc-value { font-size: 1.05rem; font-weight: 600; }
-.trend-card svg { display: block; width: 100%; height: 34px; }
+/* delta badge: shared by KPI tiles and district-detail stat rows */
+.tc-delta { font-size: .76rem; font-weight: 500; color: var(--muted); flex: none; }
+.tc-delta.up { color: var(--good); }
+.tc-delta.down { color: var(--bad); }
+
+/* biggest-movers leaderboard */
+.mover-list { display: grid; gap: 6px; }
+.mover-row { display: grid; grid-template-columns: 20px 1fr auto 70px; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid var(--line); }
+.mover-row:first-child { border-top: 0; }
+.mover-row .m-rank { font-size: .9rem; font-weight: 600; }
+.mover-row .m-rank.up { color: var(--good); }
+.mover-row .m-rank.down { color: var(--bad); }
+.mover-row .m-name { font-size: .86rem; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mover-row .m-delta { font-size: .86rem; font-weight: 600; font-family: var(--font-num); }
+.mover-row .m-delta.up { color: var(--good); }
+.mover-row .m-delta.down { color: var(--bad); }
+.mover-row svg { display: block; width: 70px; height: 22px; }
+.mover-divider { border-top: 1px dashed var(--line); margin: 2px 0; }
+
+/* district choropleth map */
+.map-wrap { display: grid; gap: 10px; }
+.district-map { max-width: 560px; }
+.district-map svg { width: 100%; height: auto; display: block; }
+.dm-path { stroke: var(--surface); stroke-width: 1; cursor: pointer; transition: opacity .1s ease; }
+.dm-path:hover { opacity: .8; }
+.dm-path.selected { stroke: var(--ink); stroke-width: 2.5; }
+.dm-path:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.dm-legend { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--muted); }
+.dm-legend .dm-ramp { width: 120px; height: 10px; border-radius: 5px; border: 1px solid var(--line); }
+.district-detail { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 4px; }
+.district-detail .dd-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.district-detail .dd-stats { display: flex; gap: 18px; flex-wrap: wrap; font-size: .85rem; color: var(--ink-2); margin-top: 8px; }
+.district-detail .dd-stats b { color: var(--ink); font-family: var(--font-num); }
 
 /* indicator coverage */
 .cov-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
@@ -155,22 +183,28 @@ footer { font-size: .8rem; color: var(--muted); }
         <div class="chart-box"><canvas id="c-female-share" aria-label="Line chart of statewide female share of enrolment by year"></canvas></div>
       </div>
       <div class="panel">
-        <div class="chart-head"><h3>Enrolment by gender, by year</h3>
-          <p>Male and female enrolment, stacked to the statewide total.</p></div>
-        <div class="chart-box"><canvas id="c-gender" aria-label="Stacked bar chart of enrolment by gender by year"></canvas></div>
+        <div class="chart-head"><h3>Biggest movers in female share</h3>
+          <p>Districts with the largest change in female share of enrolment, 2023&ndash;2025 (percentage points).</p></div>
+        <div class="mover-list" id="gender-movers"></div>
       </div>
     </div>
 
     <div class="panel">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px">
         <div class="chart-head" style="margin-bottom:0"><h3>District trend, 2023&ndash;2025</h3>
-          <p id="district-trend-sub">Top 15 districts by 2025 seats, with the 3-year trend.</p></div>
-        <div class="segmented" id="district-sort-toggle" role="group" aria-label="Sort districts">
-          <button type="button" data-mode="size" aria-pressed="true">By size</button>
-          <button type="button" data-mode="change" aria-pressed="false">By change</button>
+          <p id="seats-map-sub">Seats by district, 2025. Click a district for its 3-year trend.</p></div>
+        <div class="segmented" id="seats-map-toggle" role="group" aria-label="Map mode">
+          <button type="button" data-mode="size" aria-pressed="true">Size</button>
+          <button type="button" data-mode="change" aria-pressed="false">Change</button>
         </div>
       </div>
-      <div class="trend-grid" id="district-trend"></div>
+      <div class="map-wrap">
+        <div class="district-map" id="seats-map"></div>
+        <div class="dm-legend" id="seats-map-legend"></div>
+      </div>
+      <div class="district-detail" id="seats-detail">
+        <p class="hint">Click a district above to see its trend.</p>
+      </div>
     </div>
   </section>
 
@@ -192,6 +226,17 @@ footer { font-size: .8rem; color: var(--muted); }
 
   <section aria-labelledby="dist-h" style="display:grid;gap:14px">
     <h2 id="dist-h">By district</h2>
+    <div class="panel">
+      <div class="chart-head"><h3>Female share of enrolment by district, <span id="map-year"></span></h3>
+        <p>Click a district for its 2023&ndash;2025 trend.</p></div>
+      <div class="map-wrap">
+        <div class="district-map" id="district-map"></div>
+        <div class="dm-legend" id="dm-legend"></div>
+      </div>
+      <div class="district-detail" id="district-detail">
+        <p class="hint">Click a district above to see its trend.</p>
+      </div>
+    </div>
     <details class="disclosure">
       <summary>Show full district table (<span id="n-districts-2"></span> districts, sortable)</summary>
       <div class="panel" style="margin-top:10px">
@@ -224,6 +269,8 @@ footer { font-size: .8rem; color: var(--muted); }
       <li>Enrolled always equals seats, for every institute and year &mdash; the enrolled-by-gender columns read as a gender split of seat capacity, not an independently measured enrolment figure. Treat this as reported intake, not a fill rate, until the department confirms what the field means.</li>
       <li>Pass rates, trainer vacancy and qualifications, dropout, employability-skills scores, and industry linkage (MSMEs engaged, active MoUs) are tracked columns with no data yet for any institute; see &ldquo;Indicator coverage&rdquo; above.</li>
       <li>One institute (Government Higher Level ITI, Chembur, Mumbai Suburban) opened in 2025 and has no 2023/2024 figures &mdash; it is included with those years blank.</li>
+      <li>&ldquo;Gender ratio&rdquo; / &ldquo;female share&rdquo; on this page means female enrolment as a percentage of total enrolment, not a sex-ratio (females per 1,000 males).</li>
+      <li>District boundaries on the map are from Survey of India (via <a href="https://data.opencity.in/dataset/district-maps-for-states-of-india/resource/10a9e732-4e2e-4740-bb57-0533b6abf101" target="_blank" rel="noopener">opencity.in</a>, Public Domain), simplified for the web; names predate the 2021&ndash;2024 district renames and are normalised to match this baseline (see <code>mh_baseline/build_geo.py</code>).</li>
       <li>Built from <code id="src-name"></code>, last rebuilt <span id="built"></span>.</li>
     </ul>
   </section>
@@ -235,18 +282,20 @@ footer { font-size: .8rem; color: var(--muted); }
 <script>
 (() => {
   "use strict";
-  let D = null, YEAR = null;
+  let D = null, GEO = null, YEAR = null;
   const $ = id => document.getElementById(id);
   const fmt = n => n == null ? "—" : Number(n).toLocaleString("en-IN");
   const pct = n => n == null ? "—" : Number(n).toFixed(1) + "%";
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const compact = v => Math.abs(v) >= 1e5 ? (v / 1e5).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + "L" : Number(v).toLocaleString("en-IN");
-  const seriesColor = i => css(["--series-1", "--series-2", "--series-3", "--series-4"][i % 4]);
   const titleCase = s => s.replace(/\w\S*/g, w => w[0] + w.slice(1).toLowerCase());
 
   function load() {
-    return fetch("data.json").then(r => { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); }).then(d => { D = d; });
+    return Promise.all([
+      fetch("data.json").then(r => { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); }),
+      fetch("districts.json").then(r => r.ok ? r.json() : null).catch(() => null)
+    ]).then(([d, g]) => { D = d; GEO = g; });
   }
 
   // ---------- derived aggregates ----------
@@ -283,6 +332,8 @@ footer { font-size: .8rem; color: var(--muted); }
   const numAxis = () => ({ grid: { color: css("--grid") }, border: { display: false },
     afterFit: scale => { scale.width += 10; },
     ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => compact(v) }, beginAtZero: true });
+  const pctAxis = () => ({ grid: { color: css("--grid") }, border: { display: false },
+    ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => Number(v).toFixed(1) + "%" } });
   function baseOpts(extra = {}) {
     const ink2 = css("--ink-2"), grid = css("--grid"), muted = css("--muted");
     return Object.assign({
@@ -307,8 +358,8 @@ footer { font-size: .8rem; color: var(--muted); }
   // Shared sparkline markup used by both the KPI tiles and the district cards —
   // first-vs-last signed delta, colored by direction; a flat (<0.5%) change gets
   // no color, since that's "about the same," not a direction.
-  function sparkSvg(values, w, h, pad, ariaLabel) {
-    const accent = css("--accent");
+  function sparkSvg(values, w, h, pad, ariaLabel, colorVar) {
+    const accent = css(colorVar || "--accent");
     const { pts, lastX, lastY } = sparkPoints(values, w, h, pad);
     const a11y = ariaLabel ? `role="img" aria-label="${esc(ariaLabel)}"` : `aria-hidden="true"`;
     return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" ${a11y}>
@@ -325,9 +376,9 @@ footer { font-size: .8rem; color: var(--muted); }
     return { dir, text: delta == null ? "" : `${arrow} ${Math.abs(delta).toFixed(1)}%` };
   }
 
-  function tileHTML(label, value, sub, trendValues) {
+  function tileHTML(label, value, sub, trendValues, colorVar) {
     const { dir, text } = trendValues ? deltaBadge(deltaOf(trendValues)) : { dir: "", text: "" };
-    const spark = trendValues ? `<span class="t-spark">${sparkSvg(trendValues, 64, 28, 3)}</span>` : "";
+    const spark = trendValues ? `<span class="t-spark">${sparkSvg(trendValues, 64, 28, 3, null, colorVar)}</span>` : "";
     return `<div class="tile">
       <div class="t-head"><span class="eyebrow">${esc(label)}</span><span class="tc-delta ${dir}">${esc(text)}</span></div>
       <div class="t-row"><div class="v num">${value}</div>${spark}</div>
@@ -344,17 +395,15 @@ footer { font-size: .8rem; color: var(--muted); }
     const declining = trends.filter(r => r.delta != null && r.delta < -15).length;
     $("tiles").innerHTML = [
       tileHTML("Government ITIs", fmt(D.rows.length), `${D.districts.length} districts`),
-      tileHTML("Seats", fmt(t.seats), years, totals.map(x => x.seats)),
+      tileHTML("Seats", fmt(t.seats), years, totals.map(x => x.seats), "--yellow"),
       tileHTML("Enrolled", fmt(t.total), `Male ${fmt(t.male)} &middot; Female ${fmt(t.female)}`, totals.map(x => x.total)),
-      tileHTML("Female share of enrolment", pct(t.femaleShare), years, totals.map(x => x.femaleShare)),
+      tileHTML("Female share of enrolment", pct(t.femaleShare), years, totals.map(x => x.femaleShare), "--pink"),
       tileHTML("Districts growing >15%", fmt(growing), `${declining} declining &gt;15% &middot; of ${D.districts.length}, ${years}`)
     ].join("");
   }
 
   function renderTrendCharts() {
     const totals = D.years.map(y => stateTotals(y));
-    const pctAxis = () => ({ grid: { color: css("--grid") }, border: { display: false },
-      ticks: { color: css("--muted"), font: { family: "IBM Plex Mono", size: 11 }, callback: v => Number(v).toFixed(1) + "%" } });
     const o1 = baseOpts();
     o1.scales.y = pctAxis();
     o1.plugins.legend.display = false;
@@ -362,20 +411,45 @@ footer { font-size: .8rem; color: var(--muted); }
     draw("c-female-share", {
       type: "line",
       data: { labels: D.years.map(String), datasets: [
-        { label: "Female share", data: totals.map(t => t.femaleShare), borderColor: seriesColor(2), backgroundColor: seriesColor(2), borderWidth: 2, pointRadius: 4, tension: 0 }
+        { label: "Female share", data: totals.map(t => t.femaleShare), borderColor: css("--pink"), backgroundColor: css("--pink"), borderWidth: 2, pointRadius: 4, tension: 0 }
       ] },
       options: o1
     });
-    const o = baseOpts();
-    o.scales.x.stacked = true; o.scales.y.stacked = true;
-    draw("c-gender", {
-      type: "bar",
-      data: { labels: D.years.map(String), datasets: [
-        { label: "Male", data: totals.map(t => t.male), backgroundColor: seriesColor(0), borderRadius: 3, barPercentage: .6, categoryPercentage: .7 },
-        { label: "Female", data: totals.map(t => t.female), backgroundColor: seriesColor(2), borderRadius: 3, barPercentage: .6, categoryPercentage: .7 }
-      ] },
-      options: o
-    });
+  }
+
+  // ---------- biggest movers in female share (by district) ----------
+  // Percentage-point delta (latest minus first year), not the relative "% change"
+  // used for seats elsewhere — the right way to express change in a share/ratio.
+  function genderShareTrends() {
+    const byDistrict = new Map();
+    for (const y of D.years) for (const g of districtRollup(y)) {
+      if (!byDistrict.has(g.district)) byDistrict.set(g.district, {});
+      byDistrict.get(g.district)[y] = g.femaleShare;
+    }
+    return [...byDistrict.entries()].map(([district, byYear]) => {
+      const values = D.years.map(y => byYear[y] ?? null);
+      const first = values[0], latest = values.at(-1);
+      return { district, values, latest, delta: (first != null && latest != null) ? (latest - first) : null };
+    }).filter(r => r.delta != null);
+  }
+
+  function renderGenderMovers() {
+    const rows = genderShareTrends().sort((a, b) => b.delta - a.delta);
+    const rising = rows.slice(0, 4);
+    const falling = rows.slice(-4).reverse();
+    const row = r => {
+      const dir = r.delta > 0 ? "up" : r.delta < 0 ? "down" : "";
+      const arrow = dir === "up" ? "↑" : dir === "down" ? "↓" : "";
+      const sign = r.delta > 0 ? "+" : "";
+      const values = r.values.filter(v => v != null);
+      return `<div class="mover-row">
+        <span class="m-rank ${dir}">${arrow}</span>
+        <span class="m-name" title="${esc(titleCase(r.district))}">${esc(titleCase(r.district))}</span>
+        <span class="m-delta ${dir}">${sign}${r.delta.toFixed(1)} pp</span>
+        ${sparkSvg(values, 70, 22, 3, null, "--pink")}
+      </div>`;
+    };
+    $("gender-movers").innerHTML = rising.map(row).join("") + `<div class="mover-divider"></div>` + falling.map(row).join("");
   }
 
   // One hue throughout the district grid means "seats" (the metric), not district
@@ -392,30 +466,151 @@ footer { font-size: .8rem; color: var(--muted); }
     });
   }
 
-  function districtTrendRows(mode) {
-    const rows = allDistrictTrends();
-    if (mode === "change") {
-      const byDelta = (a, b) => (b.delta ?? -Infinity) - (a.delta ?? -Infinity);
-      const gainers = [...rows].sort(byDelta).slice(0, 8);
-      const decliners = [...rows].sort(byDelta).slice(-7).reverse();
-      return [...gainers, ...decliners];
-    }
-    return [...rows].sort((a, b) => b.latest - a.latest).slice(0, 15);
+  // ---------- district choropleth maps ----------
+  // Real district boundaries: Survey of India, via opencity.in (Public
+  // Domain), simplified at build time — see build_geo.py. GEO is null if
+  // districts.json failed to load; each map degrades to a message, nothing
+  // else on the page depends on it.
+  function hexToRgb(hex) { const n = parseInt(hex.replace("#", ""), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+  function mapColor(t, hiVar) {
+    // Sequential (magnitude): blend surface->hi, floored at 18% so the
+    // lowest value still reads as "some color" in both themes (a pure
+    // surface->hi lerp compresses too far toward invisible in dark mode).
+    const tt = 0.18 + 0.82 * Math.max(0, Math.min(1, t));
+    const lo = hexToRgb(css("--surface")), hi = hexToRgb(css(hiVar || "--accent"));
+    const c = lo.map((v, i) => Math.round(v + (hi[i] - v) * tt));
+    return `rgb(${c[0]},${c[1]},${c[2]})`;
+  }
+  function divergingColor(t, posVar) {
+    // Polarity (signed change): a neutral gray midpoint (t=0, still visibly
+    // colored, distinct from "no data") fanning out to `posVar` (growth)
+    // or --bad red (decline) at the extremes.
+    t = Math.max(-1, Math.min(1, t));
+    const mid = hexToRgb(css("--line")), pole = hexToRgb(t >= 0 ? css(posVar || "--accent") : css("--bad"));
+    const c = mid.map((v, i) => Math.round(v + (pole[i] - v) * Math.abs(t)));
+    return `rgb(${c[0]},${c[1]},${c[2]})`;
   }
 
-  let districtSortMode = "size";
-  function renderDistrictTrend() {
-    const rows = districtTrendRows(districtSortMode);
-    $("district-trend").innerHTML = rows.map(r => {
-      const { dir, text } = deltaBadge(r.delta);
-      const name = titleCase(r.district);
-      const label = `Seats ${D.years[0]}–${D.years.at(-1)}: ${r.values.map(fmt).join(", ")}`;
-      return `<div class="trend-card">
-        <div class="tc-head"><span class="tc-name" title="${esc(name)}">${esc(name)}</span><span class="tc-delta ${dir}">${esc(text)}</span></div>
-        <div class="tc-value num">${fmt(r.latest)}</div>
-        ${sparkSvg(r.values, 160, 34, 4, label)}
-      </div>`;
+  // Shared renderer: paints one <path> per district from GEO, wires click/
+  // keyboard selection, fills in the legend. `opts` supplies the per-map
+  // value/color/label logic; everything geometric is identical between maps.
+  function renderChoropleth(containerId, legendId, opts) {
+    if (!GEO) { $(containerId).innerHTML = `<p class="hint">Map data (districts.json) didn’t load.</p>`; return; }
+    const paths = Object.entries(GEO.paths).map(([d, dAttr]) => {
+      const v = opts.valueOf(d);
+      const fill = v == null ? css("--bg") : opts.colorOf(v);
+      const label = opts.labelOf(d, v);
+      return `<path d="${dAttr}" fill-rule="evenodd" fill="${fill}" class="dm-path${d === opts.selected ? " selected" : ""}"
+        data-district="${esc(d)}" tabindex="0" role="button" aria-label="${esc(label)}"><title>${esc(label)}</title></path>`;
     }).join("");
+    $(containerId).innerHTML = `<svg viewBox="${GEO.viewBox}" role="img" aria-label="Maharashtra district map">${paths}</svg>`;
+    $(containerId).querySelectorAll(".dm-path").forEach(p => {
+      const select = () => opts.onSelect(p.dataset.district);
+      p.onclick = select;
+      p.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(); } };
+    });
+    $(legendId).innerHTML = opts.legendOf();
+  }
+
+  let selectedDistrict = null;
+  function renderDistrictMap() {
+    const y = D.years.at(-1);
+    $("map-year").textContent = y;
+    const rows = districtRollup(y).filter(r => r.femaleShare != null);
+    const values = rows.map(r => r.femaleShare);
+    const min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
+    const byDistrict = Object.fromEntries(rows.map(r => [r.district, r]));
+    renderChoropleth("district-map", "dm-legend", {
+      selected: selectedDistrict,
+      valueOf: d => byDistrict[d] ? byDistrict[d].femaleShare : null,
+      colorOf: v => mapColor((v - min) / span, "--pink"),
+      labelOf: (d, v) => v == null ? titleCase(d) : `${titleCase(d)}: ${v.toFixed(1)}% female share, ${y}`,
+      legendOf: () => `<span>${min.toFixed(1)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0, "--pink")}, ${mapColor(1, "--pink")})"></span><span>${max.toFixed(1)}%</span><span>&nbsp;female share, ${y}</span>`,
+      onSelect: d => { selectedDistrict = d; renderDistrictMap(); renderDistrictDetail(); }
+    });
+  }
+
+  function renderDistrictDetail() {
+    const box = $("district-detail");
+    if (!selectedDistrict) { box.innerHTML = `<p class="hint">Click a district above to see its trend.</p>`; return; }
+    const trend = genderShareTrends().find(r => r.district === selectedDistrict);
+    const name = titleCase(selectedDistrict);
+    box.innerHTML = `<div class="dd-head"><h3>${esc(name)}</h3><span class="hint">Female share of enrolment, ${D.years[0]}–${D.years.at(-1)}</span></div>
+      <div class="chart-box" style="height:220px"><canvas id="c-district-detail" aria-label="Line chart of ${esc(name)} female share of enrolment by year"></canvas></div>
+      <div class="dd-stats" id="dd-stats"></div>`;
+    if (!trend) { $("c-district-detail").replaceWith("No data for this district."); return; }
+    const o = baseOpts();
+    o.scales.y = pctAxis();
+    o.plugins.legend.display = false;
+    o.plugins.tooltip.callbacks.label = c => ` Female share: ${c.parsed.y.toFixed(1)}%`;
+    draw("c-district-detail", {
+      type: "line",
+      data: { labels: D.years.map(String), datasets: [
+        { label: "Female share", data: trend.values, borderColor: css("--pink"), backgroundColor: css("--pink"), borderWidth: 2, pointRadius: 4, tension: 0, spanGaps: true }
+      ] },
+      options: o
+    });
+    const latestRollup = districtRollup(D.years.at(-1)).find(r => r.district === selectedDistrict);
+    const sign = trend.delta > 0 ? "+" : "";
+    $("dd-stats").innerHTML = `<span>Latest: <b>${trend.latest.toFixed(1)}%</b></span>
+      <span>Change ${D.years[0]}→${D.years.at(-1)}: <b>${sign}${trend.delta.toFixed(1)} pp</b></span>
+      ${latestRollup ? `<span>Enrolled ${D.years.at(-1)}: <b>${fmt(latestRollup.total)}</b> (Female <b>${fmt(latestRollup.female)}</b>)</span>` : ""}`;
+  }
+
+  // Seats: "Size" (latest-year total, sequential) and "Change" (% change
+  // 2023→latest, diverging) share the same allDistrictTrends() data.
+  let selectedSeatsDistrict = null, seatsMapMode = "size";
+  function renderSeatsMap() {
+    const trends = allDistrictTrends();
+    const byDistrict = Object.fromEntries(trends.map(r => [r.district, r]));
+    const y = D.years.at(-1), y0 = D.years[0];
+    if (seatsMapMode === "size") {
+      const values = trends.map(r => r.latest);
+      const min = Math.min(...values), max = Math.max(...values), span = max - min || 1;
+      renderChoropleth("seats-map", "seats-map-legend", {
+        selected: selectedSeatsDistrict,
+        valueOf: d => byDistrict[d] ? byDistrict[d].latest : null,
+        colorOf: v => mapColor((v - min) / span, "--yellow"),
+        labelOf: (d, v) => v == null ? titleCase(d) : `${titleCase(d)}: ${fmt(v)} seats, ${y}`,
+        legendOf: () => `<span>${fmt(min)}</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${mapColor(0, "--yellow")}, ${mapColor(1, "--yellow")})"></span><span>${fmt(max)}</span><span>&nbsp;seats, ${y}</span>`,
+        onSelect: d => { selectedSeatsDistrict = d; renderSeatsMap(); renderSeatsDetail(); }
+      });
+    } else {
+      const deltas = trends.map(r => r.delta).filter(v => v != null).map(Math.abs);
+      const absMax = Math.max(...deltas, 0.1);
+      renderChoropleth("seats-map", "seats-map-legend", {
+        selected: selectedSeatsDistrict,
+        valueOf: d => byDistrict[d] ? byDistrict[d].delta : null,
+        colorOf: v => divergingColor(v / absMax, "--yellow"),
+        labelOf: (d, v) => v == null ? titleCase(d) : `${titleCase(d)}: ${v > 0 ? "+" : ""}${v.toFixed(1)}% seats, ${y0}→${y}`,
+        legendOf: () => `<span>−${absMax.toFixed(0)}%</span><span class="dm-ramp" style="background:linear-gradient(90deg, ${divergingColor(-1, "--yellow")}, ${divergingColor(0, "--yellow")}, ${divergingColor(1, "--yellow")})"></span><span>+${absMax.toFixed(0)}%</span><span>&nbsp;change, ${y0}→${y}</span>`,
+        onSelect: d => { selectedSeatsDistrict = d; renderSeatsMap(); renderSeatsDetail(); }
+      });
+    }
+  }
+
+  function renderSeatsDetail() {
+    const box = $("seats-detail");
+    if (!selectedSeatsDistrict) { box.innerHTML = `<p class="hint">Click a district above to see its trend.</p>`; return; }
+    const trend = allDistrictTrends().find(r => r.district === selectedSeatsDistrict);
+    const name = titleCase(selectedSeatsDistrict);
+    box.innerHTML = `<div class="dd-head"><h3>${esc(name)}</h3><span class="hint">Seats, ${D.years[0]}–${D.years.at(-1)}</span></div>
+      <div class="chart-box" style="height:220px"><canvas id="c-seats-detail" aria-label="Line chart of ${esc(name)} seats by year"></canvas></div>
+      <div class="dd-stats" id="seats-dd-stats"></div>`;
+    if (!trend) { $("c-seats-detail").replaceWith("No data for this district."); return; }
+    const o = baseOpts();
+    o.scales.y = numAxis();
+    o.plugins.legend.display = false;
+    draw("c-seats-detail", {
+      type: "line",
+      data: { labels: D.years.map(String), datasets: [
+        { label: "Seats", data: trend.values, borderColor: css("--yellow"), backgroundColor: css("--yellow"), borderWidth: 2, pointRadius: 4, tension: 0 }
+      ] },
+      options: o
+    });
+    const { dir, text } = deltaBadge(trend.delta);
+    $("seats-dd-stats").innerHTML = `<span>Latest: <b>${fmt(trend.latest)}</b></span>
+      <span>Change ${D.years[0]}→${D.years.at(-1)}: <span class="tc-delta ${dir} num" style="font-size:inherit">${esc(text)}</span></span>`;
   }
 
   // ---------- indicator coverage ----------
@@ -528,13 +723,13 @@ footer { font-size: .8rem; color: var(--muted); }
     $("year-toggle").innerHTML = D.years.map(y => `<button type="button" data-year="${y}" aria-pressed="false">${y}</button>`).join("");
     $("year-toggle").querySelectorAll("button").forEach(b => b.onclick = () => setYear(+b.dataset.year));
 
-    $("district-sort-toggle").querySelectorAll("button").forEach(b => b.onclick = () => {
-      districtSortMode = b.dataset.mode;
-      document.querySelectorAll("#district-sort-toggle button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      $("district-trend-sub").textContent = districtSortMode === "size"
-        ? "Top 15 districts by 2025 seats, with the 3-year trend."
-        : "8 largest gainers and 7 steepest decliners in seats, 2023→2025.";
-      renderDistrictTrend();
+    $("seats-map-toggle").querySelectorAll("button").forEach(b => b.onclick = () => {
+      seatsMapMode = b.dataset.mode;
+      document.querySelectorAll("#seats-map-toggle button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      $("seats-map-sub").textContent = seatsMapMode === "size"
+        ? `Seats by district, ${D.years.at(-1)}. Click a district for its 3-year trend.`
+        : `Change in seats by district, ${D.years[0]}→${D.years.at(-1)}. Click a district for its 3-year trend.`;
+      renderSeatsMap();
     });
 
     $("iti-district").innerHTML += D.districts.map(d => `<option value="${esc(d)}">${esc(titleCase(d))}</option>`).join("");
@@ -551,7 +746,11 @@ footer { font-size: .8rem; color: var(--muted); }
 
     renderTiles();
     renderTrendCharts();
-    renderDistrictTrend();
+    renderGenderMovers();
+    renderSeatsMap();
+    renderSeatsDetail();
+    renderDistrictMap();
+    renderDistrictDetail();
     renderCoverage();
     setYear(D.years.at(-1));
   }
